@@ -1,6 +1,6 @@
-"use client";
 import { ReactNode } from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
@@ -9,6 +9,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <div className="w-full flex items-center justify-start flex-col z-10">
         {children}
       </div>
+      <Footer />
     </main>
   );
 }
