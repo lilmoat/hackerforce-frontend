@@ -2,11 +2,11 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CookieModal from "@/components/CookieModal";
-import About from "@/models/About";
-import Subscription from "@/models/Subscription";
-import FindPath from "@/models/FindPath";
-import Security from "@/models/Security";
-import Question from "@/models/Question";
+import About from "@/components/About";
+import Subscription from "@/components/Subscription";
+import FindPath from "@/components/FindPath";
+import Security from "@/components/Security";
+import Question from "@/components/Question";
 
 export default function Home() {
   return (
