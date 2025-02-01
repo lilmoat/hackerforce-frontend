@@ -29,12 +29,12 @@ const Header = () => {
           </div>
 
           <nav className="hidden lg:flex space-x-7">
-            <a href="#" className="hover:text-red duration-200">
+            <Link href="/shop" className="hover:text-red duration-200">
               Home
-            </a>
-            <a href="#" className="hover:text-red duration-200">
+            </Link>
+            <Link href="/about" className="hover:text-red duration-200">
               About us
-            </a>
+            </Link>
             <div className="relative">
               <button
                 className="flex items-center space-x-1 hover:text-red duration-200"
@@ -104,12 +104,12 @@ const Header = () => {
             <Link href="/shop" className="hover:text-red duration-200">
               Shop
             </Link>
-            <a href="#" className="hover:text-red duration-200">
+            <Link href="/contact" className="hover:text-red duration-200">
               Contact us
-            </a>
+            </Link>
           </nav>
 
-          <div className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-bright-red cursor-pointer duration-200 rounded-lg justify-center items-center gap-1">
+          <div className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center gap-1">
             <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
               Login/Register
             </div>
