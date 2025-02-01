@@ -49,7 +49,23 @@ const Header = () => {
               {isDropdownOpen && (
                 <div className="w-[166px] h-[189.99px] absolute z-50">
                   <div className="z-2 w-[164px] h-[178px] top-[10.75px] bg-dark absolute rounded-lg shadow-[0px_4px_32px_0px_rgba(0,0,0,0.70)] border border-[#2f3132] flex-col justify-center items-center inline-flex">
-                    <div className="self-stretch grow shrink cursor-pointer basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
+                    <Link
+                      href="/section"
+                      className="flex items-start justify-start w-full"
+                    >
+                      <div className="cursor-pointer self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
+                        <Icon
+                          name="SectionsIcon"
+                          size={16}
+                          className="hover:text-red duration-200 text-white"
+                        />{" "}
+                        <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
+                          Sections
+                        </div>
+                      </div>
+                    </Link>
+
+                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
                       <Icon
                         name="PracticeIcon"
                         size={16}
@@ -57,16 +73,6 @@ const Header = () => {
                       />{" "}
                       <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
                         Practice
-                      </div>
-                    </div>
-                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                      <Icon
-                        name="SectionsIcon"
-                        size={16}
-                        className="hover:text-red duration-200 text-white"
-                      />{" "}
-                      <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                        Sections
                       </div>
                     </div>
                     <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
