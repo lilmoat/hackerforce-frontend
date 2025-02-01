@@ -24,8 +24,8 @@ const pathsData = [
 
 export default function FindPath() {
   return (
-    <section className="relative max-w-[1440px] px-[100px]">
-      <div className="w-full py-[100px] flex flex-row items-center gap-[50px]">
+    <section className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 mt-[100px] md:mt-0">
+      <div className="w-full flex lg:flex-row flex-col items-start gap-[50px]">
         {/* Header */}
         <PathHeader />
 
@@ -44,7 +44,7 @@ export default function FindPath() {
 
 // 🔹 Header Section
 const PathHeader = () => (
-  <div className="w-[380px] flex flex-col gap-2">
+  <div className="lg:w-[480px] flex flex-col gap-2">
     {/* Path Label */}
     <div className="px-2 bg-[#972123] w-[100px] flex justify-center items-center">
       <span className="text-white text-xl font-inconsolata">Path</span>
@@ -71,8 +71,10 @@ const PathCard = ({
   path: { title: string; description: string; icon: string };
 }) => (
   <div className="p-6 bg-[#1d1e1f] rounded-lg flex gap-4">
-    <Icon name={"UpIcon"} className="w-7 h-7 text-white" />
-    <div className="flex flex-col gap-2">
+    <div className="w-[30px]">
+      <Icon name={"UpIcon"} className="w-7 h-7 text-white" size={18} />
+    </div>
+    <div className="flex flex-col gap-2 max-w-[700px]">
       <h3 className="text-white text-xl font-orbitron font-medium">
         {path.title}
       </h3>
