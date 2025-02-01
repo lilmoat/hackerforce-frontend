@@ -39,7 +39,7 @@ const BackgroundImage = () => (
 // 🔹 Contact Header
 const ContactHeader = () => (
   <div className="flex flex-col items-center gap-2 w-full">
-    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-darker md:text-[55px] text-[40px] font-bold font-orbitron uppercase text-center">
+    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-dark md:text-[55px] text-[40px] font-bold font-orbitron uppercase text-center">
       Contact Us
     </h2>
     <p className="text-[#a0a0a0] md:text-xl text-md font-inconsolata text-center">
