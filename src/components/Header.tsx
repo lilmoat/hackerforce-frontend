@@ -1,4 +1,3 @@
-"use client";
 import { useRef, useState, useEffect } from "react";
 import Icon from "./Icon";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
@@ -18,17 +17,17 @@ const Header = () => {
     <>
       {isClient && (
         <header
-          className="bg-transparent text-white py-4 px-[50px] flex justify-between items-center w-full font-orbitron font-medium z-50"
+          className="bg-transparent text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
           ref={elem}
         >
           <div className="flex items-center space-x-1">
             <div className="w-8 h-8 relative">
               <Icon name="Logo" size={32} className="" />
             </div>
-            <span className="text-xl font-bold">HACKERFORCE</span>
+            <span className="md:text-xl text-lg font-bold">HACKERFORCE</span>
           </div>
 
-          <nav className="hidden md:flex space-x-7">
+          <nav className="hidden lg:flex space-x-7">
             <a href="#" className="hover:text-red duration-200">
               Home
             </a>
@@ -57,7 +56,7 @@ const Header = () => {
                         Practice
                       </div>
                     </div>
-                    <div className="self-stretch grow shrink cursor-pointer basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
+                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
                       <Icon
                         name="SectionsIcon"
                         size={16}
@@ -67,7 +66,7 @@ const Header = () => {
                         Sections
                       </div>
                     </div>
-                    <div className="self-stretch grow shrink cursor-pointer basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
+                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
                       <Icon
                         name="CatalogIcon"
                         size={16}
@@ -77,7 +76,7 @@ const Header = () => {
                         Catalog
                       </div>
                     </div>
-                    <div className="self-stretch grow shrink cursor-pointer basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
+                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
                       <Icon
                         name="ChambersIcon"
                         size={16}
@@ -87,7 +86,7 @@ const Header = () => {
                         Chambers
                       </div>
                     </div>
-                    <div className="self-stretch grow shrink cursor-pointer basis-0 px-3 py-2 justify-start items-center gap-2.5 inline-flex">
+                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 justify-start items-center gap-2.5 inline-flex">
                       <Icon
                         name="ColosseumsIcon"
                         size={16}
@@ -109,11 +108,15 @@ const Header = () => {
             </a>
           </nav>
 
-          <div className="h-9 px-6 py-2 bg-red hover:bg-bright-red cursor-pointer duration-200 rounded-lg justify-center items-center gap-1 inline-flex">
+          <div className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-bright-red cursor-pointer duration-200 rounded-lg justify-center items-center gap-1">
             <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
               Login/Register
             </div>
           </div>
+          <div className="lg:hidden">
+            <Icon name="HamburgerIcon" size={24} />
+          </div>
+          {/* <div className="absolute top-[64px] bottom-0 left-0 right-0 bg-dark"></div> */}
         </header>
       )}
     </>

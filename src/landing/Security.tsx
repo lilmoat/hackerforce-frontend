@@ -52,13 +52,13 @@ const securityCategories: {
 
 export default function Security() {
   return (
-    <section className="relative w-full bg-gradient-to-b from-[#5f0001] to-[#972123] p-[100px] flex flex-col items-center gap-[50px]">
-      <div className="w-full max-w-[1440px] gap-20 flex flex-col items-center">
+    <section className="relative w-full bg-gradient-to-b from-[#5f0001] to-[#972123] flex flex-col items-center gap-[50px]">
+      <div className="w-full max-w-[1440px] gap-10 flex flex-col items-center xl:p-[100px] md:p-10 lg:p-12 p-5 mt-[100px] md:mt-0">
         {/* Header */}
         <SecurityHeader />
 
         {/* Security Categories Grid */}
-        <div className="grid grid-cols-3 gap-5 w-full">
+        <div className="grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5 w-full">
           {securityCategories.map((category, index) => (
             <SecurityCard key={index} category={category} />
           ))}
@@ -72,7 +72,7 @@ export default function Security() {
 
 // 🔹 Header Section
 const SecurityHeader = () => (
-  <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+  <div className="flex flex-col items-start md:items-start gap-6">
     {/* Training Tag */}
     <div className="px-2 bg-[#181a1b] flex items-center">
       <span className="text-white text-xl font-inconsolata">Training</span>
@@ -99,7 +99,7 @@ const SecurityCard = ({
   category: { name: string; icon: IconName; description: string };
 }) => (
   <div className="p-6 bg-white/5 rounded-lg flex gap-4 items-start">
-    <Icon name={category.icon} className="w-7 h-7 text-white" />
+    <Icon name={category.icon} className="w-9 h-9 text-white" />
     <div className="flex flex-col gap-2">
       <h3 className="text-white text-xl font-orbitron font-medium">
         {category.name}
