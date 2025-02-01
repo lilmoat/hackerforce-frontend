@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 export default function Footer() {
   return (
-    <div className="lg:px-[50px] px-5 pt-8 flex-col justify-start items-center gap-6 inline-flex w-full">
+    <div className="lg:px-[50px] px-5 pt-8 flex-col justify-start items-center gap-6 inline-flex w-full z-50">
       <div className="border-b pb-3 border-[#2f3132] self-stretch lg:justify-between justify-center items-center flex flex-col md:flex-row gap-8 lg:gap-0 w-full">
         <div className="h-8 lg:justify-start justify-center items-center gap-1 flex">
           <div className="text-white text-base font-medium font-['Orbitron'] uppercase flex items-center gap-1">
