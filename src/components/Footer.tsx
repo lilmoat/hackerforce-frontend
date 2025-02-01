@@ -51,7 +51,7 @@ export default function Footer() {
       </div>
       <div className="md:pt-6 pb-4 justify-center items-center gap-4 flex md:flex-row flex-col-reverse">
         <div className="text-[#a0a0a0] text-lg font-normal font-['Inconsolata'] leading-normal">
-          2024 Hackerforce. Allright Reserved
+          2025 Hackerforce. Allright Reserved
         </div>
         <div className="flex items-center justify-center gap-4">
           <Link

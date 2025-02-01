@@ -1,6 +1,7 @@
 import Icon from "@/components/Icon";
 import { Icons } from "@/components/Icons/Icons";
 import Image from "next/image";
+import Link from "next/link";
 
 interface SectionCardProps {
   title: string;
@@ -116,9 +117,12 @@ const SectionCard = ({
     style={{ backgroundImage: `url(${bgImage})` }}
   >
     <div className="flex flex-col gap-4">
-      <h2 className="text-white md:text-[60px] text-[40px] font-medium font-['Orbitron'] uppercase">
+      <Link
+        href="/course"
+        className="text-white hover:text-[#838282] duration-200 md:text-[60px] text-[40px] font-medium font-['Orbitron'] uppercase"
+      >
         {title}
-      </h2>
+      </Link>
       <p className="text-[#a0a0a0] lg:text-xl xl:text-2xl text-sm font-['Inconsolata'] leading-loose w-[320px] sm:w-[400px] md:w-full">
         {description}
       </p>

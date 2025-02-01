@@ -52,6 +52,7 @@ const Header = () => {
                     <Link
                       href="/section"
                       className="flex items-start justify-start w-full"
+                      onClick={() => setDropdownOpen(false)}
                     >
                       <div className="cursor-pointer self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
                         <Icon
