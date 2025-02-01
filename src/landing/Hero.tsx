@@ -34,7 +34,7 @@ export default function HeroSection() {
 // 🔹 Background Image
 const BackgroundImage = () => (
   <div className="absolute top-0 left-0 w-full h-full -z-50">
-    <Image src="/Bg.png" alt="Background" layout="fill" priority />
+    <Image src="/Bg.png" alt="Background" fill priority />
   </div>
 );
 
