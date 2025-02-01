@@ -39,10 +39,6 @@ const BackgroundImage = () => (
 // 🔹 Background Image
 const BackgroundImage2 = () => (
   <div className="absolute left-0 top-0 right-0 bottom-0 -z-[51] ">
-    <img
-      alt="Background"
-      src="/Bg3.png"
-      className="w-full bg-gradient-to-b from-[#181a1b] via-[#181a1b] to-[#181a1b]"
-    />
+    <img alt="Background" src="/Bg3.png" className="w-full" />
   </div>
 );

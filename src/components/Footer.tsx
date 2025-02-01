@@ -1,5 +1,6 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Icon from "./Icon";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -16,18 +17,30 @@ export default function Footer() {
           </div>
         </div>
         <div className="lg:justify-start justify-center items-center gap-4 flex">
-          <div className="text-white text-base font-medium font-['Orbitron'] leading-tight">
+          <Link
+            href="/"
+            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+          >
             Home
-          </div>
-          <div className="text-white text-base font-medium font-['Orbitron'] leading-tight">
+          </Link>
+          <Link
+            href="/about"
+            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+          >
             About Us
-          </div>
-          <div className="text-white text-base font-medium font-['Orbitron'] leading-tight">
+          </Link>
+          <Link
+            href="/pricing"
+            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+          >
             Pricing
-          </div>
-          <div className="text-white text-base font-medium font-['Orbitron'] leading-tight">
+          </Link>
+          <Link
+            href="/faq"
+            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+          >
             FAQ
-          </div>
+          </Link>
         </div>
         <div className="justify-center items-center md:justify-start md:items-start gap-[26.67px] inline-flex">
           <FaFacebook className="cursor-pointer" size={24} color="white" />
@@ -41,9 +54,12 @@ export default function Footer() {
           2024 Hackerforce. Allright Reserved
         </div>
         <div className="flex items-center justify-center gap-4">
-          <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
+          <Link
+            href="/term"
+            className="text-white text-sm font-medium font-['Orbitron'] leading-tight"
+          >
             Term & Condition
-          </div>
+          </Link>
           <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
             Privacy Policy
           </div>
