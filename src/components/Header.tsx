@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import Icon from "./Icon";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { IoIosArrowDown } from "react-icons/io";
+import Link from "next/link";
 
 const Header = () => {
   const elem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
@@ -17,7 +18,7 @@ const Header = () => {
     <>
       {isClient && (
         <header
-          className="bg-transparent text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
+          className="fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
           ref={elem}
         >
           <div className="flex items-center space-x-1">
@@ -100,9 +101,9 @@ const Header = () => {
                 </div>
               )}
             </div>
-            <a href="#" className="hover:text-red duration-200">
+            <Link href="/shop" className="hover:text-red duration-200">
               Shop
-            </a>
+            </Link>
             <a href="#" className="hover:text-red duration-200">
               Contact us
             </a>

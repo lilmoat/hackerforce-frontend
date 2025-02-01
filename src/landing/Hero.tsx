@@ -10,7 +10,7 @@ const mapImages = ["/WorldMap.png", "/WorldMap.png"];
 export default function HeroSection() {
   return (
     <section className="relative max-w-[1440px]">
-      <div className="flex flex-col items-center gap-5 min-h-[85vh] relative mt-[70px] overflow-hidden md:px-5">
+      <div className="flex flex-col items-center gap-5 min-h-screen relative overflow-hidden md:px-5">
         {/* Background Image */}
         <BackgroundImage />
 
@@ -57,7 +57,7 @@ const RotatingMap = () => (
 // 🔹 Hero Header (Title & Subtitle)
 const HeroHeader = () => (
   <>
-    <div className="h-7 px-2 bg-[#972123] flex justify-center items-centerc">
+    <div className="h-7 px-2 bg-[#972123] flex justify-center items-center md:mt-[170px] mt-[100px]">
       <p className="text-white text-xl font-inconsolata">
         Welcome to HackerForce
       </p>
