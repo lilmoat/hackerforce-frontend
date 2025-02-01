@@ -53,7 +53,7 @@ const securityCategories: {
 export default function Security() {
   return (
     <section className="relative w-full bg-gradient-to-b from-[#5f0001] to-[#972123] flex flex-col items-center gap-[50px]">
-      <div className="w-full max-w-[1440px] gap-10 flex flex-col items-center xl:p-[100px] md:p-10 lg:p-12 p-5 mt-[100px] md:mt-0">
+      <div className="w-full max-w-[1440px] gap-10 flex flex-col items-center xl:p-[100px] md:p-10 lg:p-12 p-5">
         {/* Header */}
         <SecurityHeader />
 
