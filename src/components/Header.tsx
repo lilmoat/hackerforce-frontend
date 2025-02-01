@@ -25,7 +25,9 @@ const Header = () => {
             <div className="w-8 h-8 relative">
               <Icon name="Logo" size={32} className="" />
             </div>
-            <span className="md:text-xl text-lg font-bold">HACKERFORCE</span>
+            <Link href={"/"} className="md:text-xl text-lg font-bold">
+              HACKERFORCE
+            </Link>
           </div>
 
           <nav className="hidden lg:flex space-x-7">
