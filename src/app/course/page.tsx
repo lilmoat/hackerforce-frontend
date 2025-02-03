@@ -1,10 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
-
 import BackgroundImage from "@/components/BackgroundImage";
 import CourseCard from "@/components/CourseCard";
-import Icon from "@/components/Icon";
 import { CoursesData } from "@/data/data";
-import { CourseCardProps } from "@/types/type";
 import Link from "next/link";
 import { GrSearch } from "react-icons/gr";
 import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";

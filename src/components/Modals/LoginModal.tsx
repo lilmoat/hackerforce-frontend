@@ -1,10 +1,11 @@
 "use client";
 
-import { FC, useContext } from "react";
-import Modal from "react-responsive-modal";
-import { ModalContext } from "@/contexts/ModalContext";
 import Icon from "../Icon";
+import { useAuth } from "@/contexts/AuthContext";
+import { ModalContext } from "@/contexts/ModalContext";
+import { FC, useContext } from "react";
 import { CgClose } from "react-icons/cg";
+import Modal from "react-responsive-modal";
 
 const LoginModal: FC = () => {
   const {
@@ -13,6 +14,7 @@ const LoginModal: FC = () => {
     openForgotPswModal,
     openSignupModal,
   } = useContext(ModalContext);
+  const account = useAuth();
 
   return (
     <Modal
@@ -75,7 +77,13 @@ const LoginModal: FC = () => {
             Forgot Password
           </div>
         </div>
-        <div className="self-stretch px-6 py-3 bg-[#972123] rounded-lg justify-center items-center gap-1 inline-flex">
+        <div
+          className="self-stretch px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] duration-200 cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex"
+          onClick={() => {
+            account.login();
+            closeLoginModal();
+          }}
+        >
           <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
             Login
           </div>

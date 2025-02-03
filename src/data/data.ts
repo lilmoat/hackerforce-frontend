@@ -4,6 +4,9 @@ import {
   SectionCardProps,
   TeamMember,
 } from "@/types/type";
+import { CgProfile } from "react-icons/cg";
+import { HiOutlineLocationMarker, HiOutlineShieldCheck } from "react-icons/hi";
+import { LiaCalendarMinusSolid } from "react-icons/lia";
 
 // 🔹 About Statistics Data
 const AboutStatsData = [
@@ -377,6 +380,13 @@ const ExpandableSectionData = [
   },
 ];
 
+const SettingsMenu = [
+  { id: "account", label: "Account Settings", icon: CgProfile },
+  { id: "security", label: "Security", icon: HiOutlineShieldCheck },
+  { id: "address", label: "Address Settings", icon: HiOutlineLocationMarker },
+  { id: "subscription", label: "Subscription", icon: LiaCalendarMinusSolid },
+];
+
 export {
   AboutStatsData,
   PathsData,
@@ -391,4 +401,5 @@ export {
   TaskDetailsData,
   ChallengesData,
   ExpandableSectionData,
+  SettingsMenu,
 };
