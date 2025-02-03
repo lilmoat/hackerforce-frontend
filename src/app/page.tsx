@@ -1,4 +1,3 @@
-"use client";
 import About from "@/landing/About";
 import Subscription from "@/landing/Subscription";
 import FindPath from "@/landing/FindPath";

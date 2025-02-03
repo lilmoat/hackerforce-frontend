@@ -1,11 +1,5 @@
+import { AboutStatsData } from "@/data/data";
 import Image from "next/image";
-
-// 🔹 About Statistics Data
-const aboutStats = [
-  { value: "350", label: "Case Secured" },
-  { value: "5", label: "Years of Experience" },
-  { value: "100", label: "Subs Member" },
-];
 
 export default function About() {
   return (
@@ -24,6 +18,7 @@ export default function About() {
             width={350}
             height={343}
             className="rounded-2xl"
+            priority
           />
         </div>
 
@@ -86,7 +81,7 @@ const AboutHeader = () => (
 // 🔹 About Statistics
 const AboutStats = () => (
   <div className="flex xl:gap-20 gap-4">
-    {aboutStats.map((stat, index) => (
+    {AboutStatsData.map((stat, index) => (
       <div key={index} className="flex flex-col xl:items-start gap-1">
         <div className="text-white xl:text-[62px] text-2xl font-orbitron text-center">
           {stat.value} <span className="text-[#e09b6b]">+</span>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import BackgroundImage from "@/components/BackgroundImage";
 
 export default function Contact() {
   return (
@@ -22,24 +22,10 @@ export default function Contact() {
 }
 
 /* ------------------ COMPONENTS ------------------ */
-
-// 🔹 Background Image
-const BackgroundImage = () => (
-  <div className="absolute top-0 left-0 w-full h-full -z-50">
-    <Image
-      src="/Bg.png"
-      alt="Background"
-      fill
-      priority
-      className="object-cover"
-    />
-  </div>
-);
-
 // 🔹 Contact Header
 const ContactHeader = () => (
   <div className="flex flex-col items-center gap-2 w-full">
-    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-dark md:text-[55px] text-[40px] font-bold font-orbitron uppercase text-center">
+    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey md:text-[55px] text-[40px] font-bold font-orbitron uppercase text-center">
       Contact Us
     </h2>
     <p className="text-[#a0a0a0] md:text-xl text-md font-inconsolata text-center">

@@ -1,54 +1,5 @@
-import Icon from "@/components/Icon";
-
-// 🔹 Security Training Data
-type IconName =
-  | "OffensiveIcon"
-  | "CloudIcon"
-  | "DefensiveIcon"
-  | "NetworkIcon"
-  | "PhysicalIcon"
-  | "ProgrammingIcon";
-
-const securityCategories: {
-  name: string;
-  icon: IconName;
-  description: string;
-}[] = [
-  {
-    name: "Offensive Security",
-    icon: "OffensiveIcon",
-    description: "Master Active Directory and obliterate your targets.",
-  },
-  {
-    name: "Cloud Security",
-    icon: "CloudIcon",
-    description:
-      "Understand and secure cloud environments against modern threats.",
-  },
-  {
-    name: "Defensive Security",
-    icon: "DefensiveIcon",
-    description: "Learn how to defend against sophisticated cyber attacks.",
-  },
-  {
-    name: "Network Security",
-    icon: "NetworkIcon",
-    description:
-      "Gain expertise in securing and hardening network infrastructure.",
-  },
-  {
-    name: "Physical Security",
-    icon: "PhysicalIcon",
-    description:
-      "Explore social engineering tactics and physical pentesting techniques.",
-  },
-  {
-    name: "Programming",
-    icon: "ProgrammingIcon",
-    description:
-      "Write powerful scripts and exploits to automate security tasks.",
-  },
-];
+import SecurityCard from "@/components/SecurityCard";
+import { SecurityCategoriesData } from "@/data/data";
 
 export default function Security() {
   return (
@@ -59,7 +10,7 @@ export default function Security() {
 
         {/* Security Categories Grid */}
         <div className="grid xl:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5 w-full">
-          {securityCategories.map((category, index) => (
+          {SecurityCategoriesData.map((category, index) => (
             <SecurityCard key={index} category={category} />
           ))}
         </div>
@@ -89,24 +40,5 @@ const SecurityHeader = () => (
       Pentesting, Network Pentesting, Programming, and more, fostering expertise
       in the dynamic field of offensive cyber security training.
     </p>
-  </div>
-);
-
-// 🔹 Security Training Card
-const SecurityCard = ({
-  category,
-}: {
-  category: { name: string; icon: IconName; description: string };
-}) => (
-  <div className="p-6 bg-white/5 rounded-lg flex gap-4 items-start">
-    <Icon name={category.icon} className="w-9 h-9 text-white" />
-    <div className="flex flex-col gap-2">
-      <h3 className="text-white text-xl font-orbitron font-medium">
-        {category.name}
-      </h3>
-      <p className="text-white text-base font-inconsolata leading-normal">
-        {category.description}
-      </p>
-    </div>
   </div>
 );

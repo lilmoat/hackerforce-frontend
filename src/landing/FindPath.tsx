@@ -1,37 +1,16 @@
 import Icon from "@/components/Icon";
-
-// 🔹 Path Options Data
-const pathsData = [
-  {
-    title: "Just Starting?",
-    description:
-      "Don’t worry, we’ve all been there. We’ve got you covered. Select a beginner path from blue teaming, red teaming or even physical.",
-    icon: "PracticeIcon",
-  },
-  {
-    title: "Been there, done that?",
-    description:
-      "Have you been training for a while? Select a beginner path from blue teaming, red teaming or even physical.",
-    icon: "UpIcon",
-  },
-  {
-    title: "Master of many?",
-    description:
-      "A veteran in the sport? We’ve got some hardcore content for you. Select a beginner path from blue teaming, red teaming or even physical.",
-    icon: "UpIcon" as const,
-  },
-];
+import { PathsData } from "@/data/data";
 
 export default function FindPath() {
   return (
-    <section className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 mt-[100px] md:mt-0">
+    <section className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5">
       <div className="w-full flex lg:flex-row flex-col items-start gap-[50px]">
         {/* Header */}
         <PathHeader />
 
         {/* Path Cards Grid */}
         <div className="grid grid-cols-1 gap-5 w-full">
-          {pathsData.map((path, index) => (
+          {PathsData.map((path, index) => (
             <PathCard key={index} path={path} />
           ))}
         </div>
