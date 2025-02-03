@@ -1,17 +1,21 @@
-import Link from "next/link";
-import { useRef, useState, useEffect, useContext } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
+import Icon from "./Icon";
+import { Icons } from "./Icons/Icons";
+import { ModalContext } from "@/contexts/ModalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { ModalContext } from "@/contexts/ModalContext";
-import Icon from "./Icon";
 import { IconName } from "@/types/type";
 import Image from "next/image";
+import Link from "next/link";
+import { useRef, useState, useEffect, useContext } from "react";
+import { BiArrowToBottom } from "react-icons/bi";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const elem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
+  const profileElem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isProfileMenu, setIsProfileMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openSignupModal } = useContext(ModalContext);
   const windowSize = useWindowSize();
@@ -23,6 +27,7 @@ const Header = () => {
   }, [windowSize]);
 
   useOnClickOutside(elem, () => setDropdownOpen(false));
+  useOnClickOutside(profileElem, () => setIsProfileMenu(false));
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
@@ -80,46 +85,53 @@ const Header = () => {
         </nav>
 
         <div
-          className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center"
-          onClick={openSignupModal}
+          className="justify-end items-center gap-3 inline-flex relative"
+          ref={profileElem}
         >
-          <span className="text-white text-sm font-medium">Login/Register</span>
-        </div>
+          <div
+            className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center"
+            onClick={openSignupModal}
+          >
+            <span className="text-white text-sm font-medium">
+              Login/Register
+            </span>
+          </div>
 
-        {/* <div className="justify-end items-center gap-3 inline-flex">
-          <div className="p-1.5 justify-start items-center gap-1 flex">
-            <div className="w-6 h-6 relative  overflow-hidden"></div>
-            <div className="w-6 h-6 bg-[#972123] rounded-full flex-col justify-center items-center gap-2.5 inline-flex">
-              <div className="text-white text-xs font-medium font-['Orbitron'] leading-[18px]">
-                0
+          {/* {!isMobileMenuOpen && (
+            <div
+              className="justify-start items-center gap-2 flex cursor-pointer"
+              onClick={() => setIsProfileMenu(!isProfileMenu)}
+            >
+              <Image
+                width={40}
+                height={50}
+                src="/imgs/about/about1.png"
+                alt="Avatar"
+                className="rounded-full border-2 border-grey"
+              />
+              <div className="item-center hidden md:flex gap-1 justify-center">
+                <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight truncate">
+                  Jackthefile
+                </div>
+                <div className="w-4 h-4 relative  overflow-hidden">
+                  <IoIosArrowDown />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="justify-start items-center gap-2 flex">
-            <Image
-              width={27}
-              height={40}
-              src="/imgs/about/avatar1.png"
-              alt="Avatar"
-              className="rounded-full"
-            />
-            <div className="w-[50px] text-white text-sm font-medium font-['Orbitron'] leading-tight">
-              Jackthefile
-            </div>
-            <div className="w-4 h-4 relative  overflow-hidden"></div>
-          </div>
-        </div> */}
+          )} */}
 
-        <button
-          className="lg:hidden"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        >
-          {isMobileMenuOpen ? (
-            <IoClose size={26} />
-          ) : (
-            <Icon name="HamburgerIcon" size={24} />
-          )}
-        </button>
+          {isProfileMenu && <ProfileDropdownMenu />}
+          <button
+            className="lg:hidden"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+          >
+            {isMobileMenuOpen ? (
+              <IoClose size={26} />
+            ) : (
+              <Icon name="HamburgerIcon" size={24} />
+            )}
+          </button>
+        </div>
       </header>
       {isMobileMenuOpen && (
         <MobileMenu
@@ -264,6 +276,58 @@ const DisabledDropdownItem = ({
       className="text-white hover:text-red duration-200"
     />
     <span className="text-white text-xs font-medium">{label}</span>
+  </div>
+);
+
+const menuItems = [
+  { name: "My Profile", icon: "ProfileIcon" },
+  { name: "Dashboard", icon: "DashboardIcon" },
+  { name: "Settings", icon: "SettingIcon" },
+  { name: "T&C’s", icon: "TermIcon" },
+  { name: "Log out", icon: "LogoutIcon" },
+];
+
+const ProfileMenuItem = ({
+  name,
+  icon,
+  isFirst,
+  isLast,
+}: {
+  name: string;
+  icon: string;
+  isFirst: boolean;
+  isLast: boolean;
+}) => (
+  <div
+    className={`flex w-full cursor-pointer px-3 py-2 items-center gap-2.5 transition-colors duration-200 
+      ${isLast ? "rounded-b-lg" : "border-b border-[#2f3132]"} ${
+      isFirst && "rounded-t-lg"
+    }
+      hover:bg-[#972123]`}
+  >
+    <Icon
+      name={icon as IconName}
+      size={20}
+      className="text-white transition-colors duration-200 hover:text-red"
+    />
+    <span className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
+      {name}
+    </span>
+  </div>
+);
+const ProfileDropdownMenu = () => (
+  <div className="absolute bg-[#1d1f20] top-12">
+    <div className="w-[164px] rounded-lg shadow-[0px_4px_32px_0px_rgba(0,0,0,0.70)] border border-grey flex flex-col">
+      {menuItems.map((item, index) => (
+        <ProfileMenuItem
+          key={item.name}
+          name={item.name}
+          icon={item.icon}
+          isLast={index === menuItems.length - 1}
+          isFirst={index === 0}
+        />
+      ))}
+    </div>
   </div>
 );
 

@@ -1,12 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Link from "next/link";
-import { GrSearch } from "react-icons/gr";
-import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 import BackgroundImage from "@/components/BackgroundImage";
 import Icon from "@/components/Icon";
 import { CoursesData } from "@/data/data";
 import { CourseCardProps } from "@/types/type";
+import Link from "next/link";
+import { GrSearch } from "react-icons/gr";
+import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
 
 export default function Course() {
   return (
@@ -107,7 +107,7 @@ const CourseCard = ({
       </div>
     </div>
     <h2 className="text-white text-2xl font-['Orbitron']">{title}</h2>
-    <div className="flex gap-2 font-inconsolata w-full items-center justify-between">
+    <div className="flex gap-2 font-inconsolata w-full items-center justify-start">
       <span className="text-[#a0a0a0] text-sm font-bold rounded-md bg-[#25252586] p-1">
         Aquirable XP: {xp}
       </span>

@@ -8,7 +8,7 @@ export default function CookieModal() {
   if (!isVisible) return null; // Hide modal if dismissed
 
   return (
-    <div className="md:w-[700px] px-5 py-4 bg-[#1d1f20] rounded-2xl border border-[#2f3132] flex md:flex-row flex-col gap-2 justify-between items-center">
+    <div className="md:w-[700px] px-5 py-4 bg-[#1d1f20] rounded-2xl border border-[#2f3132] flex md:flex-row flex-col gap-2 justify-between items-center absolute bottom-2">
       {/* Left: Cookie Info */}
       <div className="flex flex-col gap-1">
         <h2 className="text-white text-sm font-orbitron font-medium">

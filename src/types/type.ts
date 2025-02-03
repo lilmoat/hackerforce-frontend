@@ -18,6 +18,11 @@ type IconName =
   | "NetworkIcon"
   | "PhysicalIcon"
   | "ProgrammingIcon";
+("ProfileIcon");
+("DashboardIcon");
+("SettingIcon");
+("TermIcon");
+("LogoutIcon");
 
 interface TeamMember {
   name: string;
