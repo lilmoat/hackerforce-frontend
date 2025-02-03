@@ -6,11 +6,13 @@ import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 const TeamCard = ({ member }: { member: TeamMember }) => (
   <div className="flex flex-col items-center gap-6">
-    <img
-      className="w-full h-[342.95px] rounded-2xl object-cover"
-      src={member.image}
-      alt={member.name}
-    />
+    <div className="overflow-hidden rounded-2xl">
+      <img
+        className="w-full h-[342.95px] rounded-2xl object-cover hover:scale-105 duration-300"
+        src={member.image}
+        alt={member.name}
+      />
+    </div>
     <div className="flex flex-col items-center gap-4">
       <h3 className="text-white text-2xl font-semibold font-['Orbitron'] leading-loose">
         {member.name}

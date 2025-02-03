@@ -1,9 +1,10 @@
-import Image from "next/image";
+import Icon from "./Icon";
 
 const SubscriptionCard = ({
   plan,
 }: {
   plan: {
+    plan: number;
     price: string;
     type: string;
     duration: string;
@@ -18,13 +19,15 @@ const SubscriptionCard = ({
   >
     {/* Plan Icon */}
     <div className="w-20 h-20 relative">
-      <Image
-        src="/imgs/about/aboutIcon.png"
-        style={{ objectFit: "cover" }}
-        alt="Plan Icon"
-        width={80}
-        height={80}
-        className="rounded-2xl"
+      <Icon
+        name={`${
+          plan.plan === 1
+            ? "SubscriptionIcon"
+            : plan.plan === 2
+            ? "SubscriptionIcon2"
+            : "SubscriptionIcon3"
+        }`}
+        size={80}
       />
     </div>
 

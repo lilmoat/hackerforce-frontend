@@ -89,6 +89,7 @@ const SecurityCategoriesData: {
 // 🔹 Subscription Plans Data
 const SubscriptionPlansData = [
   {
+    plan: 1,
     price: "$12.99",
     type: "Monthly",
     duration: "1 month subscription",
@@ -103,6 +104,7 @@ const SubscriptionPlansData = [
     textColor: "text-[#a0a0a0]",
   },
   {
+    plan: 2,
     price: "$64.99",
     type: "BI-Annual",
     duration: "6 month subscription",
@@ -117,6 +119,7 @@ const SubscriptionPlansData = [
     textColor: "text-white",
   },
   {
+    plan: 3,
     price: "$129.99",
     type: "Yearly",
     duration: "12 month subscription",
