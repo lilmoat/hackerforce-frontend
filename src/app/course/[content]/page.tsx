@@ -8,6 +8,18 @@ import {
 } from "@/data/data";
 import { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import {
+  agate,
+  androidstudio,
+  anOldHope,
+  arta,
+  atelierDuneDark,
+  tomorrowNight,
+  xt256,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function Content({
   params,
@@ -46,7 +58,7 @@ const Sidebar = () => (
 );
 
 const PracticeMachine = () => (
-  <div className="h-[300px] p-4 bg-[#1d1f20] rounded-2xl flex-col justify-center items-start gap-4 inline-flex">
+  <div className="h-[300px] p-4 bg-[#1d1f20] rounded-2xl flex-col justify-center items-start gap-4 inline-flex blur-sm cursor-not-allowed">
     <div className="self-stretch h-[38px] flex-col justify-center items-start flex">
       <div className="self-stretch text-white text-sm font-medium font-['Orbitron'] leading-tight">
         Practice Machine
@@ -72,6 +84,7 @@ const MainContent = () => (
   <div className="w-full flex flex-col gap-8">
     <TaskSection title="SeImpersonate Privilege" details={TaskDetailsData} />
     <TaskSection title="Build Our Exploit" details={TaskDetailsData} />
+    <CodeTerminal />
     <Challenges />
     <NavigationButtons />
   </div>
@@ -248,3 +261,41 @@ const NavigationButtons = () => (
     </div>
   </div>
 );
+
+const CodeTerminal = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const code = `B00L Falling short {
+    [in] Handle                        %existingtoken
+    [in] SWORD                         very_much_into
+    [in,optional] Iknow_jow_sduhasdd    Something_upset
+    [in] Weaon_illasnd_showcn_level     _sdsakvio7tad
+    [in] Hacking                        Flourishing_refuse
+    [in] dwusdvha                       Sijasdfhv_sadioyg97t0
+  };`;
+
+  return (
+    <div className="sm:w-full bg-[#1d1f20] text-white p-4 rounded-xl border border-[#2f3132] w-[340px]">
+      <div className="flex justify-between items-center border-b border-[#2f3132] pb-1">
+        <span className="text-white font-orbitron font-bold">Language C</span>
+        <button
+          className="text-red hover:text-red-300 cursor-pointer font-inconsolata"
+          onClick={() => setExpanded(!expanded)}
+        >
+          {expanded ? "Collapse" : "Extend →"}
+        </button>
+      </div>
+      {expanded && (
+        <div className="mt-2 w-full">
+          <SyntaxHighlighter
+            language="typescript"
+            style={tomorrowNight}
+            showLineNumbers
+          >
+            {code}
+          </SyntaxHighlighter>
+        </div>
+      )}
+    </div>
+  );
+};

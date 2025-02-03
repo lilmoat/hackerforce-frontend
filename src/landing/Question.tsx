@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import Icon from "@/components/Icon";
-import Link from "next/link";
 import { FaqItemsData } from "@/data/data";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Question() {
   return (
@@ -65,7 +65,7 @@ const FAQItem = ({
       } rounded-lg flex justify-between items-center cursor-pointer`}
       onClick={() => setIsOpen(!isOpen)}
     >
-      <div className="flex flex-col gap-2 max-w-[600px]">
+      <div className="flex flex-col gap-2 md:max-w-[600px] w-full">
         <p className="text-white text-base font-orbitron font-medium">
           {question}
         </p>
@@ -73,14 +73,16 @@ const FAQItem = ({
           <p className="text-[#a0a0a0] text-base font-inconsolata">{answer}</p>
         )}
       </div>
-      <Icon
-        name="UpIcon"
-        color="#ffffff"
-        className={`text-white transition-transform w-7 ${
-          isOpen ? "rotate-90" : ""
-        }`}
-        size={22}
-      />
+      <div className="w-[20px]">
+        <Icon
+          name="UpIcon"
+          color="#ffffff"
+          className={`text-white transition-transform w-7 ${
+            isOpen ? "rotate-90" : ""
+          }`}
+          size={22}
+        />
+      </div>
     </div>
   );
 };
