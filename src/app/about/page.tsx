@@ -1,32 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Image from "next/image";
-import { FaTelegramPlane } from "react-icons/fa";
-import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-
-interface TeamMember {
-  name: string;
-  role: string;
-  description: string;
-  image: string;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    name: "Jason Turnings",
-    role: "Founder",
-    description:
-      "That's why we proudly guarantee the quality and reliability of our products.",
-    image: "/imgs/about/avatar1.png",
-  },
-  {
-    name: "Amanda Fortuner",
-    role: "Co-Founder",
-    description:
-      "That's why we proudly guarantee the quality and reliability of our products.",
-    image: "/imgs/about/avatar2.png",
-  },
-];
+import BackgroundImage from "@/components/BackgroundImage";
+import TeamCard from "@/components/TeamCard";
+import { TeamMembersData } from "@/data/data";
 
 export default function About() {
   return (
@@ -56,12 +32,6 @@ export default function About() {
     </div>
   );
 }
-
-const BackgroundImage = () => (
-  <div className="absolute top-0 left-0 w-full h-full -z-50">
-    <Image src="/Bg.png" alt="Background" fill priority />
-  </div>
-);
 
 const SectionTitle = ({ title }: { title: string }) => (
   <div className="px-2 bg-[#972123] inline-flex items-center justify-center w-[100px]">
@@ -102,45 +72,10 @@ const MeetTheTeam = () => (
     <h2 className="text-white text-[40px] font-medium font-['Orbitron'] leading-[48px] text-center">
       Meet The Team
     </h2>
-    <div className="max-w-[800px] flex flex-col md:flex-row gap-[50px]">
-      {teamMembers.map((member, index) => (
+    <div className="max-w-[1440px] grid xl:grid-cols-3 md:grid-cols-2 gap-[50px]">
+      {TeamMembersData.map((member, index) => (
         <TeamCard key={index} member={member} />
       ))}
     </div>
-  </div>
-);
-
-const TeamCard = ({ member }: { member: TeamMember }) => (
-  <div className="flex flex-col items-center gap-6">
-    <img
-      className="w-full h-[342.95px] rounded-2xl object-cover"
-      src={member.image}
-      alt={member.name}
-    />
-    <div className="flex flex-col items-center gap-4">
-      <h3 className="text-white text-2xl font-semibold font-['Orbitron'] leading-loose">
-        {member.name}
-      </h3>
-      <p className="text-[#972123] text-lg font-normal font-['Orbitron'] leading-relaxed">
-        {member.role}
-      </p>
-      <p className="text-[#a0a0a0] text-lg font-normal font-['Inconsolata'] leading-relaxed text-center">
-        {member.description}
-      </p>
-      <SocialIcons />
-    </div>
-  </div>
-);
-
-const SocialIcons = () => (
-  <div className="flex gap-4">
-    {[FaXTwitter, FaTelegramPlane, FaLinkedinIn].map((Icon, index) => (
-      <div
-        key={index}
-        className="p-2 bg-[#2f3132] hover:bg-[#232525] duration-200 rounded-lg flex items-center justify-center cursor-pointer"
-      >
-        <Icon color="white" size={20} />
-      </div>
-    ))}
   </div>
 );

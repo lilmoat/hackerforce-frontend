@@ -1,12 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 
 import Link from "next/link";
-import { headers } from "next/headers";
-import Image from "next/image";
+import BackgroundImage from "@/components/BackgroundImage";
 
 export default async function NotFound() {
-  const headersList = await headers();
-  const domain = headersList.get("host");
   return (
     <div className="flex items-center justify-center min-h-screen w-full">
       <BackgroundImage />
@@ -28,13 +25,6 @@ export default async function NotFound() {
     </div>
   );
 }
-
-// 🔹 Background Image
-const BackgroundImage = () => (
-  <div className="absolute top-16 right-0 bottom-0 -z-50">
-    <Image src="/Bg2.png" alt="Background" width={719} height={700} priority />
-  </div>
-);
 
 // 🔹 Background Image
 const BackgroundImage2 = () => (

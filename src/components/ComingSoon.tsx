@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import BackgroundImage from "./BackgroundImage";
 
 export default function ComingSoon() {
   return (
@@ -23,10 +23,3 @@ export default function ComingSoon() {
     </div>
   );
 }
-
-// 🔹 Background Image
-const BackgroundImage = () => (
-  <div className="absolute top-16 right-0 bottom-0 -z-50">
-    <Image src="/Bg2.png" alt="Background" width={719} height={700} priority />
-  </div>
-);

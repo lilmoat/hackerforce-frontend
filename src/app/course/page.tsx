@@ -1,67 +1,12 @@
-import Icon from "@/components/Icon";
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link";
 import { GrSearch } from "react-icons/gr";
 import { IoIosArrowBack, IoIosArrowDown } from "react-icons/io";
-
-interface CourseCardProps {
-  title: string;
-  description: string;
-  xp: number;
-  difficulty: string;
-  reward: string;
-  progress: number;
-  image: string;
-  rating: number;
-  reviews: number;
-}
-
-const courses: CourseCardProps[] = [
-  {
-    title: "Intro to Ghidra",
-    description: "Recognize the evil of the world.",
-    xp: 500,
-    difficulty: "VII",
-    reward: "+2 Keys",
-    progress: 20,
-    image: "/imgs/course/course1.png",
-    rating: 4.5,
-    reviews: 25,
-  },
-  {
-    title: "Binary Patching",
-    description: "Recognize the evil of the world.",
-    xp: 500,
-    difficulty: "VII",
-    reward: "+2 Keys",
-    progress: 30,
-    image: "/imgs/course/course2.png",
-    rating: 4.5,
-    reviews: 15,
-  },
-  {
-    title: "Rev Eng Basics",
-    description: "Recognize the evil of the world.",
-    xp: 500,
-    difficulty: "VII",
-    reward: "+2 Keys",
-    progress: 80,
-    image: "/imgs/course/course3.png",
-    rating: 4.5,
-    reviews: 15,
-  },
-  {
-    title: "REversing Wannacry",
-    description: "Recognize the evil of the world.",
-    xp: 500,
-    difficulty: "VII",
-    reward: "+2 Keys",
-    progress: 80,
-    image: "/imgs/course/course4.png",
-    rating: 4.5,
-    reviews: 15,
-  },
-];
+import BackgroundImage from "@/components/BackgroundImage";
+import Icon from "@/components/Icon";
+import { CoursesData } from "@/data/data";
+import { CourseCardProps } from "@/types/type";
 
 export default function Course() {
   return (
@@ -71,19 +16,13 @@ export default function Course() {
       <Header />
       <SearchFilter />
       <div className="my-[100px] grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
-        {courses.map((course, index) => (
+        {CoursesData.map((course, index) => (
           <CourseCard key={index} {...course} />
         ))}
       </div>
     </div>
   );
 }
-
-const BackgroundImage = () => (
-  <div className="absolute top-16 right-0 bottom-0 -z-50">
-    <Image src="/Bg2.png" alt="Background" width={719} height={700} priority />
-  </div>
-);
 
 const BackButton = () => (
   <div className="w-full flex items-center justify-start md:mt-[90px] mt-[60px] ">

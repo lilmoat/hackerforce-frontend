@@ -1,8 +1,8 @@
-import { useRef, useState, useEffect } from "react";
-import Icon from "./Icon";
-import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import { IoIosArrowDown } from "react-icons/io";
 import Link from "next/link";
+import { useRef, useState, useEffect } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { useOnClickOutside } from "@/hooks/useOnClickOutside";
+import Icon from "./Icon";
 
 const Header = () => {
   const elem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);

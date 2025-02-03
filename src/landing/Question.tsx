@@ -2,28 +2,19 @@
 
 import { useState } from "react";
 import Icon from "@/components/Icon";
-
-// 🔹 FAQ Data
-const faqItems = [
-  { question: "Who we are?", answer: "We are HackerForce Team" }, // Closed item
-  {
-    question: "What can I learn at HF?",
-    answer:
-      "Whether you’re just starting out, have some experience, or consider yourself an advanced practitioner, there’s an exciting and tailored path waiting for you to advance your skills.",
-  }, // Open item
-  { question: "Do we provide Labs?", answer: "Coming soon." }, // Closed item
-];
+import Link from "next/link";
+import { FaqItemsData } from "@/data/data";
 
 export default function Question() {
   return (
-    <section className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 mt-[100px] md:mt-0 mt-10">
+    <section className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 mt-10">
       <div className="xl:w-[700px] w-full flex flex-col items-center gap-10">
         {/* Section Header */}
         <FAQHeader />
 
         {/* FAQ List */}
         <div className="flex flex-col gap-4 w-full">
-          {faqItems.map((item, index) => (
+          {FaqItemsData.map((item, index) => (
             <FAQItem
               key={index}
               question={item.question}
@@ -100,8 +91,11 @@ const FAQFooter = () => (
     <p className="text-[#a0a0a0] text-2xl font-inconsolata text-center">
       Have a question? Contact us here
     </p>
-    <button className="px-6 py-3 bg-[#972123] duration-200 rounded-lg text-white text-base font-orbitron font-medium hover:bg-[#7a1b1f]">
+    <Link
+      href={"/contact"}
+      className="px-6 py-3 bg-[#972123] duration-200 rounded-lg text-white text-base font-orbitron font-medium hover:bg-[#7a1b1f]"
+    >
       Contact Us
-    </button>
+    </Link>
   </div>
 );

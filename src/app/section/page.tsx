@@ -1,75 +1,23 @@
-import Icon from "@/components/Icon";
-import { Icons } from "@/components/Icons/Icons";
-import Image from "next/image";
 import Link from "next/link";
-
-interface SectionCardProps {
-  title: string;
-  description: string;
-  coursesCompleted: number;
-  totalCourses: number;
-  bgImage: string;
-  blur?: boolean;
-}
-
-const sectionData: SectionCardProps[] = [
-  {
-    title: "Malware",
-    description:
-      "We take great pride in ensuring the satisfaction of our customers, which is why we guarantee that the products we sell will bring happiness to each and every customer.",
-    coursesCompleted: 12,
-    totalCourses: 24,
-    bgImage: "/imgs/section/panel1.png",
-  },
-  {
-    title: "Malware",
-    description:
-      "We take great pride in ensuring the satisfaction of our customers.",
-    coursesCompleted: 12,
-    totalCourses: 24,
-    bgImage: "/imgs/section/panel2.png",
-    blur: true,
-  },
-  {
-    title: "Malware",
-    description:
-      "We take great pride in ensuring the satisfaction of our customers.",
-    coursesCompleted: 12,
-    totalCourses: 24,
-    bgImage: "/imgs/section/panel3.png",
-    blur: true,
-  },
-  {
-    title: "Malware",
-    description:
-      "We take great pride in ensuring the satisfaction of our customers.",
-    coursesCompleted: 12,
-    totalCourses: 24,
-    bgImage: "/imgs/section/panel4.png",
-    blur: true,
-  },
-];
+import BackgroundImage from "@/components/BackgroundImage";
+import Icon from "@/components/Icon";
+import { SectionCardData } from "@/data/data";
+import { SectionCardProps } from "@/types/type";
 
 export default function Section() {
   return (
     <div className="w-full md:mt-12 mt-[70px] relative flex flex-col items-center justify-center pb-20">
-      <div className="w-full max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
+      <div className="w-full max-w-[1440px] xl:p-[100px] min-h-screen md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
         <BackgroundImage />
         <HeaderSection />
         <ContentSection />
       </div>
-      {sectionData.map((section, index) => (
+      {SectionCardData.map((section, index) => (
         <SectionCard key={index} {...section} />
       ))}
     </div>
   );
 }
-
-const BackgroundImage = () => (
-  <div className="absolute top-16 right-0 bottom-0 -z-50">
-    <Image src="/Bg2.png" alt="Background" width={719} height={700} priority />
-  </div>
-);
 
 const HeaderSection = () => (
   <div className="py-[50px] flex flex-col items-center gap-5">
