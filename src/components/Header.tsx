@@ -1,14 +1,15 @@
 import Link from "next/link";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import Icon from "./Icon";
+import { ModalContext } from "@/contexts/ModalContext";
 
 const Header = () => {
   const elem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
-
+  const { openSignupModal } = useContext(ModalContext);
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -118,7 +119,10 @@ const Header = () => {
             </Link>
           </nav>
 
-          <div className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center gap-1">
+          <div
+            className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center gap-1"
+            onClick={openSignupModal}
+          >
             <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
               Login/Register
             </div>
