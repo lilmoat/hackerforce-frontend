@@ -9,17 +9,7 @@ import {
 import { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import {
-  agate,
-  androidstudio,
-  anOldHope,
-  arta,
-  atelierDuneDark,
-  tomorrowNight,
-  xt256,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Content({
   params,

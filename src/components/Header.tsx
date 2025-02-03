@@ -1,5 +1,6 @@
 import Icon from "./Icon";
 import { Icons } from "./Icons/Icons";
+import { useAuth } from "@/contexts/AuthContext";
 import { ModalContext } from "@/contexts/ModalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useWindowSize } from "@/hooks/useWindowSize";
@@ -17,7 +18,8 @@ const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isProfileMenu, setIsProfileMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { openSignupModal } = useContext(ModalContext);
+  const { openSignupModal, openLoginModal } = useContext(ModalContext);
+  const account = useAuth();
   const windowSize = useWindowSize();
 
   useEffect(() => {
@@ -88,16 +90,18 @@ const Header = () => {
           className="justify-end items-center gap-3 inline-flex relative"
           ref={profileElem}
         >
-          <div
-            className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center"
-            onClick={openSignupModal}
-          >
-            <span className="text-white text-sm font-medium">
-              Login/Register
-            </span>
-          </div>
+          {!account.loggedIn && (
+            <div
+              className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center"
+              onClick={openLoginModal}
+            >
+              <span className="text-white text-sm font-medium">
+                Login/Register
+              </span>
+            </div>
+          )}
 
-          {/* {!isMobileMenuOpen && (
+          {!isMobileMenuOpen && account.loggedIn && (
             <div
               className="justify-start items-center gap-2 flex cursor-pointer"
               onClick={() => setIsProfileMenu(!isProfileMenu)}
@@ -118,9 +122,14 @@ const Header = () => {
                 </div>
               </div>
             </div>
-          )} */}
+          )}
 
-          {isProfileMenu && <ProfileDropdownMenu />}
+          {isProfileMenu && (
+            <ProfileDropdownMenu
+              onCloseMenu={() => setIsProfileMenu(false)}
+              onLogout={() => account.logout()}
+            />
+          )}
           <button
             className="lg:hidden"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -280,11 +289,11 @@ const DisabledDropdownItem = ({
 );
 
 const menuItems = [
-  { name: "My Profile", icon: "ProfileIcon" },
-  { name: "Dashboard", icon: "DashboardIcon" },
-  { name: "Settings", icon: "SettingIcon" },
-  { name: "T&C’s", icon: "TermIcon" },
-  { name: "Log out", icon: "LogoutIcon" },
+  { name: "Settings", icon: "SettingIcon", link: "/setting" },
+  // { name: "My Profile", icon: "ProfileIcon", link: "/setting?tab=account" },
+  // { name: "Dashboard", icon: "DashboardIcon", link: "/dashboard" },
+  { name: "T&C’s", icon: "TermIcon", link: "/term" },
+  { name: "Log out", icon: "LogoutIcon", link: "/" },
 ];
 
 const ProfileMenuItem = ({
@@ -292,18 +301,29 @@ const ProfileMenuItem = ({
   icon,
   isFirst,
   isLast,
+  link,
+  onCloseMenu,
+  onLogout,
 }: {
   name: string;
   icon: string;
   isFirst: boolean;
   isLast: boolean;
+  link: string;
+  onCloseMenu: () => void;
+  onLogout: () => void;
 }) => (
-  <div
+  <Link
+    href={isLast ? "/" : link}
     className={`flex w-full cursor-pointer px-3 py-2 items-center gap-2.5 transition-colors duration-200 
       ${isLast ? "rounded-b-lg" : "border-b border-[#2f3132]"} ${
       isFirst && "rounded-t-lg"
     }
       hover:bg-[#972123]`}
+    onClick={() => {
+      onCloseMenu();
+      isLast && onLogout();
+    }}
   >
     <Icon
       name={icon as IconName}
@@ -313,17 +333,26 @@ const ProfileMenuItem = ({
     <span className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
       {name}
     </span>
-  </div>
+  </Link>
 );
-const ProfileDropdownMenu = () => (
+const ProfileDropdownMenu = ({
+  onCloseMenu,
+  onLogout,
+}: {
+  onCloseMenu: () => void;
+  onLogout: () => void;
+}) => (
   <div className="absolute bg-[#1d1f20] top-12">
     <div className="w-[164px] rounded-lg shadow-[0px_4px_32px_0px_rgba(0,0,0,0.70)] border border-grey flex flex-col">
       {menuItems.map((item, index) => (
         <ProfileMenuItem
+          onCloseMenu={onCloseMenu}
+          onLogout={onLogout}
           key={item.name}
           name={item.name}
           icon={item.icon}
           isLast={index === menuItems.length - 1}
+          link={item.link}
           isFirst={index === 0}
         />
       ))}
