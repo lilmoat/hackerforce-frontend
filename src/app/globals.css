@@ -12,3 +12,12 @@ body {
   color: var(--foreground);
   background: #181a1b;
 }
+
+/*Customize react responsive modal*/
+
+.react-responsive-modal-modal {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0.8rem !important;
+  outline: none !important;
+}

@@ -1,5 +1,9 @@
+"use client";
+
+import { ModalContext } from "@/contexts/ModalContext";
 import { AboutStatsData } from "@/data/data";
 import Image from "next/image";
+import { useContext } from "react";
 
 export default function About() {
   return (
@@ -94,13 +98,22 @@ const AboutStats = () => (
   </div>
 );
 // 🔹 About Actions (Buttons)
-const AboutActions = () => (
-  <div className="flex gap-4 items-center justify-between md:justify-start">
-    <button className="px-6 py-3 bg-[#2f3132] duration-200 hover:bg-[#242627] rounded-lg text-white text-base font-orbitron font-medium w-full md:w-auto">
-      Register
-    </button>
-    <button className="px-6 py-3 bg-[#972123] duration-200 hover:bg-[#7a1b1f] rounded-lg text-white text-base font-orbitron font-medium w-full md:w-auto">
-      Login
-    </button>
-  </div>
-);
+const AboutActions = () => {
+  const { openLoginModal, openSignupModal } = useContext(ModalContext);
+  return (
+    <div className="flex gap-4 items-center justify-between md:justify-start">
+      <button
+        className="px-6 py-3 bg-[#2f3132] duration-200 hover:bg-[#242627] rounded-lg text-white text-base font-orbitron font-medium w-full md:w-auto"
+        onClick={openSignupModal}
+      >
+        Register
+      </button>
+      <button
+        className="px-6 py-3 bg-[#972123] duration-200 hover:bg-[#7a1b1f] rounded-lg text-white text-base font-orbitron font-medium w-full md:w-auto"
+        onClick={openLoginModal}
+      >
+        Login
+      </button>
+    </div>
+  );
+};
