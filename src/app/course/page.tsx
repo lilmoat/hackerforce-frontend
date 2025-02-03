@@ -77,6 +77,7 @@ const CourseCard = ({
   image,
   rating,
   reviews,
+  content,
 }: CourseCardProps) => (
   <div className="lg:w-[392px] w-full flex flex-col gap-4">
     <div className="w-full h-[286px] relative">
@@ -117,8 +118,11 @@ const CourseCard = ({
         {reward}
       </span>
     </div>
-    <button className="font-orbitron w-full h-10 bg-[#972123] hover:bg-[#7a1b1f] duration-200 rounded-lg text-white text-base font-medium">
+    <Link
+      href={`/course/${content}`}
+      className="flex items-center justify-center font-orbitron w-full h-10 bg-[#972123] hover:bg-[#7a1b1f] duration-200 rounded-lg text-white text-base font-medium"
+    >
       Begin
-    </button>
+    </Link>
   </div>
 );

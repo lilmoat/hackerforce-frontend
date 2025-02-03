@@ -3,6 +3,7 @@ interface CourseCardProps {
   description: string;
   xp: number;
   difficulty: string;
+  content: string;
   reward: string;
   progress: number;
   image: string;
