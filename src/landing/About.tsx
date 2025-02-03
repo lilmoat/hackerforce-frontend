@@ -1,5 +1,6 @@
 "use client";
 
+import Icon from "@/components/Icon";
 import { ModalContext } from "@/contexts/ModalContext";
 import { AboutStatsData } from "@/data/data";
 import Image from "next/image";
@@ -69,13 +70,7 @@ export default function About() {
 // 🔹 About Header (Icon & Title)
 const AboutHeader = () => (
   <div className="flex items-center gap-6">
-    <Image
-      src="/imgs/about/aboutIcon.png"
-      alt="Icon"
-      width={80}
-      height={80}
-      className="rounded-2xl"
-    />
+    <Icon name="SubscriptionIcon" size={80} />
     <h2 className="text-white text-[40px] font-orbitron font-medium">
       About Us
     </h2>
