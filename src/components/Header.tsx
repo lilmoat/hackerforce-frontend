@@ -1,140 +1,270 @@
 import Link from "next/link";
 import { useRef, useState, useEffect, useContext } from "react";
 import { IoIosArrowDown } from "react-icons/io";
+import { IoClose } from "react-icons/io5";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
-import Icon from "./Icon";
+import { useWindowSize } from "@/hooks/useWindowSize";
 import { ModalContext } from "@/contexts/ModalContext";
+import Icon from "./Icon";
+import { IconName } from "@/types/type";
+import Image from "next/image";
 
 const Header = () => {
   const elem = useRef<HTMLDivElement>(null as unknown as HTMLDivElement);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openSignupModal } = useContext(ModalContext);
+  const windowSize = useWindowSize();
+
   useEffect(() => {
-    setIsClient(true);
-  }, []);
+    if (windowSize.width > 1024) {
+      setIsMobileMenuOpen(false);
+    }
+  }, [windowSize]);
 
   useOnClickOutside(elem, () => setDropdownOpen(false));
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+  }, [isMobileMenuOpen]);
+
   return (
     <>
-      {isClient && (
-        <header
-          className="fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
-          ref={elem}
-        >
-          <div className="flex items-center space-x-1">
-            <div className="w-8 h-8 relative">
-              <Icon name="Logo" size={32} className="" />
-            </div>
-            <Link href={"/"} className="md:text-xl text-lg font-bold">
-              HACKERFORCE
-            </Link>
-          </div>
+      <header
+        className="fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
+        ref={elem}
+      >
+        <div className="flex items-center space-x-1">
+          <Icon name="Logo" size={32} />
+          <Link href="/" className="md:text-xl text-lg font-bold">
+            HACKERFORCE
+          </Link>
+        </div>
 
-          <nav className="hidden lg:flex space-x-7">
-            <Link href="/" className="hover:text-red duration-200">
-              Home
-            </Link>
-            <Link href="/about" className="hover:text-red duration-200">
-              About us
-            </Link>
-            <div className="relative">
-              <button
-                className="flex items-center space-x-1 hover:text-red duration-200"
-                onClick={() => setDropdownOpen(true)}
+        <nav className="hidden lg:flex space-x-7">
+          {[
+            { label: "Home", href: "/" },
+            { label: "About us", href: "/about" },
+            { label: "Learn", href: "#", isDropdown: true },
+            { label: "Shop", href: "/shop" },
+            { label: "Contact us", href: "/contact" },
+          ].map(({ label, href, isDropdown }) =>
+            isDropdown ? (
+              <div key={label} className="relative">
+                <button
+                  className="flex items-center space-x-1 hover:text-red duration-200"
+                  onClick={() => setDropdownOpen((prev) => !prev)}
+                >
+                  <span className="flex items-center justify-center gap-1">
+                    {label} <IoIosArrowDown />
+                  </span>
+                </button>
+                {isDropdownOpen && (
+                  <DropdownMenu
+                    onClose={() => {
+                      setDropdownOpen(false);
+                    }}
+                  />
+                )}
+              </div>
+            ) : (
+              <Link
+                key={href}
+                href={href}
+                className="hover:text-red duration-200"
               >
-                <span className="flex items-center justify-center gap-1">
-                  Learn <IoIosArrowDown />
-                </span>
-              </button>
-              {isDropdownOpen && (
-                <div className="w-[166px] h-[189.99px] absolute z-50">
-                  <div className="z-2 w-[164px] h-[178px] top-[10.75px] bg-dark absolute rounded-lg shadow-[0px_4px_32px_0px_rgba(0,0,0,0.70)] border border-[#2f3132] flex-col justify-center items-center inline-flex">
-                    <Link
-                      href="/section"
-                      className="flex items-start justify-start w-full"
-                      onClick={() => setDropdownOpen(false)}
-                    >
-                      <div className="cursor-pointer self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                        <Icon
-                          name="SectionsIcon"
-                          size={16}
-                          className="hover:text-red duration-200 text-white"
-                        />{" "}
-                        <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                          Sections
-                        </div>
-                      </div>
-                    </Link>
+                {label}
+              </Link>
+            )
+          )}
+        </nav>
 
-                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                      <Icon
-                        name="PracticeIcon"
-                        size={16}
-                        className="hover:text-red duration-200 text-white"
-                      />{" "}
-                      <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                        Practice
-                      </div>
-                    </div>
-                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                      <Icon
-                        name="CatalogIcon"
-                        size={16}
-                        className="hover:text-red duration-200 text-white"
-                      />{" "}
-                      <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                        Catalog
-                      </div>
-                    </div>
-                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 border-b border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                      <Icon
-                        name="ChambersIcon"
-                        size={16}
-                        className="hover:text-red duration-200 text-white"
-                      />{" "}
-                      <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                        Chambers
-                      </div>
-                    </div>
-                    <div className="blur-sm cursor-not-allowed self-stretch grow shrink basis-0 px-3 py-2 justify-start items-center gap-2.5 inline-flex">
-                      <Icon
-                        name="ColosseumsIcon"
-                        size={16}
-                        className="hover:text-red duration-200 text-white"
-                      />{" "}
-                      <div className="text-white text-xs font-medium font-['Orbitron'] leading-tight">
-                        Colosseums
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-            <Link href="/shop" className="hover:text-red duration-200">
-              Shop
-            </Link>
-            <Link href="/contact" className="hover:text-red duration-200">
-              Contact us
-            </Link>
-          </nav>
+        <div
+          className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center"
+          onClick={openSignupModal}
+        >
+          <span className="text-white text-sm font-medium">Login/Register</span>
+        </div>
 
-          <div
-            className="lg:flex hidden h-9 px-6 py-2 bg-red hover:bg-[#7a1b1f] cursor-pointer duration-200 rounded-lg justify-center items-center gap-1"
-            onClick={openSignupModal}
-          >
-            <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight">
-              Login/Register
+        {/* <div className="justify-end items-center gap-3 inline-flex">
+          <div className="p-1.5 justify-start items-center gap-1 flex">
+            <div className="w-6 h-6 relative  overflow-hidden"></div>
+            <div className="w-6 h-6 bg-[#972123] rounded-full flex-col justify-center items-center gap-2.5 inline-flex">
+              <div className="text-white text-xs font-medium font-['Orbitron'] leading-[18px]">
+                0
+              </div>
             </div>
           </div>
-          <div className="lg:hidden">
+          <div className="justify-start items-center gap-2 flex">
+            <Image
+              width={27}
+              height={40}
+              src="/imgs/about/avatar1.png"
+              alt="Avatar"
+              className="rounded-full"
+            />
+            <div className="w-[50px] text-white text-sm font-medium font-['Orbitron'] leading-tight">
+              Jackthefile
+            </div>
+            <div className="w-4 h-4 relative  overflow-hidden"></div>
+          </div>
+        </div> */}
+
+        <button
+          className="lg:hidden"
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+        >
+          {isMobileMenuOpen ? (
+            <IoClose size={26} />
+          ) : (
             <Icon name="HamburgerIcon" size={24} />
-          </div>
-          {/* <div className="absolute top-[64px] bottom-0 left-0 right-0 bg-dark"></div> */}
-        </header>
+          )}
+        </button>
+      </header>
+      {isMobileMenuOpen && (
+        <MobileMenu
+          onClose={() => setIsMobileMenuOpen(false)}
+          onMobileMenuClose={() => setIsMobileMenuOpen(false)}
+        />
       )}
     </>
   );
 };
+
+const DropdownMenu = ({ onClose }: { onClose: () => void }) => (
+  <div className="absolute w-[166px] h-[189.99px] z-50">
+    <div className="z-2 w-[164px] h-[178px] top-[10.75px] bg-dark absolute rounded-lg shadow-lg border border-[#2f3132] flex-col justify-center items-center inline-flex">
+      <DropdownItem href="/section" label="Sections" onClick={onClose} />
+      {[
+        { icon: "PracticeIcon", label: "Practice" },
+        { icon: "CatalogIcon", label: "Catalog" },
+        { icon: "ChambersIcon", label: "Chambers" },
+        { icon: "ColosseumsIcon", label: "Colosseums" },
+      ].map(({ icon, label }) => (
+        <DisabledDropdownItem key={label} icon={icon} label={label} />
+      ))}
+    </div>
+  </div>
+);
+
+const MobileDropdownMenu = ({ onClose }: { onClose: () => void }) => (
+  <div className="w-full z-50 flex items-center justify-center mt-3">
+    <div className="z-2 flex-col justify-center items-center inline-flex w-full">
+      <DropdownItem href="/section" label="Sections" onClick={onClose} />
+      {[
+        { icon: "PracticeIcon", label: "Practice" },
+        { icon: "CatalogIcon", label: "Catalog" },
+        { icon: "ChambersIcon", label: "Chambers" },
+        { icon: "ColosseumsIcon", label: "Colosseums" },
+      ].map(({ icon, label }) => (
+        <DisabledDropdownItem key={label} icon={icon} label={label} />
+      ))}
+    </div>
+  </div>
+);
+
+const MobileMenu = ({
+  onClose,
+  onMobileMenuClose,
+}: {
+  onClose: () => void;
+  onMobileMenuClose: () => void;
+}) => {
+  const [isMobileDropdownOpen, setMobileDropdownOpen] = useState(false);
+
+  return (
+    <div
+      className="fixed top-[64px] bottom-0 left-0 right-0 bg-[#181a1b] z-50 lg:hidden w-full"
+      id="mobileMenu"
+    >
+      <div className="w-full flex items-center justify-center flex-col relative font-orbitron text-white gap-5 pt-5">
+        {[
+          { label: "Home", href: "/" },
+          { label: "About us", href: "/about" },
+          { label: "Learn", href: "#", isDropdown: true },
+          { label: "Shop", href: "/shop" },
+          { label: "Contact us", href: "/contact" },
+        ].map(({ label, href, isDropdown }) =>
+          isDropdown ? (
+            <div
+              key={label}
+              className="relative w-full flex items-center justify-center flex-col"
+            >
+              <button
+                className="flex items-center space-x-1 hover:text-red duration-200"
+                onClick={() => setMobileDropdownOpen((prev) => !prev)}
+              >
+                <span className="flex items-center justify-center gap-1 text-white">
+                  {label} <IoIosArrowDown />
+                </span>
+              </button>
+              {isMobileDropdownOpen && (
+                <MobileDropdownMenu
+                  onClose={() => {
+                    setMobileDropdownOpen(false);
+                    onMobileMenuClose();
+                  }}
+                />
+              )}
+            </div>
+          ) : (
+            <Link
+              key={href}
+              href={href}
+              className="hover:text-red duration-200"
+              onClick={onClose}
+            >
+              {label}
+            </Link>
+          )
+        )}
+        <div
+          className="px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] duration-200 rounded-lg cursor-pointer"
+          onClick={onClose}
+        >
+          <span className="text-white text-sm font-medium">Login/Register</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const DropdownItem = ({
+  href,
+  label,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  onClick: () => void;
+}) => (
+  <Link href={href} className="w-full" onClick={onClick}>
+    <div className="cursor-pointer self-stretch px-3 py-2 border-b border-[#2f3132] flex items-center gap-2.5 w-full md:justify-start justify-center">
+      <Icon
+        name={"SectionsIcon"}
+        size={16}
+        className="text-white hover:text-red duration-200"
+      />
+      <span className="text-white text-xs font-medium">{label}</span>
+    </div>
+  </Link>
+);
+
+const DisabledDropdownItem = ({
+  icon,
+  label,
+}: {
+  icon: string;
+  label: string;
+}) => (
+  <div className="self-stretch px-3 py-2 border-b border-[#2f3132] gap-2.5 opacity-50 blur-sm cursor-not-allowed w-full flex items-center md:justify-start justify-center">
+    <Icon
+      name={icon as IconName}
+      size={16}
+      className="text-white hover:text-red duration-200"
+    />
+    <span className="text-white text-xs font-medium">{label}</span>
+  </div>
+);
 
 export default Header;
