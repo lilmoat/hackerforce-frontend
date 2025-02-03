@@ -138,6 +138,7 @@ const CoursesData: CourseCardProps[] = [
     description: "Recognize the evil of the world.",
     xp: 500,
     difficulty: "VII",
+    content: "intro",
     reward: "+2 Keys",
     progress: 20,
     image: "/imgs/course/course1.png",
@@ -149,6 +150,7 @@ const CoursesData: CourseCardProps[] = [
     description: "Recognize the evil of the world.",
     xp: 500,
     difficulty: "VII",
+    content: "binary",
     reward: "+2 Keys",
     progress: 30,
     image: "/imgs/course/course2.png",
@@ -160,6 +162,7 @@ const CoursesData: CourseCardProps[] = [
     description: "Recognize the evil of the world.",
     xp: 500,
     difficulty: "VII",
+    content: "rev",
     reward: "+2 Keys",
     progress: 80,
     image: "/imgs/course/course3.png",
@@ -171,6 +174,7 @@ const CoursesData: CourseCardProps[] = [
     description: "Recognize the evil of the world.",
     xp: 500,
     difficulty: "VII",
+    content: "reversing",
     reward: "+2 Keys",
     progress: 80,
     image: "/imgs/course/course4.png",
@@ -300,6 +304,76 @@ const TermsData = [
   },
 ];
 
+const ModuleProgressData = {
+  title: "Windows Privilege Escalation I",
+  completedModules: 8,
+  totalModules: 16,
+  progress: 30,
+  xp: 500,
+  difficulty: "VII",
+  reward: "+2 Keys",
+};
+
+const TaskDetailsData = [
+  "Download the provided 'Hello World' executable file.",
+  "Open Ghidra and create a new project.",
+  "Import the executable into your project.",
+  "Analyze the file to view the disassembly and decompiled code.",
+  "Locate the main function and identify the string 'Hello, World!' in the code.",
+  "Document your findings, including the address of the main function and the location of the string.",
+  "Submission: Submit a brief report detailing your findings, including screenshots of the disassembly and decompiled code where you found the key elements.",
+];
+
+const ChallengesData = [
+  {
+    content:
+      "Analyze a simple 'Hello World' executable file using Ghidra to identify its main functions and understand its structure.",
+    questions: [
+      {
+        question:
+          "What Windows API function allows us to examine our access token?",
+        reward: "+1 Keys",
+        category: "Information Gathering",
+      },
+      {
+        question: "What privilege can we exploit to impersonate a client?",
+        reward: "+1 Keys",
+        category: "",
+      },
+    ],
+  },
+];
+
+const ExpandableSectionData = [
+  {
+    title: "About this course",
+    content: [
+      {
+        title: "Descriptions",
+        content:
+          "Analyze a simple `Hello World` executable file using Ghidra to identify its main functions and understand its structure.",
+      },
+    ],
+  },
+  {
+    title: "Enumerations",
+
+    content: [{ title: "Information", content: "coming soon" }],
+  },
+  {
+    title: "Token Abuse",
+
+    content: [
+      { title: "What are tokens", content: "coming soon" },
+      { title: "Can we share to anyone?", content: "coming soon" },
+    ],
+  },
+  {
+    title: "Privilege Group Abuse",
+    content: [{ title: "Can I get help?", content: "coming soon" }],
+  },
+];
+
 export {
   AboutStatsData,
   PathsData,
@@ -310,4 +384,8 @@ export {
   TeamMembersData,
   SectionCardData,
   TermsData,
+  ModuleProgressData,
+  TaskDetailsData,
+  ChallengesData,
+  ExpandableSectionData,
 };
