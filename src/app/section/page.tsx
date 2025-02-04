@@ -15,7 +15,7 @@ export default function Section() {
           <TbArrowBigDownLinesFilled size={85} color="white" />
         </a>
       </div>
-      <div id="sectioncards">
+      <div id="sectioncards" className="pt-20">
         {SectionCardData.map((section, index) => (
           <SectionCard key={index} {...section} />
         ))}

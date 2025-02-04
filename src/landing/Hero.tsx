@@ -41,7 +41,7 @@ const HeroHeader = () => (
       </p>
     </div>
 
-    <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-darker 2xl:text-[78px] 3xl:text-[88px] 4xl:text-[100px] md:text-[60px] text-3xl font-bold font-orbitron uppercase xl:leading-[106px] sm:text-[45px] leading-10 md:leading-[70px] text-center">
+    <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-darker 2xl:text-[78px] 3xl:text-[88px] 4xl:text-[100px] md:text-[60px] text-3xl font-bold font-orbitron uppercase xl:leading-[106px] sm:text-[40px] leading-10 md:leading-[70px] text-center">
       Digital pursuit & harness the power of hacking.
     </h1>
   </>

@@ -1,11 +1,12 @@
 "use client";
 
-import { FC, useContext } from "react";
-import Modal from "react-responsive-modal";
-import { ModalContext } from "@/contexts/ModalContext";
 import Icon from "../Icon";
-import { CgClose } from "react-icons/cg";
+import { ModalContext } from "@/contexts/ModalContext";
 import Link from "next/link";
+import { FC, useContext } from "react";
+import { BiCheck } from "react-icons/bi";
+import { CgClose } from "react-icons/cg";
+import Modal from "react-responsive-modal";
 
 const SignupModal: FC = () => {
   const { signupModalShow, closeSignupModal, openLoginModal } =
@@ -92,8 +93,8 @@ const SignupModal: FC = () => {
           </div>
         </div>
         <div className="h-6 justify-start items-center gap-2 inline-flex">
-          <div className="p-1 bg-[#141516] rounded-lg border border-white justify-center items-center gap-1 flex">
-            <div className="w-4 h-4 relative  overflow-hidden"></div>
+          <div className="p-[2px] bg-[#141516] rounded-lg border border-white justify-center items-center gap-1 flex">
+            <BiCheck className="text-white" size={20} />
           </div>
           <div className="justify-start items-center gap-1 flex">
             <div className="text-center text-white text-xs font-normal font-['Orbitron'] leading-tight">

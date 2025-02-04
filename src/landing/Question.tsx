@@ -7,8 +7,11 @@ import { useState } from "react";
 
 export default function Question() {
   return (
-    <section className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 mt-10">
-      <div className="xl:w-[700px] w-full flex flex-col items-center gap-10">
+    <section
+      className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5"
+      id="faq"
+    >
+      <div className="xl:w-[700px] w-full flex flex-col items-center gap-10 pt-20 md:pt-5">
         {/* Section Header */}
         <FAQHeader />
 
@@ -36,7 +39,7 @@ export default function Question() {
 const FAQHeader = () => (
   <div className="flex flex-col items-center gap-2 w-full">
     <div className="px-2 bg-[#972123] flex justify-center items-center">
-      <span className="text-white text-xl font-inconsolata">Pricing</span>
+      <span className="text-white text-xl font-inconsolata">FAQ</span>
     </div>
     <h2 className="text-white text-[40px] font-orbitron font-medium leading-[48px] text-center">
       Frequently Asked Questions

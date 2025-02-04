@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <>
       <header
-        className="fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
+        className="fixed bg-[#181a1b] text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
         ref={elem}
       >
         <div className="flex items-center space-x-1">
