@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <>
       <header
-        className="fixed bg-[#181a1b] text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
+        className="fixed bg-[#181A1B] text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50"
         ref={elem}
       >
         <div className="flex items-center space-x-1">
@@ -53,8 +53,9 @@ const Header = () => {
             { label: "Home", href: "/" },
             { label: "About us", href: "/about" },
             { label: "Learn", href: "#", isDropdown: true },
+            { label: "Subscription", href: "/subscription" },
             { label: "Shop", href: "/shop" },
-            { label: "Contact us", href: "/contact" },
+            { label: "Contact", href: "/contact" },
           ].map(({ label, href, isDropdown }) =>
             isDropdown ? (
               <div key={label} className="relative">
@@ -79,6 +80,7 @@ const Header = () => {
                 key={href}
                 href={href}
                 className="hover:text-red duration-200"
+                onClick={() => setDropdownOpen(false)}
               >
                 {label}
               </Link>
@@ -195,10 +197,10 @@ const MobileMenu = ({
 
   return (
     <div
-      className="fixed top-[64px] bottom-0 left-0 right-0 bg-[#181a1b] z-50 lg:hidden w-full"
+      className="fixed top-[63px] bottom-0 left-0 right-0 bg-[#181a1b] z-50 lg:hidden w-full"
       id="mobileMenu"
     >
-      <div className="w-full flex items-center justify-center flex-col relative font-orbitron text-white gap-5 pt-5">
+      <div className="w-full flex items-center justify-center flex-col relative font-orbitron text-white gap-10 pt-5">
         {[
           { label: "Home", href: "/" },
           { label: "About us", href: "/about" },
@@ -260,7 +262,7 @@ const DropdownItem = ({
   onClick: () => void;
 }) => (
   <Link href={href} className="w-full" onClick={onClick}>
-    <div className="cursor-pointer self-stretch px-3 py-2 border-b border-[#2f3132] flex items-center gap-2.5 w-full md:justify-start justify-center">
+    <div className="cursor-pointer self-stretch px-3 py-2 border-b border-[#2f3132] flex items-center gap-2.5 w-full lg:justify-start justify-center">
       <Icon
         name={"SectionsIcon"}
         size={16}
@@ -278,7 +280,7 @@ const DisabledDropdownItem = ({
   icon: string;
   label: string;
 }) => (
-  <div className="self-stretch px-3 py-2 border-b border-[#2f3132] gap-2.5 opacity-50 blur-sm cursor-not-allowed w-full flex items-center md:justify-start justify-center">
+  <div className="self-stretch px-3 py-2 border-b border-[#2f3132] gap-2.5 opacity-50 blur-sm cursor-not-allowed w-full flex items-center lg:justify-start justify-center">
     <Icon
       name={icon as IconName}
       size={16}

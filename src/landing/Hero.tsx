@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="relative max-w-[1440px]">
-      <div className="flex flex-col items-center gap-5 min-h-screen relative overflow-hidden md:px-5">
+      <div className="flex flex-col items-center justify-center gap-5 min-h-screen relative overflow-hidden md:px-5">
         {/* Background Image */}
         <BackgroundImage />
 

@@ -22,11 +22,11 @@ export default function MainLayout({ children }: { children: ReactNode }) {
             {children}
           </div>
           <Footer />
-          <LoginModal />
+          <CookieModal />
           <SignupModal />
           <ForgotPswModal />
           <Progressbar />
-          <CookieModal />
+          <LoginModal />
         </ModalProvider>
       </AuthProvider>
     </main>
