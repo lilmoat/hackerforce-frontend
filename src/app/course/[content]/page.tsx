@@ -265,27 +265,29 @@ const CodeTerminal = () => {
   };`;
 
   return (
-    <div className="sm:w-full bg-[#1d1f20] text-white p-4 rounded-xl border border-[#2f3132] w-[340px]">
-      <div className="flex justify-between items-center border-b border-[#2f3132] pb-1">
-        <span className="text-white font-orbitron font-bold">Language C</span>
-        <button
-          className="text-red hover:text-red-300 cursor-pointer font-inconsolata"
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? "Collapse" : "Extend →"}
-        </button>
-      </div>
-      {expanded && (
-        <div className="mt-2 w-full">
-          <SyntaxHighlighter
-            language="typescript"
-            style={tomorrowNight}
-            showLineNumbers
+    <div className="w-full flex items-center justify-center">
+      <div className="sm:w-full bg-[#1d1f20] text-white p-4 rounded-xl border border-[#2f3132] w-[340px]">
+        <div className="flex justify-between items-center border-b border-[#2f3132] pb-1">
+          <span className="text-white font-orbitron font-bold">Language C</span>
+          <button
+            className="text-red hover:text-red-300 cursor-pointer font-inconsolata"
+            onClick={() => setExpanded(!expanded)}
           >
-            {code}
-          </SyntaxHighlighter>
+            {expanded ? "Collapse" : "Extend →"}
+          </button>
         </div>
-      )}
+        {expanded && (
+          <div className="mt-2 w-full">
+            <SyntaxHighlighter
+              language="typescript"
+              style={tomorrowNight}
+              showLineNumbers
+            >
+              {code}
+            </SyntaxHighlighter>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

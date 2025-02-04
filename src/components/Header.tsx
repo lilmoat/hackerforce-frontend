@@ -148,6 +148,7 @@ const Header = () => {
         <MobileMenu
           onClose={() => setIsMobileMenuOpen(false)}
           onMobileMenuClose={() => setIsMobileMenuOpen(false)}
+          openLoginModal={openLoginModal}
         />
       )}
     </>
@@ -189,9 +190,11 @@ const MobileDropdownMenu = ({ onClose }: { onClose: () => void }) => (
 const MobileMenu = ({
   onClose,
   onMobileMenuClose,
+  openLoginModal,
 }: {
   onClose: () => void;
   onMobileMenuClose: () => void;
+  openLoginModal: () => void;
 }) => {
   const [isMobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
@@ -200,11 +203,12 @@ const MobileMenu = ({
       className="fixed top-[63px] bottom-0 left-0 right-0 bg-[#181a1b] z-50 lg:hidden w-full"
       id="mobileMenu"
     >
-      <div className="w-full flex items-center justify-center flex-col relative font-orbitron text-white gap-10 pt-5">
+      <div className="w-full flex items-center justify-center flex-col relative font-orbitron text-white gap-7 pt-5">
         {[
           { label: "Home", href: "/" },
           { label: "About us", href: "/about" },
           { label: "Learn", href: "#", isDropdown: true },
+          { label: "Subscription", href: "/subscription" },
           { label: "Shop", href: "/shop" },
           { label: "Contact us", href: "/contact" },
         ].map(({ label, href, isDropdown }) =>
@@ -243,7 +247,10 @@ const MobileMenu = ({
         )}
         <div
           className="px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] duration-200 rounded-lg cursor-pointer"
-          onClick={onClose}
+          onClick={() => {
+            onClose();
+            openLoginModal();
+          }}
         >
           <span className="text-white text-sm font-medium">Login/Register</span>
         </div>
