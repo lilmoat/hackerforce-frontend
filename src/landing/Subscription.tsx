@@ -3,8 +3,11 @@ import { SubscriptionPlansData } from "@/data/data";
 
 export default function Subscription() {
   return (
-    <section className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5">
-      <div className="flex flex-col items-center gap-[50px]">
+    <section
+      className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5"
+      id="pricing"
+    >
+      <div className="flex flex-col items-center gap-[50px] pt-20 md:pt-0">
         {/* Header Section */}
         <SubscriptionHeader />
 

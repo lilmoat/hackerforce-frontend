@@ -7,6 +7,7 @@ import Header from "./Header";
 import ForgotPswModal from "./Modals/ForgotPswModal";
 import LoginModal from "./Modals/LoginModal";
 import SignupModal from "./Modals/SignupModal";
+import Progressbar from "./Progressbar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ModalProvider } from "@/contexts/ModalContext";
 
@@ -23,6 +24,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <LoginModal />
           <SignupModal />
           <ForgotPswModal />
+          <Progressbar />
         </ModalProvider>
       </AuthProvider>
     </main>

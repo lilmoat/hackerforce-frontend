@@ -15,7 +15,7 @@ export default function About() {
       {/* Top Section */}
       <div className="flex flex-col md:flex-row justify-start items-center xl:gap-[100px] gap-10">
         {/* Left Column (Icon & Image) */}
-        <div className="flex flex-col gap-6 xl:w-[358px]">
+        <div className="flex flex-col gap-6 xl:w-[358px] pt-20">
           <AboutHeader />
           <Image
             src="/imgs/about/about1.png"

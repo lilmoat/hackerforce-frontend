@@ -31,7 +31,7 @@ const HeaderSection = () => (
 );
 
 const TermsContent = () => (
-  <div className="xl:px-[100px] pb-[200px] flex flex-col gap-8 w-full">
+  <div className="xl:px-[100px] pb-[100px] flex flex-col gap-8 w-full">
     {TermsData.map(({ title, content }, index) => (
       <TermSection key={index} title={title} content={content} />
     ))}

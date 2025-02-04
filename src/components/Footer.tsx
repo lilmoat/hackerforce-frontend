@@ -1,10 +1,10 @@
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Icon from "./Icon";
 import Link from "next/link";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <div className="lg:px-[50px] px-5 pt-8 flex-col justify-start items-center gap-6 inline-flex w-full z-50">
+    <div className="lg:px-[50px] px-5 pt-8 flex-col justify-start items-center gap-6 inline-flex w-full z-40">
       <div className="border-b pb-3 border-[#2f3132] self-stretch lg:justify-between justify-center items-center flex flex-col md:flex-row gap-8 lg:gap-0 w-full">
         <div className="h-8 lg:justify-start justify-center items-center gap-1 flex">
           <Link
@@ -33,13 +33,13 @@ export default function Footer() {
             About Us
           </Link>
           <Link
-            href="/pricing"
+            href="/#pricing"
             className="text-white text-base font-medium font-['Orbitron'] leading-tight"
           >
             Pricing
           </Link>
           <Link
-            href="/faq"
+            href="/#faq"
             className="text-white text-base font-medium font-['Orbitron'] leading-tight"
           >
             FAQ
