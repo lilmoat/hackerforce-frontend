@@ -60,7 +60,7 @@ const Header = () => {
             isDropdown ? (
               <div key={label} className="relative">
                 <button
-                  className="flex items-center space-x-1 hover:text-red duration-200"
+                  className="flex items-center space-x-1 hover:text-red duration-200 text-sm xl:text-lg"
                   onClick={() => setDropdownOpen((prev) => !prev)}
                 >
                   <span className="flex items-center justify-center gap-1">
@@ -79,7 +79,7 @@ const Header = () => {
               <Link
                 key={href}
                 href={href}
-                className="hover:text-red duration-200"
+                className="hover:text-red duration-200 text-sm xl:text-lg"
                 onClick={() => setDropdownOpen(false)}
               >
                 {label}
@@ -300,7 +300,7 @@ const DisabledDropdownItem = ({
 const menuItems = [
   { name: "Settings", icon: "SettingIcon", link: "/setting" },
   // { name: "My Profile", icon: "ProfileIcon", link: "/setting?tab=account" },
-  // { name: "Dashboard", icon: "DashboardIcon", link: "/dashboard" },
+  { name: "Dashboard", icon: "DashboardIcon", link: "/dashboard" },
   { name: "T&C’s", icon: "TermIcon", link: "/term" },
   { name: "Log out", icon: "LogoutIcon", link: "/" },
 ];

@@ -22,25 +22,25 @@ export default function Footer() {
         <div className="lg:justify-start justify-center items-center gap-4 flex">
           <Link
             href="/"
-            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+            className="text-white text-sm xl:text-lg font-medium font-['Orbitron'] leading-tight"
           >
             Home
           </Link>
           <Link
             href="/about"
-            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+            className="text-white text-sm xl:text-lg font-medium font-['Orbitron'] leading-tight"
           >
             About Us
           </Link>
           <Link
             href="/#pricing"
-            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+            className="text-white text-sm xl:text-lg font-medium font-['Orbitron'] leading-tight"
           >
             Pricing
           </Link>
           <Link
             href="/#faq"
-            className="text-white text-base font-medium font-['Orbitron'] leading-tight"
+            className="text-white text-sm xl:text-lg font-medium font-['Orbitron'] leading-tight"
           >
             FAQ
           </Link>
