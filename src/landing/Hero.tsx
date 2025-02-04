@@ -63,6 +63,5 @@ const HeroFooter = () => (
     <a href="#about" aria-label="Go to About Section">
       <Icon name="ScrollDownIcon" size={81} />
     </a>
-    <CookieModal />
   </div>
 );

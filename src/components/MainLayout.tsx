@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import "react-responsive-modal/styles.css";
+import CookieModal from "./CookieModal";
 import Footer from "./Footer";
 import Header from "./Header";
 import ForgotPswModal from "./Modals/ForgotPswModal";
@@ -25,6 +26,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <SignupModal />
           <ForgotPswModal />
           <Progressbar />
+          <CookieModal />
         </ModalProvider>
       </AuthProvider>
     </main>
