@@ -1,5 +1,5 @@
-import Link from "next/link";
 import BackgroundImage from "./BackgroundImage";
+import Link from "next/link";
 
 export default function ComingSoon() {
   return (
@@ -9,7 +9,7 @@ export default function ComingSoon() {
         <p className="text-center text-[#a0a0a0] text-xl font-normal font-['Inconsolata']">
           Hacker Shop
         </p>
-        <h1 className="xl:w-[862px] text-center text-transparent bg-clip-text bg-gradient-to-r from-darker via-white to-darker xl:text-[100px] text-[50px] font-semibold font-['Orbitron']">
+        <h1 className="xl:w-[862px] text-center text-transparent bg-clip-text bg-gradient-to-r from-darker via-white to-darker xl:text-[100px] text-[50px]  md:text-[70px] font-semibold font-['Orbitron']">
           Coming Soon
         </h1>
 

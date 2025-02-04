@@ -199,7 +199,7 @@ const TeamMembersData: TeamMember[] = [
   },
   {
     name: "Remi",
-    role: "Co-Founder",
+    role: "Founder",
     description:
       "That's why we proudly guarantee the quality and reliability of our products.",
     image: "/imgs/about/avatar2.png",
