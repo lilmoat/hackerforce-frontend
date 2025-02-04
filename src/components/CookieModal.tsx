@@ -1,11 +1,12 @@
 "use client";
 
+import { useAuth } from "@/contexts/AuthContext";
 import { useState } from "react";
 
 export default function CookieModal() {
-  const [isVisible, setIsVisible] = useState(true);
+  const auth = useAuth();
 
-  if (!isVisible) return null; // Hide modal if dismissed
+  if (auth.isAcceptedCookies) return null; // Hide modal if dismissed
 
   return (
     <div className="lg:w-[700px] w-full px-5 py-4 bg-[#1d1f20] lg:rounded-2xl rounded-none border border-[#2f3132] flex md:flex-row flex-col gap-2 justify-between items-center sticky lg:bottom-2 bottom-0 z-40">
@@ -26,14 +27,11 @@ export default function CookieModal() {
       <div className="flex gap-4">
         <button
           className="px-6 py-2 bg-red hover:bg-[#7a1b1f] duration-200 rounded-lg text-white text-sm font-orbitron font-medium"
-          onClick={() => setIsVisible(false)}
+          onClick={() => auth.acceptCookie()}
         >
           Accept
         </button>
-        <button
-          className="px-6 py-2 bg-[#2f3132] hover:bg-[#212424] duration-200 rounded-lg text-white text-sm font-orbitron font-medium"
-          onClick={() => setIsVisible(false)}
-        >
+        <button className="px-6 py-2 bg-[#2f3132] hover:bg-[#212424] duration-200 rounded-lg text-white text-sm font-orbitron font-medium">
           Decline
         </button>
       </div>
