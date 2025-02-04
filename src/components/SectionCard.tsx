@@ -12,7 +12,7 @@ const SectionCard = ({
 }: SectionCardProps) => (
   <Link href={!blur ? "/course" : ""} className="w-full">
     <div
-      className={`w-full xl:p-[100px] p-5 bg-cover bg-center bg-no-repeat flex justify-between items-center lg:gap-[100px] gap-3 ${
+      className={`w-full xl:p-[100px] p-5 bg-cover group bg-center bg-no-repeat flex justify-between items-center lg:gap-[100px] gap-3 ${
         blur && "blur-md cursor-not-allowed"
       }`}
       style={{ backgroundImage: `url(${bgImage})` }}
@@ -45,11 +45,18 @@ const SectionCard = ({
           </span>
         </div>
       </div>
-      <Icon
-        name={"UpIcon"}
-        color="white"
-        className="lg:w-[80px] lg:h-[80px] w-[40px] h-[40px] text-white"
-      />
+      <div
+        className={`opacity-0 ${
+          !blur &&
+          "group-hover:opacity-100 group-hover:translate-x-2 duration-200"
+        } `}
+      >
+        <Icon
+          name={"UpIcon"}
+          color="white"
+          className="lg:w-[80px] lg:h-[80px] w-[40px] h-[40px] text-white"
+        />
+      </div>
     </div>
   </Link>
 );
