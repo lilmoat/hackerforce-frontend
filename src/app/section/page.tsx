@@ -11,9 +11,9 @@ export default function Section() {
         <BackgroundImage />
         <HeaderSection />
         <ContentSection />
-        <a href="#sectioncards" className="mt-10 animate-bounce cursor-pointer">
+        {/* <a href="#sectioncards" className="mt-10 animate-bounce cursor-pointer">
           <TbArrowBigDownLinesFilled size={85} color="white" />
-        </a>
+        </a> */}
       </div>
       <div id="sectioncards" className="pt-20">
         {SectionCardData.map((section, index) => (
