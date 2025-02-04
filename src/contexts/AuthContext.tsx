@@ -5,6 +5,9 @@ interface AuthContextType {
   loggedIn: boolean;
   login: () => void;
   logout: () => void;
+
+  isAcceptedCookies: boolean;
+  acceptCookie: () => void;
 }
 
 // Create the context with a default value
@@ -13,10 +16,13 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // AuthProvider component
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [isAcceptedCookies, setAcceptedCookies] = useState<boolean>(false);
 
   // Load login state from localStorage when the app starts
   useEffect(() => {
     const storedLoginState = localStorage.getItem("logged") === "true";
+    const storedCookieState = localStorage.getItem("cookie") === "true";
+    setAcceptedCookies(storedCookieState);
     setLoggedIn(storedLoginState);
   }, []);
 
@@ -32,8 +38,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setLoggedIn(false);
   };
 
+  // Function to log out
+  const acceptCookie = () => {
+    localStorage.removeItem("cookie");
+    setAcceptedCookies(true);
+  };
+
   return (
-    <AuthContext.Provider value={{ loggedIn, login, logout }}>
+    <AuthContext.Provider
+      value={{ loggedIn, login, logout, isAcceptedCookies, acceptCookie }}
+    >
       {children}
     </AuthContext.Provider>
   );
