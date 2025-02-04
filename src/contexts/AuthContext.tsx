@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   // Function to log out
   const acceptCookie = () => {
-    localStorage.removeItem("cookie");
+    localStorage.setItem("cookie", "true");
     setAcceptedCookies(true);
   };
 
