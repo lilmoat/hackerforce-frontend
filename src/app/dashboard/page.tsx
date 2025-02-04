@@ -105,9 +105,19 @@ export default function Dashboard() {
       </div>
       <div className="h-14 w-full border-b border-[#2f3132] justify-start items-center gap-2 inline-flex">
         <div className="justify-start items-center flex">
-          <div className="px-6 py-4 border-b border-[#d44244] justify-center items-center gap-3 flex">
+          <div className="px-4 py-4 border-b border-[#d44244] justify-center items-center gap-3 flex">
             <div className="text-[#d44244] text-base font-medium font-['Orbitron'] leading-normal">
               Dashboard
+            </div>
+          </div>
+          <div className="px-4 py-4 justify-center cursor-not-allowed blur-sm items-center gap-3 flex">
+            <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
+              Achieve
+            </div>
+          </div>
+          <div className="px-4 py-4 justify-center cursor-not-allowed blur-sm items-center gap-3 flex">
+            <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
+              Friends
             </div>
           </div>
         </div>
