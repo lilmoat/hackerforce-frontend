@@ -21,7 +21,7 @@ const SectionCard = ({
         <div className="text-white md:text-[60px] text-[40px] font-medium font-['Orbitron'] uppercase">
           {title}
         </div>
-        <p className="text-[#a0a0a0] lg:text-xl xl:text-2xl text-sm font-['Inconsolata'] leading-loose w-[320px] sm:w-[400px] md:w-full">
+        <p className="text-[#a0a0a0] lg:text-xl xl:text-2xl text-sm font-['Inconsolata'] leading-loose sm:w-[400px] md:w-full">
           {description}
         </p>
         <div className="flex flex-col md:flex-row gap-2">
