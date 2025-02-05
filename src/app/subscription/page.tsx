@@ -19,11 +19,6 @@ export default function Subscription() {
             <SubscriptionCard key={index} plan={plan} />
           ))}
         </div>
-        <div className=" min-h-screen w-full py-10 px-5">
-          <p className="text-center text-white font-orbitron font-bold text-[40px] uppercase">
-            Feature
-          </p>
-        </div>
       </div>
     </section>
   );

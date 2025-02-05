@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import BackgroundImage from "@/components/BackgroundImage";
+import { successAlert } from "@/components/ToastGroup";
+import { useState } from "react";
 
 export default function Contact() {
   return (
@@ -48,9 +49,8 @@ const ContactForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
+  const handleSubmit = () => {
+    successAlert("Your message has been delivered.");
     // Add API call or further processing here
   };
 
@@ -92,6 +92,7 @@ const ContactForm = () => {
       <button
         type="submit"
         className="w-full px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] rounded-lg text-white text-base font-orbitron font-medium transition duration-200"
+        onClick={() => handleSubmit()}
       >
         Submit
       </button>

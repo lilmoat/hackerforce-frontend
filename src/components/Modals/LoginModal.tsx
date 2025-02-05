@@ -3,7 +3,8 @@
 import Icon from "../Icon";
 import { useAuth } from "@/contexts/AuthContext";
 import { ModalContext } from "@/contexts/ModalContext";
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
+import { BiCheck } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import Modal from "react-responsive-modal";
 
@@ -15,6 +16,8 @@ const LoginModal: FC = () => {
     openSignupModal,
   } = useContext(ModalContext);
   const account = useAuth();
+
+  const [checked, setChecked] = useState(false);
 
   return (
     <Modal
@@ -62,6 +65,19 @@ const LoginModal: FC = () => {
 
               <div className="w-6 h-6 px-[3px] py-[7px] justify-center items-center flex overflow-hidden">
                 <Icon name={"EyeIcon"} className="w-4 h-4 text-[#a0a0a0]" />
+              </div>
+            </div>
+          </div>
+          <div className="h-6 justify-start items-center gap-2 inline-flex">
+            <div
+              className="p-[2px] bg-[#141516] rounded-lg border w-5 h-5 border-white justify-center items-center gap-1 flex cursor-pointer"
+              onClick={() => setChecked(!checked)}
+            >
+              {checked && <BiCheck className="text-white" size={20} />}
+            </div>
+            <div className="justify-start items-center gap-1 flex">
+              <div className="text-center text-white text-xs font-normal font-['Orbitron'] leading-tight">
+                Remember me for 30 days"
               </div>
             </div>
           </div>

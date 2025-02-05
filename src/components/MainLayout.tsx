@@ -6,11 +6,13 @@ import CookieModal from "./CookieModal";
 import Footer from "./Footer";
 import Header from "./Header";
 import ForgotPswModal from "./Modals/ForgotPswModal";
+import GetHelpModal from "./Modals/GetHelpModal";
 import LoginModal from "./Modals/LoginModal";
 import SignupModal from "./Modals/SignupModal";
 import Progressbar from "./Progressbar";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ModalProvider } from "@/contexts/ModalContext";
+import { ToastContainer } from "react-toastify";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
   return (
@@ -25,8 +27,10 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <CookieModal />
           <SignupModal />
           <ForgotPswModal />
-          <Progressbar />
           <LoginModal />
+          <GetHelpModal />
+          <Progressbar />
+          <ToastContainer pauseOnFocusLoss={false} theme="dark" stacked />
         </ModalProvider>
       </AuthProvider>
     </main>

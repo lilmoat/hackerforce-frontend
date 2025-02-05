@@ -32,7 +32,7 @@ const CourseCard = ({
         </div>
         <span className="text-white text-sm font-bold">{progress}%</span>
       </div>
-      <div className="px-2 py-1 left-[8px] top-[8px] absolute bg-[#2f3132] rounded-[100px] justify-start items-center gap-1 inline-flex">
+      {/* <div className="px-2 py-1 left-[8px] top-[8px] absolute bg-[#2f3132] rounded-[100px] justify-start items-center gap-1 inline-flex">
         <Icon name="StarIcon" className="w-4 h-4 text-white" />
         <div className="text-center text-white text-sm font-bold font-['Inconsolata'] leading-tight">
           {rating}
@@ -40,7 +40,7 @@ const CourseCard = ({
         <div className="text-center text-[#a0a0a0] text-sm font-normal font-['Inconsolata'] leading-tight">
           ({reviews} Reviews)
         </div>
-      </div>
+      </div> */}
     </div>
     <h2 className="text-white text-2xl font-['Orbitron']">{title}</h2>
     <div className="flex gap-2 font-inconsolata w-full items-center justify-start">

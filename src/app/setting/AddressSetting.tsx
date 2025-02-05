@@ -1,3 +1,5 @@
+import { successAlert } from "@/components/ToastGroup";
+
 const AddressSetting = ({ show }: { show: boolean }) => {
   if (!show) return null;
 
@@ -14,6 +16,10 @@ const AddressSetting = ({ show }: { show: boolean }) => {
       fullWidth: true,
     },
   ];
+
+  const handleAddressSave = () => {
+    successAlert("Address has been updated.");
+  };
 
   return (
     <div className="grow shrink basis-0 self-stretch flex flex-col items-end gap-8">
@@ -35,7 +41,7 @@ const AddressSetting = ({ show }: { show: boolean }) => {
       <div className="w-full border border-grey/50" />
 
       {/* Save Changes Button */}
-      <SaveButton label="Save Change" />
+      <SaveButton label="Save Change" onClick={() => handleAddressSave()} />
     </div>
   );
 };
@@ -87,8 +93,17 @@ const InputField = ({
 );
 
 // Save Button Component
-const SaveButton = ({ label }: { label: string }) => (
-  <button className="px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] transition duration-200 rounded-lg text-white text-base font-medium font-['Orbitron'] w-full md:w-auto">
+const SaveButton = ({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) => (
+  <button
+    className="px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] transition duration-200 rounded-lg text-white text-base font-medium font-['Orbitron'] w-full md:w-auto"
+    onClick={onClick}
+  >
     {label}
   </button>
 );

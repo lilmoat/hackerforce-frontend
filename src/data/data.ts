@@ -45,7 +45,7 @@ const FaqItemsData = [
     answer:
       "Whether you’re just starting out, have some experience, or consider yourself an advanced practitioner, there’s an exciting and tailored path waiting for you to advance your skills.",
   }, // Open item
-  { question: "Do we provide Labs?", answer: "Coming soon." }, // Closed item
+  { question: "Do we provide Labs?", answer: "." }, // Closed item
 ];
 
 const SecurityCategoriesData: {
@@ -364,19 +364,19 @@ const ExpandableSectionData = [
   {
     title: "Enumerations",
 
-    content: [{ title: "Information", content: "coming soon" }],
+    content: [{ title: "Information", content: "" }],
   },
   {
     title: "Token Abuse",
 
     content: [
-      { title: "What are tokens", content: "coming soon" },
-      { title: "Can we share to anyone?", content: "coming soon" },
+      { title: "What are tokens", content: "" },
+      { title: "Can we share to anyone?", content: "" },
     ],
   },
   {
     title: "Privilege Group Abuse",
-    content: [{ title: "Can I get help?", content: "coming soon" }],
+    content: [{ title: "Can I get help?", content: "" }],
   },
 ];
 

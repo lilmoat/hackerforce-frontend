@@ -3,7 +3,7 @@
 import Icon from "../Icon";
 import { ModalContext } from "@/contexts/ModalContext";
 import Link from "next/link";
-import { FC, useContext } from "react";
+import { FC, useContext, useState } from "react";
 import { BiCheck } from "react-icons/bi";
 import { CgClose } from "react-icons/cg";
 import Modal from "react-responsive-modal";
@@ -11,6 +11,8 @@ import Modal from "react-responsive-modal";
 const SignupModal: FC = () => {
   const { signupModalShow, closeSignupModal, openLoginModal } =
     useContext(ModalContext);
+
+  const [checked, setChecked] = useState(false);
 
   return (
     <Modal
@@ -93,8 +95,11 @@ const SignupModal: FC = () => {
           </div>
         </div>
         <div className="h-6 justify-start items-center gap-2 inline-flex">
-          <div className="p-[2px] bg-[#141516] rounded-lg border border-white justify-center items-center gap-1 flex">
-            <BiCheck className="text-white" size={20} />
+          <div
+            className="p-[2px] bg-[#141516] rounded-lg border w-5 h-5 border-white justify-center items-center gap-1 flex cursor-pointer"
+            onClick={() => setChecked(!checked)}
+          >
+            {checked && <BiCheck className="text-white" size={20} />}
           </div>
           <div className="justify-start items-center gap-1 flex">
             <div className="text-center text-white text-xs font-normal font-['Orbitron'] leading-tight">
@@ -109,7 +114,7 @@ const SignupModal: FC = () => {
             </Link>
           </div>
         </div>
-        <div className="self-stretch px-6 py-3 bg-[#972123] rounded-lg justify-center items-center gap-1 inline-flex">
+        <div className="self-stretch px-6 py-3 bg-[#972123] duration-200 hover:bg-[#972123c9] cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex">
           <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
             Register
           </div>

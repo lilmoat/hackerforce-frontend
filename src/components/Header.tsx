@@ -1,5 +1,4 @@
 import Icon from "./Icon";
-import { Icons } from "./Icons/Icons";
 import { useAuth } from "@/contexts/AuthContext";
 import { ModalContext } from "@/contexts/ModalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
@@ -18,7 +17,7 @@ const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isProfileMenu, setIsProfileMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { openSignupModal, openLoginModal } = useContext(ModalContext);
+  const { openLoginModal } = useContext(ModalContext);
   const account = useAuth();
   const windowSize = useWindowSize();
 
@@ -32,15 +31,15 @@ const Header = () => {
   useOnClickOutside(profileElem, () => setIsProfileMenu(false));
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-  }, [isMobileMenuOpen]);
+    document.body.style.overflow =
+      isMobileMenuOpen || isDropdownOpen || isProfileMenu ? "hidden" : "";
+  }, [isMobileMenuOpen, isDropdownOpen, isProfileMenu]);
 
   return (
     <>
       <header
         className={`fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50
           ${isMobileMenuOpen && "bg-[#181A1B]"}`}
-        ref={elem}
       >
         <div className="flex items-center space-x-1">
           <Icon name="Logo" size={32} />
@@ -49,7 +48,7 @@ const Header = () => {
           </Link>
         </div>
 
-        <nav className="hidden lg:flex space-x-7">
+        <nav className="hidden lg:flex space-x-7" ref={elem}>
           {[
             { label: "Home", href: "/" },
             { label: "About us", href: "/about" },
@@ -65,16 +64,22 @@ const Header = () => {
                   onClick={() => setDropdownOpen((prev) => !prev)}
                 >
                   <span className="flex items-center justify-center gap-1">
-                    {label} <IoIosArrowDown />
+                    {label}{" "}
+                    <IoIosArrowDown
+                      className={
+                        !isDropdownOpen
+                          ? "rotate-0 duration-200"
+                          : " rotate-180 duration-200"
+                      }
+                    />
                   </span>
                 </button>
-                {isDropdownOpen && (
-                  <DropdownMenu
-                    onClose={() => {
-                      setDropdownOpen(false);
-                    }}
-                  />
-                )}
+                <DropdownMenu
+                  isDropdownOpen={isDropdownOpen}
+                  onClose={() => {
+                    setDropdownOpen(false);
+                  }}
+                />
               </div>
             ) : (
               <Link
@@ -120,19 +125,22 @@ const Header = () => {
                 <div className="text-white text-sm font-medium font-['Orbitron'] leading-tight truncate">
                   Jackthefile
                 </div>
-                <div className="w-4 h-4 relative  overflow-hidden">
-                  <IoIosArrowDown />
-                </div>
+                <IoIosArrowDown
+                  className={`${
+                    !isProfileMenu
+                      ? "rotate-0 duration-200"
+                      : " rotate-180 duration-200"
+                  }`}
+                />
               </div>
             </div>
           )}
 
-          {isProfileMenu && (
-            <ProfileDropdownMenu
-              onCloseMenu={() => setIsProfileMenu(false)}
-              onLogout={() => account.logout()}
-            />
-          )}
+          <ProfileDropdownMenu
+            isProfileMenu={isProfileMenu}
+            onCloseMenu={() => setIsProfileMenu(false)}
+            onLogout={() => account.logout()}
+          />
           <button
             className="lg:hidden"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -152,12 +160,29 @@ const Header = () => {
           openLoginModal={openLoginModal}
         />
       )}
+      <div
+        className={`absolute top-0 bottom-0 left-0 right-0 bg-dark bg-opacity-85 z-40 ${
+          isDropdownOpen || isProfileMenu ? "block" : "hidden"
+        }`}
+      />
     </>
   );
 };
 
-const DropdownMenu = ({ onClose }: { onClose: () => void }) => (
-  <div className="absolute w-[166px] h-[189.99px] z-50">
+const DropdownMenu = ({
+  onClose,
+  isDropdownOpen,
+}: {
+  onClose: () => void;
+  isDropdownOpen: boolean;
+}) => (
+  <div
+    className={`absolute w-[166px] h-[189.99px] z-50 duration-300 ${
+      !isDropdownOpen
+        ? "opacity-0 pointer-events-none"
+        : "opacity-100 pointer-events-auto z-[9999]"
+    }`}
+  >
     <div className="z-2 w-[164px] h-[178px] top-[10.75px] bg-dark absolute rounded-lg shadow-lg border border-[#2f3132] flex-col justify-center items-center inline-flex">
       <DropdownItem href="/section" label="Sections" onClick={onClose} />
       {[
@@ -299,9 +324,9 @@ const DisabledDropdownItem = ({
 );
 
 const menuItems = [
+  { name: "Dashboard", icon: "DashboardIcon", link: "/dashboard" },
   { name: "Settings", icon: "SettingIcon", link: "/setting" },
   // { name: "My Profile", icon: "ProfileIcon", link: "/setting?tab=account" },
-  { name: "Dashboard", icon: "DashboardIcon", link: "/dashboard" },
   { name: "T&C’s", icon: "TermIcon", link: "/term" },
   { name: "Log out", icon: "LogoutIcon", link: "/" },
 ];
@@ -346,13 +371,23 @@ const ProfileMenuItem = ({
   </Link>
 );
 const ProfileDropdownMenu = ({
+  isProfileMenu,
   onCloseMenu,
   onLogout,
 }: {
+  isProfileMenu: boolean;
   onCloseMenu: () => void;
   onLogout: () => void;
 }) => (
-  <div className="absolute bg-[#1d1f20] top-12">
+  <div
+    className={`absolute bg-[#1d1f20] top-12 duration-300
+    ${
+      !isProfileMenu
+        ? "opacity-0 pointer-events-none"
+        : "opacity-100 pointer-events-auto z-[9999]"
+    }
+ `}
+  >
     <div className="w-[164px] rounded-lg shadow-[0px_4px_32px_0px_rgba(0,0,0,0.70)] border border-grey flex flex-col">
       {menuItems.map((item, index) => (
         <ProfileMenuItem
