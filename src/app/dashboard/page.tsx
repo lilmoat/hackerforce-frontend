@@ -390,7 +390,40 @@ export default function Dashboard() {
       </div>
       <div className="w-full grid lg:grid-cols-2 grid-cols-1 items-start gap-5">
         <ProgressSection />
-        <StatisticCard title="Monthly Statistic" stats={statistics} />
+        <div className="flex flex-col gap-2">
+          <div className="grid grid-cols-2 gap-1 md:gap-3">
+            <StatisticCard title="Monthly Statistic" stats={statistics} />
+            <div className="relative flex items-start justify-start mt-4 blur-sm select-none cursor-not-allowed">
+              <Image
+                src={"/imgs/dashboard/Info.png"}
+                alt="Info"
+                fill
+                priority
+                className="select-none pointer-events-none"
+              />
+            </div>
+          </div>
+          <div className="w-full">
+            <div className="relative w-full flex items-start justify-start md:h-[300px] h-[250px] mt-4 blur-sm select-none cursor-not-allowed">
+              <Image
+                src={"/imgs/dashboard/title.png"}
+                alt="Info"
+                fill
+                priority
+                className="select-none pointer-events-none"
+              />
+            </div>{" "}
+            <div className="relative w-full flex items-start justify-start md:h-[300px] h-[250px] mt-4 blur-sm select-none cursor-not-allowed">
+              <Image
+                src={"/imgs/dashboard/spider.png"}
+                alt="Info"
+                fill
+                priority
+                className="select-none pointer-events-none"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
