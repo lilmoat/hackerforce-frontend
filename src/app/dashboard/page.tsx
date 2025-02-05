@@ -23,24 +23,28 @@ const user = {
       subLabel: "1+ Month",
     },
     {
-      icon: <FaHand className="mt-[3px] text-red" />,
-      label: "Newbie",
-      subLabel: "2 Cert",
-    },
-    {
       icon: <HiPuzzlePiece className="mt-[1px] text-red" size={20} />,
       label: "Skilled",
       subLabel: "3 Courses",
+      blur: false,
+    },
+    {
+      icon: <HiKey className="text-red" size={20} />,
+      label: "Total Keys",
+      subLabel: "647",
+      blur: false,
+    },
+    {
+      icon: <FaHand className="mt-[3px] text-red" />,
+      label: "Newbie",
+      subLabel: "2 Cert",
+      blur: true,
     },
     {
       icon: <GiStarsStack className="text-red" size={20} />,
       label: "Master",
       subLabel: "18 Machs",
-    },
-    {
-      icon: <HiKey className="text-red" size={20} />,
-      label: "647",
-      subLabel: "Total Keys",
+      blur: true,
     },
   ],
 };
@@ -81,6 +85,7 @@ const ProfileStats = ({ stats }: { stats: typeof user.stats }) => (
         <StatItem
           key={index}
           icon={stat.icon}
+          blur={stat.blur}
           label={stat.label}
           subLabel={stat.subLabel}
         />
@@ -94,15 +99,21 @@ const StatItem = ({
   icon,
   label,
   subLabel,
+  blur,
 }: {
   icon: any;
   label: string;
   subLabel: string;
+  blur: boolean | undefined;
 }) => (
-  <div className="justify-start items-start gap-2 flex">
+  <div
+    className={`justify-start items-start gap-2 flex ${
+      blur ? "blur-sm select-none cursor-not-allowed" : ""
+    }`}
+  >
     {icon}
     <div className="flex-col justify-center items-start inline-flex">
-      <p className="text-white text-base font-normal leading-normal font-inconsolata">
+      <p className="text-white text-base font-normal leading-normal font-inconsolata truncate">
         {label}
       </p>
       <p className="text-[#a0a0a0] text-sm font-normal font-['Inconsolata'] leading-tight">
@@ -133,7 +144,7 @@ const NavTab = ({
   >
     <p
       className={`text-base font-medium font-['Orbitron'] leading-normal ${
-        active ? "text-[#d44244]" : "text-white"
+        active ? "text-[#d44244]" : "text-white select-none"
       }`}
     >
       {label}
@@ -143,7 +154,13 @@ const NavTab = ({
 
 // ✅ **Mock Data**
 const modules = [
-  { id: 1, title: "Start Trek", type: "Module", description: "Asrep-Roasting" },
+  {
+    id: 1,
+    title: "Start Trek",
+    type: "Module",
+    description: "Asrep-Roasting",
+    stats: "4/10",
+  },
   {
     id: 2,
     title: "Kerberos",
@@ -217,27 +234,32 @@ const ProgressModule = ({ module }: { module: any }) => {
               width={100}
               height={100}
             />
-            <div>
-              <p className="text-[#a0a0a0] text-sm">
-                Current Unit:{" "}
-                <span className="text-white font-bold truncate">
-                  {module.description}
-                </span>
-              </p>
-              <p className="text-[#a0a0a0] text-sm">
-                You’ve spent {module.hours} hours on this course
-              </p>
+            <div className="flex md:flex-row flex-col md:items-end justify-between w-full md:gap-3 gap-5">
+              <div>
+                <p className="text-[#a0a0a0] text-sm">
+                  Current Unit:{" "}
+                  <span className="text-white font-bold truncate">
+                    {module.description}
+                  </span>
+                </p>
+                <p className="text-[#a0a0a0] text-sm">
+                  You’ve spent {module.hours} hours on this course
+                </p>
 
-              <div className="relative w-[300px] mt-5">
-                <div className="w-full flex items-center justify-between">
-                  <p className="text-[#a0a0a0] text-sm">Unit Statistics: </p>
-                  <p className="text-[#a0a0a0] text-sm">{module.stats}</p>
+                <div className="relative xl:w-[300px] mt-5">
+                  <div className="w-full flex items-center justify-between">
+                    <p className="text-[#a0a0a0] text-sm">Unit Statistics: </p>
+                    <p className="text-red text-sm">{module.stats}</p>
+                  </div>
+                  <div className="absolute w-full h-2.5 bg-white/20 rounded-full"></div>
+                  <div
+                    className="absolute w-[58.59px] h-2.5 bg-[#d44245] rounded-full"
+                    style={{ width: `${(5 / 10) * 100}%` }}
+                  />
                 </div>
-                <div className="absolute w-full h-2.5 bg-white/20 rounded-full"></div>
-                <div
-                  className="absolute w-[58.59px] h-2.5 bg-[#d44245] rounded-full"
-                  style={{ width: `${(5 / 10) * 100}%` }}
-                />
+              </div>
+              <div className="px-3 py-2 bg-red rounded-lg text-white font-inconsolata text-center">
+                Continue
               </div>
             </div>
           </div>
@@ -285,7 +307,7 @@ const ProgressSection = () => (
       </div>
 
       {/* ✅ Scheduled Exams */}
-      <div className="self-stretch flex-col justify-start items-start gap-4 flex blur-sm cursor-not-allowed">
+      <div className="self-stretch flex-col justify-start items-start gap-4 flex blur-sm cursor-not-allowed select-none">
         <p className="grow shrink basis-0 self-stretch text-white text-xl font-medium font-['Orbitron'] leading-loose">
           Scheduled Exams
         </p>
@@ -316,7 +338,7 @@ const StatisticCard = ({
   title: string;
   stats: { label: string; value: string }[];
 }) => (
-  <div className="flex-col justify-center items-start gap-6 inline-flex w-full blur-sm cursor-not-allowed mt-5">
+  <div className="flex-col justify-center items-start gap-6 inline-flex w-full blur-sm cursor-not-allowed mt-5 select-none">
     <div className="self-stretch justify-start items-center gap-6 inline-flex">
       <div className="grow shrink basis-0 p-4 bg-[#1d1f20] rounded-2xl border border-[#2f3132] flex-col justify-center items-center gap-3 inline-flex">
         <div className="self-stretch justify-start items-center gap-3 inline-flex">

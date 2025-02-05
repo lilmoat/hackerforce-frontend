@@ -1,4 +1,5 @@
 import Icon from "@/components/Icon";
+import { successAlert } from "@/components/ToastGroup";
 
 const SubscriptionSetting = ({ show }: { show: boolean }) => {
   if (!show) return null;
@@ -14,6 +15,12 @@ const SubscriptionSetting = ({ show }: { show: boolean }) => {
     { label: "Next payment", value: "July 23, 2024" },
     { label: "Plan start", value: "June 23, 2024" },
   ];
+
+  const handleCanclePlan = () => {
+    successAlert(
+      "Are you sure you want to cancel your plan? We'd love to help if you're having any issues. Please contact us at…"
+    );
+  };
 
   return (
     <div className="grow shrink basis-0 self-stretch flex flex-col items-end justify-end gap-8 ">
@@ -44,7 +51,7 @@ const SubscriptionSetting = ({ show }: { show: boolean }) => {
       <div className="w-full border border-grey/50" />
 
       {/* Cancel Plan Button */}
-      <CancelPlanButton />
+      <CancelPlanButton onClick={() => handleCanclePlan()} />
     </div>
   );
 };
@@ -134,8 +141,11 @@ const PaymentMethod = ({
 );
 
 // 📌 Cancel Plan Button
-const CancelPlanButton = () => (
-  <button className="self-stretch md:w-[300px] w-full px-6 py-3 rounded-lg border border-[#d44244] text-[#d44244] text-base font-medium font-['Orbitron']">
+const CancelPlanButton = ({ onClick }: { onClick: () => void }) => (
+  <button
+    className="self-stretch md:w-[300px] w-full px-6 py-3 rounded-lg border border-[#d44244] hover:border-red duration-200 text-[#d44244] text-base font-medium font-['Orbitron']"
+    onClick={onClick}
+  >
     Cancel Plan
   </button>
 );

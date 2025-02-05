@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import Icon from "@/components/Icon";
 import { SectionCardProps } from "@/types/type";
 import Link from "next/link";
@@ -12,11 +14,15 @@ const SectionCard = ({
 }: SectionCardProps) => (
   <Link href={!blur ? "/course" : ""} className="w-full">
     <div
-      className={`w-full xl:p-[100px] p-5 bg-cover group bg-center bg-no-repeat flex justify-between items-center lg:gap-[100px] gap-3 ${
+      className={`w-full xl:p-[100px] p-5 bg-cover group relative bg-center overflow-hidden bg-no-repeat flex justify-between items-center lg:gap-[100px] gap-3 ${
         blur && "blur-md cursor-not-allowed"
       }`}
-      style={{ backgroundImage: `url(${bgImage})` }}
     >
+      <img
+        src={bgImage}
+        alt="SectionBg"
+        className="w-full h-full absolute bottom-0 top-0 right-0 left-0 -z-10 duration-200 group-hover:scale-105 object-cover"
+      />
       <div className="flex flex-col gap-4">
         <div className="text-white md:text-[60px] text-[40px] font-medium font-['Orbitron'] uppercase">
           {title}

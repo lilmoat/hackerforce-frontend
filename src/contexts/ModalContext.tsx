@@ -5,6 +5,7 @@ interface ModalContextType {
   loginModalShow: boolean;
   signupModalShow: boolean;
   forgotPswModalShow: boolean;
+  getHelpModalShow: boolean;
 
   openLoginModal: () => void;
   closeLoginModal: () => void;
@@ -12,6 +13,8 @@ interface ModalContextType {
   closeSignupModal: () => void;
   openForgotPswModal: () => void;
   closeForgotPswModal: () => void;
+  openGetHelpModal: () => void;
+  closeGetHelpModal: () => void;
 }
 
 // Create the modal context
@@ -19,6 +22,7 @@ export const ModalContext = createContext<ModalContextType>({
   loginModalShow: false,
   signupModalShow: false,
   forgotPswModalShow: false,
+  getHelpModalShow: false,
 
   openLoginModal: () => {},
   closeLoginModal: () => {},
@@ -26,6 +30,8 @@ export const ModalContext = createContext<ModalContextType>({
   closeSignupModal: () => {},
   openForgotPswModal: () => {},
   closeForgotPswModal: () => {},
+  openGetHelpModal: () => {},
+  closeGetHelpModal: () => {},
 });
 
 interface ModalProviderProps {
@@ -37,6 +43,7 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [loginModalShow, setLoginModalShow] = useState(false);
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [forgotPswModalShow, setForgotPswModalShow] = useState(false);
+  const [getHelpModalShow, setGetHelpModalShow] = useState(false);
 
   const openLoginModal = () => {
     setLoginModalShow(true);
@@ -62,10 +69,19 @@ export function ModalProvider({ children }: ModalProviderProps) {
     setForgotPswModalShow(false);
   };
 
+  const openGetHelpModal = () => {
+    setGetHelpModalShow(true);
+  };
+
+  const closeGetHelpModal = () => {
+    setGetHelpModalShow(false);
+  };
+
   const ModalContextValue: ModalContextType = {
     loginModalShow: loginModalShow,
     signupModalShow: signupModalShow,
     forgotPswModalShow: forgotPswModalShow,
+    getHelpModalShow: getHelpModalShow,
 
     openLoginModal: openLoginModal,
     closeLoginModal: closeLoginModal,
@@ -73,6 +89,8 @@ export function ModalProvider({ children }: ModalProviderProps) {
     closeSignupModal: closeSignupModal,
     openForgotPswModal: openForgotPswModal,
     closeForgotPswModal: closeForgotPswModal,
+    openGetHelpModal: openGetHelpModal,
+    closeGetHelpModal: closeGetHelpModal,
   };
 
   return (

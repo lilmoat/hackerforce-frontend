@@ -1,21 +1,37 @@
 /* eslint-disable @next/next/no-img-element */
 
+import { successAlert } from "@/components/ToastGroup";
 import { MdOutlineFileUpload } from "react-icons/md";
 
 const AccountSetting = ({ show }: { show: boolean }) => {
   if (!show) return null;
 
   const formFields = [
-    { label: "Username", type: "text", placeholder: "Jack" },
+    { blur: false, label: "Username", type: "text", placeholder: "Jack" },
     {
+      blur: true,
       label: "Skill category",
       type: "text",
       placeholder: "Hardware hacking",
       readOnly: true,
     },
-    { label: "Email", type: "email", placeholder: "Jack@gmail.com" },
-    { label: "Phone number", type: "number", placeholder: "+14247409208" },
+    {
+      blur: false,
+      label: "Email",
+      type: "email",
+      placeholder: "Jack@gmail.com",
+    },
+    {
+      blur: false,
+      label: "Phone number",
+      type: "text",
+      placeholder: "+14247409208",
+    },
   ];
+
+  const handleChangePhoto = () => {
+    successAlert("Setting...");
+  };
 
   return (
     <div className="grow shrink basis-0 self-stretch flex flex-col items-start gap-8">
@@ -35,20 +51,24 @@ const AccountSetting = ({ show }: { show: boolean }) => {
         <UploadButton
           label="Change photo"
           icon={<MdOutlineFileUpload size={25} color="white" />}
+          onClick={() => handleChangePhoto()}
         />
       </div>
 
       {/* Form Fields */}
       <div className="self-stretch grid grid-cols-1 md:grid-cols-2 gap-4">
-        {formFields.map(({ label, type, placeholder, readOnly }, index) => (
-          <InputField
-            key={index}
-            label={label}
-            type={type}
-            placeholder={placeholder}
-            readOnly={readOnly}
-          />
-        ))}
+        {formFields.map(
+          ({ label, type, placeholder, readOnly, blur }, index) => (
+            <InputField
+              blur={blur}
+              key={index}
+              label={label}
+              type={type}
+              placeholder={placeholder}
+              readOnly={readOnly}
+            />
+          )
+        )}
       </div>
 
       <div className="w-full border border-grey/50" />
@@ -83,17 +103,21 @@ const SectionHeader = ({
 
 // Input Field Component
 const InputField = ({
+  blur,
   label,
   type,
   placeholder,
   readOnly = false,
 }: {
+  blur: boolean;
   label: string;
   type: string;
   placeholder: string;
   readOnly?: boolean;
 }) => (
-  <div className="flex flex-col gap-1">
+  <div
+    className={`flex flex-col gap-1 ${blur && "blur-sm cursor-not-allowed"}`}
+  >
     <label className="text-[#a0a0a0] text-base font-normal font-['Inconsolata']">
       {label}
     </label>
@@ -102,7 +126,9 @@ const InputField = ({
         type={type}
         placeholder={placeholder}
         readOnly={readOnly}
-        className="w-full text-white text-base font-medium font-['Inconsolata'] bg-transparent outline-none placeholder:text-grey"
+        className={`w-full text-white text-base font-medium font-['Inconsolata'] bg-transparent outline-none placeholder:text-grey ${
+          blur && "blur-sm cursor-not-allowed"
+        }`}
       />
     </div>
   </div>
@@ -112,11 +138,16 @@ const InputField = ({
 const UploadButton = ({
   label,
   icon,
+  onClick,
 }: {
   label: string;
   icon: React.ReactNode;
+  onClick: () => void;
 }) => (
-  <button className="p-3 bg-white/10 hover:bg-[#292929] transition duration-200 rounded-lg flex items-center gap-3">
+  <button
+    className="p-3 bg-white/10 hover:bg-[#292929] transition duration-200 rounded-lg flex items-center gap-3"
+    onClick={onClick}
+  >
     {icon}
     <span className="text-white md:text-base text-sm font-medium font-['Orbitron']">
       {label}

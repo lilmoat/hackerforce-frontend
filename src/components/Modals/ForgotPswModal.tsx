@@ -1,10 +1,10 @@
 "use client";
 
-import { FC, useContext } from "react";
-import Modal from "react-responsive-modal";
-import { ModalContext } from "@/contexts/ModalContext";
 import Icon from "../Icon";
+import { ModalContext } from "@/contexts/ModalContext";
+import { FC, useContext } from "react";
 import { CgClose } from "react-icons/cg";
+import Modal from "react-responsive-modal";
 
 const ForgotPswModal: FC = () => {
   const { openLoginModal, closeForgotPswModal, forgotPswModalShow } =
@@ -43,7 +43,7 @@ const ForgotPswModal: FC = () => {
             </div>
           </div>
         </div>
-        <div className="self-stretch px-6 py-3 bg-[#972123] rounded-lg justify-center items-center gap-1 inline-flex">
+        <div className="self-stretch px-6 py-3 bg-[#972123] hover:bg-[#972123d2] duration-200 cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex">
           <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
             Send
           </div>

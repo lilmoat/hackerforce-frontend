@@ -1,4 +1,5 @@
 import Icon from "@/components/Icon";
+import { successAlert } from "@/components/ToastGroup";
 import { useState } from "react";
 
 const SecuritySetting = ({ show }: { show: boolean }) => {
@@ -27,11 +28,32 @@ const SecuritySetting = ({ show }: { show: boolean }) => {
     },
   ];
 
+  const handleChangePsw = () => {
+    successAlert("Password has been changed.");
+  };
+
   return (
     <div className="grow shrink basis-0 self-stretch flex flex-col items-end gap-8">
       {/* Section Header */}
       <SectionHeader title="Security" description="Change your password" />
 
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+        <PasswordInput
+          label={"Existing Password"}
+          placeholder={"**********"}
+          isVisible={false}
+          toggleVisibility={function (): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        <div className="flex items-end">
+          <SaveButton
+            label="Forgot password"
+            onClick={() => handleChangePsw()}
+            type="forget"
+          />
+        </div>
+      </div>
       {/* Password Fields */}
       <div className="self-stretch grid grid-cols-1 md:grid-cols-2 gap-4">
         {passwordFields.map(({ label, stateKey, placeholder }, index) => (
@@ -50,7 +72,11 @@ const SecuritySetting = ({ show }: { show: boolean }) => {
       <div className="w-full border border-grey/50" />
 
       {/* Change Password Button */}
-      <SaveButton label="Change Password" />
+      <SaveButton
+        label="Change Password"
+        type="change"
+        onClick={() => handleChangePsw()}
+      />
     </div>
   );
 };
@@ -89,7 +115,7 @@ const PasswordInput = ({
   isVisible: boolean;
   toggleVisibility: () => void;
 }) => (
-  <div className="flex flex-col gap-1">
+  <div className="flex flex-col gap-1 min-w-[300px]">
     <label className="text-[#a0a0a0] text-base font-normal font-['Inconsolata']">
       {label}
     </label>
@@ -111,8 +137,23 @@ const PasswordInput = ({
 );
 
 //  Save Button Component
-const SaveButton = ({ label }: { label: string }) => (
-  <button className="px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] transition duration-200 rounded-lg text-white text-base font-medium font-['Orbitron'] w-full md:w-auto">
+const SaveButton = ({
+  label,
+  onClick,
+  type,
+}: {
+  type: string;
+  label: string;
+  onClick: () => void;
+}) => (
+  <button
+    className={`px-6 py-3 ${
+      type === "change"
+        ? "bg-[#972123] hover:bg-[#7a1b1f]"
+        : "bg-grey hover:bg-grey/50"
+    } transition duration-200 rounded-lg text-white text-base font-medium font-['Orbitron'] w-full md:w-auto`}
+    onClick={onClick}
+  >
     {label}
   </button>
 );
