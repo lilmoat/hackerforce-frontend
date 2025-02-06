@@ -6,6 +6,8 @@ interface ModalContextType {
   signupModalShow: boolean;
   forgotPswModalShow: boolean;
   getHelpModalShow: boolean;
+  cancelPlanModalShow: boolean;
+  imageUploadModalShow: boolean;
 
   openLoginModal: () => void;
   closeLoginModal: () => void;
@@ -15,6 +17,11 @@ interface ModalContextType {
   closeForgotPswModal: () => void;
   openGetHelpModal: () => void;
   closeGetHelpModal: () => void;
+
+  openCancelPlanModal: () => void;
+  closeCancelPlanModal: () => void;
+  openImageUploadModalShowModal: () => void;
+  closeImageUploadModalShowModal: () => void;
 }
 
 // Create the modal context
@@ -23,7 +30,8 @@ export const ModalContext = createContext<ModalContextType>({
   signupModalShow: false,
   forgotPswModalShow: false,
   getHelpModalShow: false,
-
+  cancelPlanModalShow: false,
+  imageUploadModalShow: false,
   openLoginModal: () => {},
   closeLoginModal: () => {},
   openSignupModal: () => {},
@@ -32,6 +40,10 @@ export const ModalContext = createContext<ModalContextType>({
   closeForgotPswModal: () => {},
   openGetHelpModal: () => {},
   closeGetHelpModal: () => {},
+  openCancelPlanModal: () => {},
+  closeCancelPlanModal: () => {},
+  openImageUploadModalShowModal: () => {},
+  closeImageUploadModalShowModal: () => {},
 });
 
 interface ModalProviderProps {
@@ -44,6 +56,9 @@ export function ModalProvider({ children }: ModalProviderProps) {
   const [signupModalShow, setSignupModalShow] = useState(false);
   const [forgotPswModalShow, setForgotPswModalShow] = useState(false);
   const [getHelpModalShow, setGetHelpModalShow] = useState(false);
+  const [cancelPlanModalShow, setCancelPlanModalShow] = useState(false);
+  const [imageUploadModalShow, setImageUploadModalShow] = useState(false);
+  const [previewAvatarUrl, setPreviewAvatarUrl] = useState<string | null>(null);
 
   const openLoginModal = () => {
     setLoginModalShow(true);
@@ -77,11 +92,29 @@ export function ModalProvider({ children }: ModalProviderProps) {
     setGetHelpModalShow(false);
   };
 
+  const openCancelPlanModal = () => {
+    setCancelPlanModalShow(true);
+  };
+
+  const closeCancelPlanModal = () => {
+    setCancelPlanModalShow(false);
+  };
+
+  const openImageUploadModalShowModal = () => {
+    setImageUploadModalShow(true);
+  };
+
+  const closeImageUploadModalShowModal = () => {
+    setImageUploadModalShow(false);
+  };
+
   const ModalContextValue: ModalContextType = {
     loginModalShow: loginModalShow,
     signupModalShow: signupModalShow,
     forgotPswModalShow: forgotPswModalShow,
     getHelpModalShow: getHelpModalShow,
+    cancelPlanModalShow: cancelPlanModalShow,
+    imageUploadModalShow: imageUploadModalShow,
 
     openLoginModal: openLoginModal,
     closeLoginModal: closeLoginModal,
@@ -91,6 +124,10 @@ export function ModalProvider({ children }: ModalProviderProps) {
     closeForgotPswModal: closeForgotPswModal,
     openGetHelpModal: openGetHelpModal,
     closeGetHelpModal: closeGetHelpModal,
+    openCancelPlanModal: openCancelPlanModal,
+    closeCancelPlanModal: closeCancelPlanModal,
+    openImageUploadModalShowModal: openImageUploadModalShowModal,
+    closeImageUploadModalShowModal: closeImageUploadModalShowModal,
   };
 
   return (

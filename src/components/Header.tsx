@@ -4,8 +4,10 @@ import { ModalContext } from "@/contexts/ModalContext";
 import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { IconName } from "@/types/type";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useState, useEffect, useContext } from "react";
 import { BiArrowToBottom } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
@@ -17,6 +19,11 @@ const Header = () => {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [isProfileMenu, setIsProfileMenu] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const pathname = usePathname();
+
+  const isCoursePage = pathname.startsWith("/course/");
+
   const { openLoginModal } = useContext(ModalContext);
   const account = useAuth();
   const windowSize = useWindowSize();
@@ -37,9 +44,15 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className={`fixed backdrop-blur-sm text-white py-4 px-7 flex justify-between items-center w-full font-orbitron font-medium z-50
-          ${isMobileMenuOpen && "bg-[#181A1B]"}`}
+      <motion.header
+        className={`fixed backdrop-blur-sm text-white py-4 px-7 flex justify-between items-center w-full font-orbitron font-medium z-50 ${
+          isMobileMenuOpen ? "bg-[#181A1B]" : ""
+        }`}
+        initial={{ y: isCoursePage ? -100 : 0 }} // Slide-up only in /course/intro
+        animate={{ y: isCoursePage && !isHovered ? -55 : 0 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        onMouseEnter={() => isCoursePage && setIsHovered(true)}
+        onMouseLeave={() => isCoursePage && setIsHovered(false)}
       >
         <div className="flex items-center space-x-1">
           <Icon name="Logo" size={32} />
@@ -152,7 +165,7 @@ const Header = () => {
             )}
           </button>
         </div>
-      </header>
+      </motion.header>
       {isMobileMenuOpen && (
         <MobileMenu
           onClose={() => setIsMobileMenuOpen(false)}

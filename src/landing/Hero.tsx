@@ -1,5 +1,3 @@
-import BackgroundImage from "@/components/BackgroundImage";
-import CookieModal from "@/components/CookieModal";
 import Icon from "@/components/Icon";
 import RotatingMap from "@/components/RotatingMap";
 import Image from "next/image";
@@ -27,11 +25,18 @@ export default function HeroSection() {
 
 /* ------------------ COMPONENTS ------------------ */
 // 🔹 Background Image
-// const BackgroundImage = () => (
-//   <div className="absolute top-0 left-0 w-full h-full -z-50">
-//     <Image src="/Bg.png" alt="Background" fill priority />
-//   </div>
-// );
+const BackgroundImage = () => (
+  <div className="absolute top-0 left-0 w-full h-full -z-50">
+    <div className="lines">
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+      <div className="line"></div>
+    </div>
+  </div>
+);
 
 // 🔹 Hero Header (Title & Subtitle)
 const HeroHeader = () => (

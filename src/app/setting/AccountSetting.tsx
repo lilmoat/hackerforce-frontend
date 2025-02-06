@@ -1,9 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { successAlert } from "@/components/ToastGroup";
+"use client";
+
+import { ModalContext } from "@/contexts/ModalContext";
+import { useContext } from "react";
 import { MdOutlineFileUpload } from "react-icons/md";
 
 const AccountSetting = ({ show }: { show: boolean }) => {
+  const { openImageUploadModalShowModal } = useContext(ModalContext);
   if (!show) return null;
 
   const formFields = [
@@ -29,10 +33,6 @@ const AccountSetting = ({ show }: { show: boolean }) => {
     },
   ];
 
-  const handleChangePhoto = () => {
-    successAlert("Setting...");
-  };
-
   return (
     <div className="grow shrink basis-0 self-stretch flex flex-col items-start gap-8">
       {/* Section Header */}
@@ -51,7 +51,7 @@ const AccountSetting = ({ show }: { show: boolean }) => {
         <UploadButton
           label="Change photo"
           icon={<MdOutlineFileUpload size={25} color="white" />}
-          onClick={() => handleChangePhoto()}
+          onClick={openImageUploadModalShowModal}
         />
       </div>
 
