@@ -38,7 +38,7 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed backdrop-blur-sm text-white py-4 px-5 flex justify-between items-center w-full font-orbitron font-medium z-50
+        className={`fixed backdrop-blur-sm text-white py-4 px-7 flex justify-between items-center w-full font-orbitron font-medium z-50
           ${isMobileMenuOpen && "bg-[#181A1B]"}`}
       >
         <div className="flex items-center space-x-1">
@@ -380,7 +380,7 @@ const ProfileDropdownMenu = ({
   onLogout: () => void;
 }) => (
   <div
-    className={`absolute bg-[#1d1f20] top-12 duration-300
+    className={`absolute bg-[#1d1f20] top-12 duration-300 right-1
     ${
       !isProfileMenu
         ? "opacity-0 pointer-events-none"

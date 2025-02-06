@@ -23,14 +23,14 @@ export default function MainLayout({ children }: { children: ReactNode }) {
           <div className="w-full flex items-center justify-start flex-col z-10">
             {children}
           </div>
-          <Footer />
+          <ToastContainer pauseOnFocusLoss={false} theme="dark" />
           <CookieModal />
           <SignupModal />
           <ForgotPswModal />
           <LoginModal />
           <GetHelpModal />
           <Progressbar />
-          <ToastContainer pauseOnFocusLoss={false} theme="dark" stacked />
+          <Footer />
         </ModalProvider>
       </AuthProvider>
     </main>
