@@ -9,6 +9,15 @@ export default {
   ],
   theme: {
     extend: {
+      animation: {
+        flash: "flash 0.9s ease-in-out 4",
+      },
+      keyframes: {
+        flash: {
+          "0%, 100%": { borderColor: "red" },
+          "50%": { borderColor: "transparent" },
+        },
+      },
       screens: {
         "3xl": "1920px",
         "4xl": "2560px",

@@ -1,7 +1,12 @@
+"use client";
+
 import Icon from "@/components/Icon";
 import { successAlert } from "@/components/ToastGroup";
+import { ModalContext } from "@/contexts/ModalContext";
+import { useContext } from "react";
 
 const SubscriptionSetting = ({ show }: { show: boolean }) => {
+  const { openCancelPlanModal } = useContext(ModalContext);
   if (!show) return null;
 
   const subscriptionDetails = [
@@ -51,7 +56,7 @@ const SubscriptionSetting = ({ show }: { show: boolean }) => {
       <div className="w-full border border-grey/50" />
 
       {/* Cancel Plan Button */}
-      <CancelPlanButton onClick={() => handleCanclePlan()} />
+      <CancelPlanButton onClick={() => openCancelPlanModal()} />
     </div>
   );
 };
@@ -140,7 +145,7 @@ const PaymentMethod = ({
   </div>
 );
 
-// 📌 Cancel Plan Button
+// Cancel Plan Button
 const CancelPlanButton = ({ onClick }: { onClick: () => void }) => (
   <button
     className="self-stretch md:w-[300px] w-full px-6 py-3 rounded-lg border border-[#d44244] hover:border-red duration-200 text-[#d44244] text-base font-medium font-['Orbitron']"

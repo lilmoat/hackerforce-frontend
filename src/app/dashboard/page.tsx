@@ -249,7 +249,7 @@ const ProgressModule = ({ module }: { module: any }) => {
                 <div className="relative xl:w-[300px] mt-5">
                   <div className="w-full flex items-center justify-between">
                     <p className="text-[#a0a0a0] text-sm">Unit Statistics: </p>
-                    <p className="text-red text-sm">{module.stats}</p>
+                    <p className="text-[#a0a0a0] text-sm">{module.stats}</p>
                   </div>
                   <div className=" w-full h-2.5 bg-white/20 rounded-full">
                     <div

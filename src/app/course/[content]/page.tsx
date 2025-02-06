@@ -8,8 +8,10 @@ import {
   ModuleProgressData,
   TaskDetailsData,
 } from "@/data/data";
+import { Check, Copy } from "lucide-react";
 import { useContext, useState } from "react";
 import { BsArrowsCollapse, BsArrowsExpand } from "react-icons/bs";
+import { FcCheckmark } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
 import { MdOutlineZoomOutMap, MdZoomInMap } from "react-icons/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -203,45 +205,95 @@ const TaskSection = ({
 );
 
 const Challenges = () => {
+  const [inputValues, setInputValues] = useState<string[]>([]);
+  const [errorIndices, setErrorIndices] = useState<number[]>([]);
+
+  const handleInputChange = (index: number, value: string) => {
+    const updatedInputs = [...inputValues];
+    updatedInputs[index] = value;
+    setInputValues(updatedInputs);
+  };
+
+  const handleSubmit = (index: number, correctAnswer: string) => {
+    if (inputValues[index]?.trim() !== correctAnswer.trim()) {
+      setErrorIndices((prev) => [...prev, index]);
+
+      // Remove the error class after animation
+      setTimeout(() => {
+        setErrorIndices((prev) => prev.filter((i) => i !== index));
+      }, 1200);
+    } else {
+      successAlert("Success.");
+    }
+  };
+
+  const ChallengesData = [
+    {
+      content: "Solve these challenges",
+      questions: [
+        { question: "What is 2 + 2?", answer: "4", reward: "+1 XP" },
+        {
+          question: "What is the capital of France?",
+          answer: "paris",
+          reward: "+1 XP",
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="flex flex-col gap-6">
       <h2 className="text-white text-xl font-bold font-['Orbitron']">
         Challenges
       </h2>
-      {ChallengesData.map((q, index) => (
-        <div key={index}>
-          <p
-            className="text-[#a0a0a0] text-sm font-bold font-['Inconsolata']"
-            key={index}
-          >
-            {q.content}
+
+      {ChallengesData.map((challenge, challengeIndex) => (
+        <div key={challengeIndex}>
+          <p className="text-[#a0a0a0] text-sm font-bold font-['Inconsolata']">
+            {challenge.content}
           </p>
-          <div className="flex items-start justify-center gap-2 flex-col py-2">
-            {q.questions.map((q, index) => (
-              <div className="w-full flex flex-col gap-2" key={index}>
-                <div className="w-full flex items-end justify-between gap-3">
-                  <div className="w-full flex items-center justify-between gap-2 flex-col">
+          <div className="flex flex-col gap-4 py-2">
+            {challenge.questions.map((q, questionIndex) => {
+              const inputIndex = challengeIndex * 100 + questionIndex; // Unique index for tracking errors
+              return (
+                <div className="w-full flex flex-col gap-2" key={inputIndex}>
+                  <div className="w-full flex items-end justify-between gap-3">
+                    <div className="w-full flex flex-col gap-2">
+                      <div className="flex justify-between items-center w-full">
+                        <p className="text-[#a0a0a0] text-sm font-bold font-['Inconsolata']">
+                          {q.question}
+                        </p>
+                        <span className="text-[#d44244] text-sm font-bold font-inconsolata">
+                          {q.reward}
+                        </span>
+                      </div>
+                      <div
+                        className={`w-full px-3 py-2 bg-[#141616] rounded-lg border ${
+                          errorIndices.includes(inputIndex)
+                            ? "border-red-500 animate-flash"
+                            : "border-[#2f3132]"
+                        } flex justify-start items-center gap-2.5`}
+                      >
+                        <input
+                          type="text"
+                          value={inputValues[inputIndex] || ""}
+                          onChange={(e) =>
+                            handleInputChange(inputIndex, e.target.value)
+                          }
+                          className="w-full bg-transparent outline-none text-white text-sm font-semibold font-['Inconsolata']"
+                        />
+                      </div>
+                    </div>
                     <div
-                      key={index}
-                      className="flex justify-between items-center gap-4 w-full"
+                      className="text-white text-sm font-orbitron px-6 py-2 bg-[#972123] hover:bg-[#7a1b1f] duration-200 cursor-pointer rounded-lg flex items-center gap-1"
+                      onClick={() => handleSubmit(inputIndex, q.answer)}
                     >
-                      <p className="text-[#a0a0a0] text-sm font-bold font-['Inconsolata']">
-                        {q.question}
-                      </p>
-                      <span className="text-[#d44244] text-sm font-bold font-inconsolata">
-                        {q.reward}
-                      </span>
+                      Submit
                     </div>
-                    <div className="w-full px-3 py-2 bg-[#141616] rounded-lg border border-[#2f3132] justify-start items-center gap-2.5 inline-flex">
-                      <input className="grow bg-transparent outline-none shrink basis-0 self-stretch text-white text-sm font-semibold font-['Inconsolata'] leading-[18px]" />
-                    </div>
-                  </div>
-                  <div className="text-white text-sm font-orbitron px-6 py-2 bg-[#972123] hover:bg-[#7a1b1f] duration-200 cursor-pointer rounded-lg justify-center items-center gap-1 flex">
-                    Submit
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       ))}
@@ -275,6 +327,14 @@ const NavigationButtons = ({
 const CodeTerminal = () => {
   const [expanded, setExpanded] = useState(false);
 
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const code = `B00L Falling short {
     [in] Handle                        %existingtoken
     [in] SWORD                         very_much_into
@@ -285,25 +345,37 @@ const CodeTerminal = () => {
   };`;
 
   return (
-    <div className="bg-[#1d1f21] text-white p-4 rounded-xl border border-[#2f3132] w-auto relative">
+    <div className="bg-[#1d1f21] p-4 rounded-xl border border-[#2f3132] w-auto relative">
       <div className="flex justify-between items-center border-b border-[#2f3132] pb-1">
         <span className="text-white font-orbitron font-bold">Language C</span>
-        <button
-          className="text-red hover:text-red-300 cursor-pointer font-inconsolata"
-          onClick={() => setExpanded(!expanded)}
-        >
-          {expanded ? (
-            <BsArrowsCollapse
-              size={22}
-              className="text-white cursor-pointer duration-200 hover:text-light-grey"
-            />
-          ) : (
-            <BsArrowsExpand
-              size={22}
-              className="text-white cursor-pointer duration-200 hover:text-light-grey"
-            />
-          )}
-        </button>
+        <div className="flex items-center justify-center gap-2">
+          <button
+            onClick={handleCopy}
+            className="text-gray-400 hover:text-white"
+          >
+            {copied ? (
+              <Check className="w-5 h-5" color="white" />
+            ) : (
+              <Copy className="w-5 h-5 text-white" />
+            )}
+          </button>
+          <button
+            className="text-red hover:text-red-300 cursor-pointer font-inconsolata"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? (
+              <BsArrowsCollapse
+                size={19}
+                className="text-white cursor-pointer duration-200 hover:text-light-grey"
+              />
+            ) : (
+              <BsArrowsExpand
+                size={19}
+                className="text-white cursor-pointer duration-200 hover:text-light-grey"
+              />
+            )}
+          </button>
+        </div>
       </div>
       {expanded && (
         <div className="mt-2 relative">

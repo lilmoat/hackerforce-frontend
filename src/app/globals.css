@@ -50,7 +50,6 @@ body {
   right: 0;
   height: 100%;
   margin: auto;
-  width: 90vw;
   display: flex;
   justify-content: space-between; /* Distributes lines evenly */
 }
@@ -59,7 +58,7 @@ body {
   position: relative;
   width: 1px;
   height: 100%;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.041);
   overflow: hidden;
 }
 
@@ -67,7 +66,7 @@ body {
   content: "";
   display: block;
   position: absolute;
-  height: 15vh;
+  height: 20vh;
   width: 100%;
   top: -50%;
   left: 0;
