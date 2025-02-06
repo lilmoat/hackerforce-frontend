@@ -2,7 +2,6 @@ import BackgroundImage from "@/components/BackgroundImage";
 import Icon from "@/components/Icon";
 import SectionCard from "@/components/SectionCard";
 import { SectionCardData } from "@/data/data";
-import { TbArrowBigDownLinesFilled } from "react-icons/tb";
 
 export default function Section() {
   return (
@@ -15,7 +14,7 @@ export default function Section() {
           <TbArrowBigDownLinesFilled size={85} color="white" />
         </a> */}
       </div>
-      <div id="sectioncards" className="pt-20">
+      <div id="sectioncards" className="pt-20 w-full">
         {SectionCardData.map((section, index) => (
           <SectionCard key={index} {...section} />
         ))}

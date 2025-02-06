@@ -24,10 +24,13 @@ const CancelPlanModal: FC = () => {
       <div className="sm:w-[500px] w-full p-6 bg-[#1d1f20] rounded-2xl border border-[#2f3132] flex-col justify-center items-center gap-6 inline-flex">
         <div className="self-stretch justify-between items-start inline-flex">
           <div className="grow shrink basis-0 flex-col justify-center items-center gap-1 inline-flex">
-            <div className=" text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey text-[20px] font-bold font-['Orbitron'] uppercase mt-4 text-center">
-              Are you sure you want to cancel your plan? We'd love to help if
-              you're having any issues. Please contact us at…
+            <div className=" text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey text-[25px] font-bold font-['Orbitron'] uppercase mt-4 text-center">
+              Are you sure?
             </div>
+            <p className="text-white/50 font-inconsolata">
+              If you are unsure, you can describe the issue to us better, and we
+              will do our best to fix it
+            </p>
           </div>
         </div>
         <div className="self-stretch flex-col justify-start items-start gap-4 flex">
@@ -44,7 +47,7 @@ const CancelPlanModal: FC = () => {
           onClick={handleSubmit}
         >
           <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
-            submit
+            Submit
           </div>
         </div>
       </div>

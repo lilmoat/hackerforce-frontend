@@ -11,6 +11,7 @@ import {
 import { Check, Copy } from "lucide-react";
 import { useContext, useState } from "react";
 import { BsArrowsCollapse, BsArrowsExpand } from "react-icons/bs";
+import { FaFileAlt, FaFolder, FaFolderOpen } from "react-icons/fa";
 import { FcCheckmark } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
 import { MdOutlineZoomOutMap, MdZoomInMap } from "react-icons/md";
@@ -44,6 +45,7 @@ export default function Content({
 const Sidebar = () => (
   <div className="lg:w-auto w-full flex flex-col gap-6 lg:max-w-[300px]">
     <ModuleProgress />
+    <DirectoryPage />
     {ExpandableSectionData.map((section, index) => (
       <ExpandableSection
         title={section.title}
@@ -207,23 +209,29 @@ const TaskSection = ({
 const Challenges = () => {
   const [inputValues, setInputValues] = useState<string[]>([]);
   const [errorIndices, setErrorIndices] = useState<number[]>([]);
+  const [correctIndices, setCorrectIndices] = useState<number[]>([]); // Tracks correct answers
 
   const handleInputChange = (index: number, value: string) => {
+    if (correctIndices.includes(index)) return; // Prevent modification if correct
     const updatedInputs = [...inputValues];
     updatedInputs[index] = value;
     setInputValues(updatedInputs);
   };
 
   const handleSubmit = (index: number, correctAnswer: string) => {
-    if (inputValues[index]?.trim() !== correctAnswer.trim()) {
+    const userAnswer = inputValues[index]?.trim().toLowerCase();
+    const correct = correctAnswer.trim().toLowerCase();
+
+    if (userAnswer !== correct) {
       setErrorIndices((prev) => [...prev, index]);
 
-      // Remove the error class after animation
+      // Remove error state after animation
       setTimeout(() => {
         setErrorIndices((prev) => prev.filter((i) => i !== index));
       }, 1200);
     } else {
-      successAlert("Success.");
+      successAlert("Success!");
+      setCorrectIndices((prev) => [...prev, index]); // Mark as correct
     }
   };
 
@@ -267,10 +275,14 @@ const Challenges = () => {
                           {q.reward}
                         </span>
                       </div>
+
+                      {/* Input Box */}
                       <div
                         className={`w-full px-3 py-2 bg-[#141616] rounded-lg border ${
                           errorIndices.includes(inputIndex)
                             ? "border-red-500 animate-flash"
+                            : correctIndices.includes(inputIndex)
+                            ? "border-green"
                             : "border-[#2f3132]"
                         } flex justify-start items-center gap-2.5`}
                       >
@@ -280,10 +292,17 @@ const Challenges = () => {
                           onChange={(e) =>
                             handleInputChange(inputIndex, e.target.value)
                           }
-                          className="w-full bg-transparent outline-none text-white text-sm font-semibold font-['Inconsolata']"
+                          readOnly={correctIndices.includes(inputIndex)} // Prevent editing after correct answer
+                          className={`w-full bg-transparent outline-none text-sm font-semibold font-['Inconsolata'] ${
+                            correctIndices.includes(inputIndex)
+                              ? "text-green"
+                              : "text-white"
+                          }`}
                         />
                       </div>
                     </div>
+
+                    {/* Submit Button */}
                     <div
                       className="text-white text-sm font-orbitron px-6 py-2 bg-[#972123] hover:bg-[#7a1b1f] duration-200 cursor-pointer rounded-lg flex items-center gap-1"
                       onClick={() => handleSubmit(inputIndex, q.answer)}
@@ -388,6 +407,104 @@ const CodeTerminal = () => {
           </SyntaxHighlighter>
         </div>
       )}
+    </div>
+  );
+};
+
+const DirectoryTree = ({ data }: { data: DirectoryNode[] }) => {
+  return (
+    <div className="flex flex-col w-full items-start justify-start">
+      {data.map((node, index) => (
+        <TreeNode key={index} node={node} />
+      ))}
+    </div>
+  );
+};
+
+interface DirectoryNode {
+  name: string;
+  children?: DirectoryNode[];
+}
+
+const TreeNode = ({ node }: { node: DirectoryNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const hasChildren = node.children && node.children.length > 0;
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="p-2 w-full">
+      {/* Folder/Node */}
+      <div
+        className={`flex items-center gap-2 cursor-pointer text-white w-full `}
+        onClick={toggleOpen}
+      >
+        <div className="w-full flex items-center justify-between">
+          <span className="text-sm font-medium">{node.name}</span>
+          {hasChildren && (
+            <IoIosArrowUp
+              color="white"
+              className={`${isOpen ? "rotate-180 duration-200" : "hidden"}`}
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Render children if open */}
+      {hasChildren && isOpen && (
+        <div className="ml-4">
+          <DirectoryTree data={node.children!} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+const DirectoryPage = () => {
+  const directoryData = [
+    {
+      name: "root",
+      children: [
+        {
+          name: "parent",
+          children: [{ name: "child1" }, { name: "child2" }],
+        },
+        {
+          name: "parent2",
+          children: [
+            {
+              name: "nested parent",
+              children: [{ name: "deeply nested file" }],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "root",
+      children: [
+        {
+          name: "parent",
+          children: [{ name: "child1" }, { name: "child2" }],
+        },
+        {
+          name: "parent2",
+          children: [
+            {
+              name: "nested parent",
+              children: [{ name: "deeply nested file" }],
+            },
+          ],
+        },
+      ],
+    },
+  ];
+
+  return (
+    <div className="bg-[#141616]">
+      <DirectoryTree data={directoryData} />
     </div>
   );
 };

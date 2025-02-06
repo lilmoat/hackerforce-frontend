@@ -35,7 +35,7 @@ const SubscriptionHeader = () => (
     </div>
 
     {/* Title */}
-    <h2 className="text-white text-[40px] font-orbitron font-medium leading-[48px]">
+    <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey text-[40px] font-orbitron font-medium leading-[48px]">
       Subscriptions
     </h2>
 

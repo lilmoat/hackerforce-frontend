@@ -14,7 +14,7 @@ export default {
       },
       keyframes: {
         flash: {
-          "0%, 100%": { borderColor: "red" },
+          "0%, 100%": { borderColor: "#b22222" },
           "50%": { borderColor: "transparent" },
         },
       },

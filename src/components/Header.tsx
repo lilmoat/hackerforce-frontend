@@ -21,6 +21,7 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true); // State to control visibility
 
   const isCoursePage = pathname.startsWith("/course/");
 
@@ -42,8 +43,26 @@ const Header = () => {
       isMobileMenuOpen || isDropdownOpen || isProfileMenu ? "hidden" : "";
   }, [isMobileMenuOpen, isDropdownOpen, isProfileMenu]);
 
+  useEffect(() => {
+    let hideTimeout: NodeJS.Timeout;
+    if (!isHovered && isCoursePage) {
+      hideTimeout = setTimeout(() => setIsVisible(false), 1000); // Delay hiding
+    } else {
+      setIsVisible(true); // Show immediately when hovered
+    }
+    return () => clearTimeout(hideTimeout);
+  }, [isHovered, isCoursePage]);
+
   return (
     <>
+      {/* Invisible hover zone above navbar */}
+      {isCoursePage && (
+        <div
+          className="fixed top-0 left-0 w-full h-10 z-40"
+          onMouseEnter={() => setIsHovered(true)}
+        />
+      )}
+
       <motion.header
         className={`fixed backdrop-blur-sm text-white py-4 px-7 flex justify-between items-center w-full font-orbitron font-medium z-50 ${
           isMobileMenuOpen ? "bg-[#181A1B]" : ""
