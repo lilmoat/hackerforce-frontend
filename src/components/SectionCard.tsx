@@ -15,13 +15,15 @@ const SectionCard = ({
   <Link href={!blur ? "/course" : ""} className="w-full">
     <div
       className={`w-full xl:p-[100px] p-5 bg-cover group relative bg-center overflow-hidden bg-no-repeat flex justify-between items-center lg:gap-[100px] gap-3 ${
-        blur && "blur-md cursor-not-allowed"
+        blur && "blur-md cursor-not-allowed select-none"
       }`}
     >
       <img
         src={bgImage}
         alt="SectionBg"
-        className="w-full h-full absolute bottom-0 top-0 right-0 left-0 -z-10 duration-200 group-hover:scale-105 object-cover"
+        className={`w-full h-full absolute bottom-0 top-0 right-0 left-0 -z-10 duration-200 ${
+          !blur && "group-hover:scale-105"
+        } object-cover pointer-events-none`}
       />
       <div className="flex flex-col gap-4">
         <div className="text-white md:text-[60px] text-[40px] font-medium font-['Orbitron'] uppercase">
@@ -51,7 +53,7 @@ const SectionCard = ({
           </span>
         </div>
       </div>
-      <div
+      {/* <div
         className={`opacity-0 ${
           !blur &&
           "group-hover:opacity-100 group-hover:translate-x-2 duration-200"
@@ -62,7 +64,7 @@ const SectionCard = ({
           color="white"
           className="lg:w-[80px] lg:h-[80px] w-[40px] h-[40px] text-white"
         />
-      </div>
+      </div> */}
     </div>
   </Link>
 );

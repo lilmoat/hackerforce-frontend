@@ -5,7 +5,7 @@ import { SubscriptionPlansData } from "@/data/data";
 export default function Subscription() {
   return (
     <section
-      className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5"
+      className="relative max-w-[1440px] 2xl:min-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 min-h-screen flex items-center justify-center"
       id="pricing"
     >
       <BackgroundImage />

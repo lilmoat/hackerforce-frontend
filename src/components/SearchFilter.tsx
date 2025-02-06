@@ -32,7 +32,7 @@ const SearchFilter = () => {
         />
       </div>
       <div className="relative w-full md:w-auto">
-        {/* ✅ Dropdown Trigger */}
+        {/* Dropdown Trigger */}
         <div
           className="px-4 py-2 bg-[#2f3132] rounded-lg flex items-center justify-between gap-3 cursor-pointer w-full md:w-auto transition-all duration-300"
           onClick={() => setIsOpen(!isOpen)}
@@ -47,13 +47,20 @@ const SearchFilter = () => {
           />
         </div>
 
-        {/* ✅ Dropdown Menu */}
+        {/* Dropdown Menu */}
         {isOpen && (
-          <div className="absolute left-0 mt-2 w-full md:w-[150px] bg-[#1d1f20] rounded-lg border border-[#2f3132] shadow-lg z-10">
+          <div
+            className={`absolute left-0 mt-2 w-full md:w-[150px] bg-[#1d1f20] rounded-lg border border-[#2f3132] shadow-lg z-10
+          ${
+            isOpen
+              ? "opacity-100 duration-300"
+              : " opacity-0 pointer-events-auto"
+          }`}
+          >
             {sortingOptions.map((option, key) => (
               <div
                 key={option}
-                className={`${`px-4 py-2 text-white text-sm font-['Orbitron'] cursor-pointer hover:bg-[#d44245] ${
+                className={`${`px-4 py-2 text-white text-sm font-['Orbitron'] cursor-pointer hover:bg-red ${
                   key === 0
                     ? "rounded-t-lg"
                     : key === sortingOptions.length - 1

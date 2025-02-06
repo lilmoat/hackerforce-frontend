@@ -193,8 +193,8 @@ const TaskSection = ({
   details: string[];
 }) => (
   <div className="flex flex-col gap-4">
-    <h2 className="text-white text-xl font-bold font-['Orbitron']">{title}</h2>
-    <div className="text-[#a0a0a0] xl:text-lg text-sm font-bold font-['Inconsolata']">
+    <h2 className="text-white text-2xl font-bold font-['Orbitron']">{title}</h2>
+    <div className="text-[#a0a0a0] xl:text-lg text-sm font-normal font-['Inconsolata']">
       {details.map((detail, index) => (
         <p key={index}>{detail}</p>
       ))}

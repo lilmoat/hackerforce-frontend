@@ -7,7 +7,7 @@ import { TbArrowBigDownLinesFilled } from "react-icons/tb";
 export default function Section() {
   return (
     <div className="w-full md:mt-12 mt-[70px] relative flex flex-col items-center justify-center pb-20">
-      <div className="w-full max-w-[1440px] xl:p-[100px] min-h-screen md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
+      <div className="w-full max-w-[1440px] xl:p-[100px] min-h-[70vh] md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
         <BackgroundImage />
         <HeaderSection />
         <ContentSection />
