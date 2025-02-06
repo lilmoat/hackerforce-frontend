@@ -8,7 +8,7 @@ export default function Progressbar() {
       <ProgressBar
         height="3px"
         color="#972123"
-        options={{ showSpinner: true }}
+        options={{ showSpinner: false }}
         shallowRouting
       />
     </div>

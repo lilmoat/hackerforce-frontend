@@ -28,8 +28,8 @@ export const warningAlert = (text: string) => {
 
 export const successAlert = (text: string) => {
   toast.success(text, {
-    position: "top-right",
-    autoClose: 5000,
+    position: "bottom-right",
+    autoClose: 15000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
