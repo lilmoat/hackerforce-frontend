@@ -49,7 +49,7 @@ const user = {
   ],
 };
 
-// ✅ **Profile Info Component**
+// **Profile Info Component**
 const ProfileInfo = ({ name, location, avatar }: typeof user) => (
   <div className="py-[50px] xl:w-[1200px] lg:justify-start lg:items-start items-center justify-center gap-[50px] lg:flex-row flex flex-col">
     <Image
@@ -77,7 +77,7 @@ const ProfileInfo = ({ name, location, avatar }: typeof user) => (
   </div>
 );
 
-// ✅ **Profile Stats Component**
+// **Profile Stats Component**
 const ProfileStats = ({ stats }: { stats: typeof user.stats }) => (
   <div className="self-stretch md:justify-between justify-center gap-4 md:items-center items-center flex flex-col md:flex-row md:w-full font-inconsolata">
     <div className="w-full justify-center items-center gap-2 grid grid-cols-3 md:grid-cols-5">
@@ -94,7 +94,7 @@ const ProfileStats = ({ stats }: { stats: typeof user.stats }) => (
   </div>
 );
 
-// ✅ **Reusable Statistic Item**
+// **Reusable Statistic Item**
 const StatItem = ({
   icon,
   label,
@@ -123,7 +123,7 @@ const StatItem = ({
   </div>
 );
 
-// ✅ **Navigation Tabs**
+// **Navigation Tabs**
 const NavTab = ({
   label,
   active = false,
@@ -152,7 +152,7 @@ const NavTab = ({
   </div>
 );
 
-// ✅ **Mock Data**
+// **Mock Data**
 const modules = [
   {
     id: 1,
@@ -190,7 +190,7 @@ const exams = [
   { id: 2, title: "Exam for Barbados", date: "July 23, 2024 - 08:00 AM" },
 ];
 
-// ✅ **Search Input Component**
+// **Search Input Component**
 const SearchInput = () => (
   <div className="h-9 px-4 py-1.5 bg-[#1d1f20] rounded-lg border border-[#2f3132] justify-start items-center gap-3 flex">
     <Icon name="Search" size={20} color="#a0a0a0" />
@@ -201,7 +201,7 @@ const SearchInput = () => (
   </div>
 );
 
-// ✅ **Collapsible Module Component**
+// **Collapsible Module Component**
 const ProgressModule = ({ module }: { module: any }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -251,14 +251,15 @@ const ProgressModule = ({ module }: { module: any }) => {
                     <p className="text-[#a0a0a0] text-sm">Unit Statistics: </p>
                     <p className="text-red text-sm">{module.stats}</p>
                   </div>
-                  <div className="absolute w-full h-2.5 bg-white/20 rounded-full"></div>
-                  <div
-                    className="absolute w-[58.59px] h-2.5 bg-[#d44245] rounded-full"
-                    style={{ width: `${(5 / 10) * 100}%` }}
-                  />
+                  <div className=" w-full h-2.5 bg-white/20 rounded-full">
+                    <div
+                      className="absolute w-[58.59px] h-2.5 bg-[#d44245] rounded-full"
+                      style={{ width: `${(5 / 10) * 100}%` }}
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="px-3 py-2 bg-red rounded-lg text-white font-inconsolata text-center">
+              <div className="px-3 py-2 bg-red hover:bg-[#b22222cb] duration-200 rounded-lg text-white font-orbitron text-center">
                 Continue
               </div>
             </div>
@@ -269,7 +270,7 @@ const ProgressModule = ({ module }: { module: any }) => {
   );
 };
 
-// ✅ **Exam Card Component**
+// **Exam Card Component**
 const ExamCard = ({ title, date }: { title: string; date: string }) => (
   <div className="self-stretch px-3 py-2 bg-[#1d1f20] rounded-2xl justify-start items-center gap-3 inline-flex">
     <div className="p-2 bg-[#181a1b] rounded-full border border-[#2f3132]"></div>
@@ -285,11 +286,11 @@ const ExamCard = ({ title, date }: { title: string; date: string }) => (
   </div>
 );
 
-// ✅ **Main Progress Section Component**
+// **Main Progress Section Component**
 const ProgressSection = () => (
   <div className="w-full flex items-start justify-center gap-10 mt-5 flex-col md:flex-row">
     <div className="flex-col justify-start items-start gap-6 inline-flex w-full">
-      {/* ✅ Header */}
+      {/* Header */}
       <div className="self-stretch flex-col justify-start items-start gap-4 flex">
         <div className="self-stretch justify-between items-center inline-flex gap-3">
           <p className="grow shrink basis-0 self-stretch text-white md:text-xl text-md font-medium font-['Orbitron'] leading-loose">
@@ -298,7 +299,7 @@ const ProgressSection = () => (
           <SearchInput />
         </div>
 
-        {/* ✅ Modules */}
+        {/* Modules */}
         <div className="self-stretch flex-col justify-start items-start gap-4 flex">
           {modules.map((module) => (
             <ProgressModule key={module.id} module={module} />
@@ -306,7 +307,7 @@ const ProgressSection = () => (
         </div>
       </div>
 
-      {/* ✅ Scheduled Exams */}
+      {/* Scheduled Exams */}
       <div className="self-stretch flex-col justify-start items-start gap-4 flex blur-sm cursor-not-allowed select-none">
         <p className="grow shrink basis-0 self-stretch text-white text-xl font-medium font-['Orbitron'] leading-loose">
           Scheduled Exams
@@ -321,7 +322,7 @@ const ProgressSection = () => (
   </div>
 );
 
-// ✅ **Mock Data**
+// **Mock Data**
 const statistics = [
   { label: "Chamber owned", value: "4" },
   { label: "Colosseum owned", value: "1" },
@@ -330,7 +331,7 @@ const statistics = [
   { label: "Total XP Acquired", value: "4500" },
 ];
 
-// ✅ **Statistic Card Component**
+// **Statistic Card Component**
 const StatisticCard = ({
   title,
   stats,
@@ -347,7 +348,7 @@ const StatisticCard = ({
           </p>
         </div>
 
-        {/* ✅ Dynamically Render Stats */}
+        {/* Dynamically Render Stats */}
         <div className="self-stretch flex flex-col gap-3">
           {stats.map((stat, index) => (
             <div
@@ -368,7 +369,7 @@ const StatisticCard = ({
   </div>
 );
 
-// ✅ **Main Dashboard Component**
+// **Main Dashboard Component**
 export default function Dashboard() {
   return (
     <div className="relative max-w-[1440px] xl:p-5 md:p-10 lg:p-12 p-5 md:mt-12 mt-[100px] min-h-screen">
@@ -380,7 +381,7 @@ export default function Dashboard() {
         stats={[]}
       />
 
-      {/* ✅ Navigation Tabs */}
+      {/* Navigation Tabs */}
       <div className="h-14 w-full border-b border-[#2f3132] justify-start items-center gap-2 inline-flex">
         <div className="justify-start items-center flex">
           <NavTab label="Dashboard" active />
