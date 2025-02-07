@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Icon from "./Icon";
 import { CourseCardProps } from "@/types/type";
 import Link from "next/link";
 
@@ -11,8 +10,6 @@ const CourseCard = ({
   reward,
   progress,
   image,
-  rating,
-  reviews,
   content,
 }: CourseCardProps) => (
   <div className="lg:w-[392px] w-full flex flex-col gap-4">

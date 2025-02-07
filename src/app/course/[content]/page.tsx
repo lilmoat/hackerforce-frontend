@@ -3,18 +3,15 @@
 import { successAlert } from "@/components/ToastGroup";
 import { ModalContext } from "@/contexts/ModalContext";
 import {
-  ChallengesData,
   ExpandableSectionData,
   ModuleProgressData,
   TaskDetailsData,
+  TreeDirectoryData,
 } from "@/data/data";
 import { Check, Copy } from "lucide-react";
 import { useContext, useState } from "react";
 import { BsArrowsCollapse, BsArrowsExpand } from "react-icons/bs";
-import { FaFileAlt, FaFolder, FaFolderOpen } from "react-icons/fa";
-import { FcCheckmark } from "react-icons/fc";
 import { IoIosArrowUp } from "react-icons/io";
-import { MdOutlineZoomOutMap, MdZoomInMap } from "react-icons/md";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrowNight } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
@@ -232,6 +229,9 @@ const Challenges = () => {
     } else {
       successAlert("Success!");
       setCorrectIndices((prev) => [...prev, index]); // Mark as correct
+      setTimeout(() => {
+        setCorrectIndices((prev) => prev.filter((i) => i !== index));
+      }, 1200);
     }
   };
 
@@ -282,7 +282,7 @@ const Challenges = () => {
                           errorIndices.includes(inputIndex)
                             ? "border-red-500 animate-flash"
                             : correctIndices.includes(inputIndex)
-                            ? "border-green"
+                            ? "animate-success"
                             : "border-[#2f3132]"
                         } flex justify-start items-center gap-2.5`}
                       >
@@ -438,7 +438,7 @@ const TreeNode = ({ node }: { node: DirectoryNode }) => {
     <div className="p-2 w-full">
       {/* Folder/Node */}
       <div
-        className={`flex items-center gap-2 cursor-pointer text-white w-full `}
+        className={`flex items-center gap-2 cursor-pointer text-white w-full font-inconsolata`}
         onClick={toggleOpen}
       >
         <div className="w-full flex items-center justify-between">
@@ -463,48 +463,9 @@ const TreeNode = ({ node }: { node: DirectoryNode }) => {
 };
 
 const DirectoryPage = () => {
-  const directoryData = [
-    {
-      name: "root",
-      children: [
-        {
-          name: "parent",
-          children: [{ name: "child1" }, { name: "child2" }],
-        },
-        {
-          name: "parent2",
-          children: [
-            {
-              name: "nested parent",
-              children: [{ name: "deeply nested file" }],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      name: "root",
-      children: [
-        {
-          name: "parent",
-          children: [{ name: "child1" }, { name: "child2" }],
-        },
-        {
-          name: "parent2",
-          children: [
-            {
-              name: "nested parent",
-              children: [{ name: "deeply nested file" }],
-            },
-          ],
-        },
-      ],
-    },
-  ];
-
   return (
     <div className="bg-[#141616]">
-      <DirectoryTree data={directoryData} />
+      <DirectoryTree data={TreeDirectoryData} />
     </div>
   );
 };

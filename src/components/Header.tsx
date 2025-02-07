@@ -9,7 +9,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState, useEffect, useContext } from "react";
-import { BiArrowToBottom } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 
@@ -47,6 +46,7 @@ const Header = () => {
     let hideTimeout: NodeJS.Timeout;
     if (!isHovered && isCoursePage) {
       hideTimeout = setTimeout(() => setIsVisible(false), 1000); // Delay hiding
+      setIsProfileMenu(false);
     } else {
       setIsVisible(true); // Show immediately when hovered
     }
@@ -58,7 +58,7 @@ const Header = () => {
       {/* Invisible hover zone above navbar */}
       {isCoursePage && (
         <div
-          className="fixed top-0 left-0 w-full h-10 z-40"
+          className="fixed top-0 left-0 w-full h-12 z-40"
           onMouseEnter={() => setIsHovered(true)}
         />
       )}
@@ -68,7 +68,7 @@ const Header = () => {
           isMobileMenuOpen ? "bg-[#181A1B]" : ""
         }`}
         initial={{ y: isCoursePage ? -100 : 0 }} // Slide-up only in /course/intro
-        animate={{ y: isCoursePage && !isHovered ? -55 : 0 }}
+        animate={{ y: isCoursePage && !isHovered ? -70 : 0 }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         onMouseEnter={() => isCoursePage && setIsHovered(true)}
         onMouseLeave={() => isCoursePage && setIsHovered(false)}
@@ -169,6 +169,7 @@ const Header = () => {
           )}
 
           <ProfileDropdownMenu
+            headerShowState={isVisible}
             isProfileMenu={isProfileMenu}
             onCloseMenu={() => setIsProfileMenu(false)}
             onLogout={() => account.logout()}
@@ -403,10 +404,12 @@ const ProfileMenuItem = ({
   </Link>
 );
 const ProfileDropdownMenu = ({
+  headerShowState,
   isProfileMenu,
   onCloseMenu,
   onLogout,
 }: {
+  headerShowState: boolean;
   isProfileMenu: boolean;
   onCloseMenu: () => void;
   onLogout: () => void;

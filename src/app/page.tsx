@@ -1,14 +1,18 @@
+import RotatingMap from "@/components/RotatingMap";
 import About from "@/landing/About";
-import Subscription from "@/landing/Subscription";
 import FindPath from "@/landing/FindPath";
-import Security from "@/landing/Security";
-import Question from "@/landing/Question";
 import HeroSection from "@/landing/Hero";
+import Question from "@/landing/Question";
+import Security from "@/landing/Security";
+import Subscription from "@/landing/Subscription";
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
+      <div className="relative min-h-screen overflow-hidden flex items-center justify-center">
+        <HeroSection />
+        <RotatingMap />
+      </div>
       <About />
       <Subscription />
       <FindPath />

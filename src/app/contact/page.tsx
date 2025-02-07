@@ -7,23 +7,15 @@ import { useState } from "react";
 export default function Contact() {
   return (
     <div className="w-full flex items-center justify-center min-h-screen p-5 relative">
-      {/* Background Image */}
       <BackgroundImage />
-
-      {/* Contact Form */}
       <div className="mt-[70px] lg:w-[700px] w-full md:p-8 p-3 bg-[#1d1f20] rounded-2xl border border-[#2f3132] flex flex-col items-center gap-6">
-        {/* Header */}
         <ContactHeader />
-
-        {/* Form */}
         <ContactForm />
       </div>
     </div>
   );
 }
 
-/* ------------------ COMPONENTS ------------------ */
-// 🔹 Contact Header
 const ContactHeader = () => (
   <div className="flex flex-col items-center gap-2 w-full">
     <h2 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey md:text-[55px] text-[40px] font-bold font-orbitron uppercase text-center">
@@ -35,7 +27,6 @@ const ContactHeader = () => (
   </div>
 );
 
-// 🔹 Contact Form Component
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     fullname: "",
@@ -88,7 +79,6 @@ const ContactForm = () => {
         required
       />
 
-      {/* Submit Button */}
       <button
         type="submit"
         className="w-full px-6 py-3 bg-[#972123] hover:bg-[#7a1b1f] rounded-lg text-white text-base font-orbitron font-medium transition duration-200"
@@ -100,7 +90,6 @@ const ContactForm = () => {
   );
 };
 
-// 🔹 Reusable Form Field Component
 const FormField = ({
   label,
   name,
@@ -134,7 +123,7 @@ const FormField = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full min-h-[150px] max-h-[271px] p-3 bg-[#141516] rounded-lg text-[#a0a0a0] text-base font-inconsolata outline-none resize-none"
+        className="w-full min-h-[150px] max-h-[271px] p-3 bg-[#141516] placeholder:text-grey rounded-lg text-[#a0a0a0] text-base font-inconsolata outline-none resize-none"
         required={required}
       />
     ) : (
@@ -145,7 +134,7 @@ const FormField = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full p-3 bg-[#141516] rounded-lg text-[#a0a0a0] text-base font-inconsolata outline-none"
+        className="w-full p-3 bg-[#141516] rounded-lg text-[#a0a0a0] text-base placeholder:text-grey font-inconsolata outline-none"
         required={required}
       />
     )}
