@@ -1,10 +1,9 @@
 import Icon from "@/components/Icon";
 import RotatingMap from "@/components/RotatingMap";
-import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative max-w-[1440px]">
+    <section className="relative max-w-[1440px] 3xl:max-w-[2000px]">
       <div className="flex flex-col items-center justify-center gap-5 min-h-screen relative overflow-hidden md:px-5">
         {/* Background Image */}
         <BackgroundImage />

@@ -6,7 +6,6 @@ import { ModalContext } from "@/contexts/ModalContext";
 import { UploadCloudIcon } from "lucide-react";
 import { useState, useContext } from "react";
 import { CgClose } from "react-icons/cg";
-import { FaUpload } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
 import Modal from "react-responsive-modal";
 

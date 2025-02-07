@@ -11,15 +11,21 @@ export default {
     extend: {
       animation: {
         flash: "flash 0.9s ease-in-out 4",
+        success: "success 0.9s ease-in-out 3",
       },
       keyframes: {
         flash: {
           "0%, 100%": { borderColor: "#b22222" },
           "50%": { borderColor: "transparent" },
         },
+
+        success: {
+          "0%, 100%": { borderColor: "#71fc00" },
+          "50%": { borderColor: "transparent" },
+        },
       },
       screens: {
-        "3xl": "1920px",
+        "3xl": "2000px",
         "4xl": "2560px",
       },
       colors: {

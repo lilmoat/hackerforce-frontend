@@ -6,7 +6,7 @@ import { SectionCardData } from "@/data/data";
 export default function Section() {
   return (
     <div className="w-full md:mt-12 mt-[70px] relative flex flex-col items-center justify-center pb-20">
-      <div className="w-full max-w-[1440px] xl:p-[100px] min-h-[70vh] md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
+      <div className="w-full max-w-[1440px] xl:p-[100px]  min-h-screen md:p-10 lg:p-12 p-5 flex flex-col items-center justify-center relative">
         <BackgroundImage />
         <HeaderSection />
         <ContentSection />
@@ -28,7 +28,7 @@ const HeaderSection = () => (
     <div className="px-2 bg-[#972123] flex items-center gap-2.5">
       <span className="text-white text-xl font-['Inconsolata']">Learn</span>
     </div>
-    <h1 className="text-white md:text-[88px] text-[40px] font-bold font-['Orbitron'] uppercase">
+    <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-grey md:text-[88px] text-[40px] font-bold font-['Orbitron'] uppercase">
       Sections
     </h1>
     <p className="text-[#a0a0a0] md:text-xl text-base font-['Inconsolata'] text-center">

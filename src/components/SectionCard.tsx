@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Icon from "@/components/Icon";
 import { SectionCardProps } from "@/types/type";
 import Link from "next/link";
 
@@ -53,18 +52,6 @@ const SectionCard = ({
           </span>
         </div>
       </div>
-      {/* <div
-        className={`opacity-0 ${
-          !blur &&
-          "group-hover:opacity-100 group-hover:translate-x-2 duration-200"
-        } `}
-      >
-        <Icon
-          name={"UpIcon"}
-          color="white"
-          className="lg:w-[80px] lg:h-[80px] w-[40px] h-[40px] text-white"
-        />
-      </div> */}
     </div>
   </Link>
 );

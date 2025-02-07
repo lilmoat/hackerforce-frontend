@@ -37,12 +37,22 @@ const GetHelpModal: FC = () => {
             />
           </div>
         </div>
-        <div
-          className="self-stretch px-6 py-3 bg-[#972123] duration-200 hover:bg-[#972123d5] cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex"
-          onClick={handleSubmit}
-        >
-          <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
-            submit
+        <div className="w-full flex items-center justify-between gap-3">
+          <div
+            className="self-stretch w-full px-6 py-3 bg-grey duration-200 hover:bg-grey/60 cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex"
+            onClick={closeGetHelpModal}
+          >
+            <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
+              Cancel
+            </div>
+          </div>
+          <div
+            className="self-stretch w-full px-6 py-3 bg-[#972123] duration-200 hover:bg-[#972123d5] cursor-pointer rounded-lg justify-center items-center gap-1 inline-flex"
+            onClick={handleSubmit}
+          >
+            <div className="text-white text-base font-medium font-['Orbitron'] leading-normal">
+              submit
+            </div>
           </div>
         </div>
       </div>

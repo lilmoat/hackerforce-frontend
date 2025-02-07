@@ -387,6 +387,45 @@ const SettingsMenu = [
   { id: "subscription", label: "Subscription", icon: LiaCalendarMinusSolid },
 ];
 
+const TreeDirectoryData = [
+  {
+    name: "root",
+    children: [
+      {
+        name: "parent",
+        children: [{ name: "child1" }, { name: "child2" }],
+      },
+      {
+        name: "parent2",
+        children: [
+          {
+            name: "nested parent",
+            children: [{ name: "deeply nested file" }],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "root",
+    children: [
+      {
+        name: "parent",
+        children: [{ name: "child1" }, { name: "child2" }],
+      },
+      {
+        name: "parent2",
+        children: [
+          {
+            name: "nested parent",
+            children: [{ name: "deeply nested file" }],
+          },
+        ],
+      },
+    ],
+  },
+];
+
 export {
   AboutStatsData,
   PathsData,
@@ -402,4 +441,5 @@ export {
   ChallengesData,
   ExpandableSectionData,
   SettingsMenu,
+  TreeDirectoryData,
 };
