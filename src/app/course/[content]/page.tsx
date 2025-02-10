@@ -1,6 +1,7 @@
 "use client";
 
 import { successAlert } from "@/components/ToastGroup";
+import FileTree from "@/components/TreeView";
 import { ModalContext } from "@/contexts/ModalContext";
 import {
   ExpandableSectionData,
@@ -42,7 +43,8 @@ export default function Content({
 const Sidebar = () => (
   <div className="lg:w-auto w-full flex flex-col gap-6 lg:max-w-[300px]">
     <ModuleProgress />
-    <DirectoryPage />
+    {/* <DirectoryPage /> */}
+    <FileTree />
     {ExpandableSectionData.map((section, index) => (
       <ExpandableSection
         title={section.title}
@@ -435,10 +437,10 @@ const TreeNode = ({ node }: { node: DirectoryNode }) => {
   };
 
   return (
-    <div className="p-2 w-full bg-red">
+    <div className="p-2 w-full ">
       {/* Folder/Node */}
       <div
-        className={`flex items-center gap-2 cursor-pointer text-white w-full font-inconsolata`}
+        className={`flex items-center gap-2 cursor-pointer text-white/60 w-full font-inconsolata`}
         onClick={toggleOpen}
       >
         <div className="w-full flex items-center justify-between">

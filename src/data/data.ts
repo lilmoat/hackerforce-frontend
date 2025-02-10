@@ -389,7 +389,7 @@ const SettingsMenu = [
 
 const TreeDirectoryData = [
   {
-    name: "root",
+    name: "Description",
     children: [
       {
         name: "parent",
@@ -407,7 +407,7 @@ const TreeDirectoryData = [
     ],
   },
   {
-    name: "root",
+    name: "Information",
     children: [
       {
         name: "parent",
