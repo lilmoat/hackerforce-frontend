@@ -435,7 +435,7 @@ const TreeNode = ({ node }: { node: DirectoryNode }) => {
   };
 
   return (
-    <div className="p-2 w-full">
+    <div className="p-2 w-full bg-red">
       {/* Folder/Node */}
       <div
         className={`flex items-center gap-2 cursor-pointer text-white w-full font-inconsolata`}
