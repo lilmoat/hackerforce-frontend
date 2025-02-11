@@ -9,7 +9,7 @@ import { useContext } from "react";
 export default function About() {
   return (
     <section
-      className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 md:mt-10"
+      className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 md:mt-10 min-h-screen flex flex-col items-start justify-center"
       id="about"
     >
       {/* Top Section */}
