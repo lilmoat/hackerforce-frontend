@@ -415,7 +415,7 @@ const ProfileDropdownMenu = ({
   onLogout: () => void;
 }) => (
   <div
-    className={`absolute bg-[#1d1f20] top-12 duration-300 right-1
+    className={`absolute bg-[#1d1f20] top-12 duration-300 right-1 rounded-b-lg
     ${
       !isProfileMenu
         ? "opacity-0 pointer-events-none"

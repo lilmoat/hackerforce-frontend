@@ -45,13 +45,13 @@ const Sidebar = () => (
     <ModuleProgress />
     {/* <DirectoryPage /> */}
     <FileTree />
-    {ExpandableSectionData.map((section, index) => (
+    {/* {ExpandableSectionData.map((section, index) => (
       <ExpandableSection
         title={section.title}
         content={section.content}
         key={index}
       />
-    ))}
+    ))} */}
     <PracticeMachine />
   </div>
 );
@@ -71,10 +71,8 @@ const PracticeMachine = () => (
         Practice here
       </div>
     </div>
-    <div className="flex-col justify-center items-start gap-4 flex">
-      <div className="text-white font-orbitron cursor-pointer self-stretch px-6 py-2 duration-200 bg-[#972123] hover:bg-[#7a1b1f] rounded-lg justify-center items-center gap-1 inline-flex">
-        Spawn
-      </div>
+    <div className="text-white font-orbitron pointer-events-none self-stretch px-6 py-2 duration-200 bg-[#972123] hover:bg-[#7a1b1f] rounded-lg justify-center items-center gap-1 inline-flex">
+      Spawn
     </div>
   </div>
 );

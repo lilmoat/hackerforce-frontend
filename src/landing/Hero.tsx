@@ -66,7 +66,7 @@ const HeroText = () => (
 const HeroFooter = () => (
   <div className="flex flex-col gap-4 items-center w-full px-7 md:p-7">
     <a href="#about" aria-label="Go to About Section">
-      <Icon name="ScrollDownIcon" size={81} />
+      <Icon name="ScrollDownIcon" size={95} />
     </a>
   </div>
 );

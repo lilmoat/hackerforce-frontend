@@ -6,7 +6,7 @@ import { TeamMembersData } from "@/data/data";
 
 export default function About() {
   return (
-    <div className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 md:mt-12 mt-[100px]">
+    <div className="relative max-w-[1440px] xl:p-[100px] md:p-10 lg:p-12 p-5 md:mt-12 mt-[100px] min-h-screen flex items-center justify-center flex-col">
       <BackgroundImage />
       <div className="flex flex-col md:flex-row gap-[20px] lg:gap-[100px] w-full relative">
         <div className="flex flex-col gap-5 md:gap-[30px] w-full">

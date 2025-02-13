@@ -8,17 +8,30 @@ interface TreeNode {
   children?: TreeNode[];
 }
 
-const treeData: TreeNode = {
-  name: "Local Disk (C:)",
-  children: [
-    { name: "Program Files" },
-    {
-      name: "Users",
-      children: [{ name: "Smith" }, { name: "Public" }, { name: "Admin" }],
-    },
-    { name: "Windows" },
-  ],
-};
+const treeData: TreeNode[] = [
+  {
+    name: "Foor",
+    children: [
+      { name: "X" },
+      {
+        name: "Y",
+        children: [{ name: "x" }, { name: "y" }, { name: "z" }],
+      },
+      { name: "Z" },
+    ],
+  },
+  {
+    name: "bar",
+    children: [
+      { name: "a" },
+      {
+        name: "b",
+        children: [{ name: "a" }, { name: "b" }, { name: "c" }],
+      },
+      { name: "c" },
+    ],
+  },
+];
 
 const TreeView = ({
   node,
@@ -31,42 +44,40 @@ const TreeView = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
 
+  const handleToggle = (e: React.MouseEvent) => {
+    setExpanded(!expanded);
+  };
+
   return (
     <div className="w-full">
       <div
-        className={`flex items-center cursor-pointer p-1 ${
-          activeNode === node.name ? "bg-red text-white" : ""
+        className={`flex items-center cursor-pointer p-1 rounded-md ${
+          activeNode === node.name
+            ? "bg-red-600 text-red font-extrabold"
+            : "hover:bg-grey/50 duration-200 font-normal"
         }`}
         onClick={() => onSelect(node.name)}
       >
         {node.children ? (
-          expanded ? (
-            <ChevronDown
-              className="w-4 h-4 mr-1"
-              onClick={(e) => {
-                e.stopPropagation();
-                setExpanded(!expanded);
-              }}
-            />
-          ) : (
-            <ChevronRight
-              className="w-4 h-4 mr-1"
-              onClick={(e) => {
-                e.stopPropagation();
-                setExpanded(!expanded);
-              }}
-            />
-          )
+          <span onClick={handleToggle} className="mr-1">
+            {expanded ? (
+              <ChevronDown className="w-4 h-4" />
+            ) : (
+              <ChevronRight className="w-4 h-4" />
+            )}
+          </span>
         ) : (
           <span className="w-4 h-4 mr-1" />
         )}
-        <span>{node.name}</span>
+        <span onClick={handleToggle} className="w-full">
+          {node.name}
+        </span>
       </div>
       {expanded && node.children && (
         <div className="pl-4">
           {node.children.map((child, index) => (
             <TreeView
-              key={index}
+              key={`${node.name}-${index}`}
               node={child}
               onSelect={onSelect}
               activeNode={activeNode}
@@ -82,12 +93,15 @@ export default function FileTree() {
   const [activeNode, setActiveNode] = useState("");
 
   return (
-    <div className="w-full bg-[#141616] font-inconsolata text-white/60 text-sm">
-      <TreeView
-        node={treeData}
-        onSelect={setActiveNode}
-        activeNode={activeNode}
-      />
+    <div className="w-full bg-[#141616] font-mono text-white/60 text-sm p-2">
+      {treeData.map((node, index) => (
+        <TreeView
+          key={index}
+          node={node}
+          onSelect={setActiveNode}
+          activeNode={activeNode}
+        />
+      ))}
     </div>
   );
 }
