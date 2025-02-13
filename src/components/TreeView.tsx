@@ -15,7 +15,7 @@ const treeData: TreeNode[] = [
       { name: "X" },
       {
         name: "Y",
-        children: [{ name: "x" }, { name: "y" }, { name: "z" }],
+        children: [{ name: "xer ewr" }, { name: "eey" }, { name: "rewz" }],
       },
       { name: "Z" },
     ],
@@ -26,7 +26,7 @@ const treeData: TreeNode[] = [
       { name: "a" },
       {
         name: "b",
-        children: [{ name: "a" }, { name: "b" }, { name: "c" }],
+        children: [{ name: "aff" }, { name: "bewr" }, { name: "crwe" }],
       },
       { name: "c" },
     ],
@@ -49,7 +49,7 @@ const TreeView = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full border-b border-white/5">
       <div
         className={`flex items-center cursor-pointer p-1 rounded-md ${
           activeNode === node.name
@@ -69,7 +69,7 @@ const TreeView = ({
         ) : (
           <span className="w-4 h-4 mr-1" />
         )}
-        <span onClick={handleToggle} className="w-full">
+        <span onClick={handleToggle} className="w-full text-base">
           {node.name}
         </span>
       </div>
@@ -93,7 +93,7 @@ export default function FileTree() {
   const [activeNode, setActiveNode] = useState("");
 
   return (
-    <div className="w-full bg-[#141616] font-mono text-white/60 text-sm p-2">
+    <div className="w-full bg-[#1D1F21] rounded-md font-mono text-white/60 text-sm p-2">
       {treeData.map((node, index) => (
         <TreeView
           key={index}
