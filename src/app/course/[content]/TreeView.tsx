@@ -12,21 +12,23 @@ const treeData: TreeNode[] = [
   {
     name: "Foor",
     children: [
-      { name: "xds" },
+      { name: "x" },
       {
-        name: "yfsd",
+        name: "y",
+        children: [{ name: "xer ewr" }, { name: "eey" }, { name: "rewz" }],
       },
-      { name: "zew" },
+      { name: "z" },
     ],
   },
   {
     name: "Bar",
     children: [
-      { name: "wef" },
+      { name: "a" },
       {
-        name: "sdf",
+        name: "b",
+        children: [{ name: "aff" }, { name: "bewr" }, { name: "crwe" }],
       },
-      { name: "dds" },
+      { name: "v" },
     ],
   },
 ];
@@ -58,11 +60,11 @@ const TreeView = ({
       >
         {node.children ? (
           <span onClick={handleToggle} className="mr-1">
-            {expanded ? (
-              <ChevronDown className="w-4 h-4" />
-            ) : (
-              <ChevronRight className="w-4 h-4" />
-            )}
+            <ChevronDown
+              className={`w-4 h-4 ${
+                expanded ? "rotate-0 duration-200" : "-rotate-90 duration-200"
+              }`}
+            />
           </span>
         ) : (
           <span className="w-4 h-4 mr-1" />
@@ -70,7 +72,9 @@ const TreeView = ({
         <span
           onClick={handleToggle}
           className={`w-full text-base ${
-            node.children ? "font-extrabold text-[17px]" : "font-normal"
+            node.children
+              ? "font-extrabold text-[17px]"
+              : "font-normal text-[15px]"
           }`}
         >
           {node.name}

@@ -15,14 +15,22 @@ const CodeTerminal = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const code = `B00L Falling short {
-    [in] Handle                        %existingtoken
-    [in] SWORD                         very_much_into
-    [in] Iknow_jow_sduhasdd    Something_upset
-    [in] Weaon_illasnd_showcn_level     _sdsakvio7tad
-    [in] Hacking                        Flourishing_refuse
-    [in] dwusdvha                       Sijasdfhv_sadioyg97t0
-  };`;
+  const code = `function createElement({ node, style, useInlineStyles, key }) {
+  const { properties, type, tagName, value } = node;
+  if (type === "text") {
+    return value;
+  } else if (tagName) {
+    const TagName = tagName;
+    const childrenCreator = createChildren(style, useInlineStyles);
+    const props = (
+      useInlineStyles
+      ? { style: createStyleObject(properties.className, style) }
+      : { className: createClassNameString(properties.className) }
+    );
+    const children = childrenCreator(node.children);
+    return <TagName key={key} {...props}>{children}</TagName>;
+  }
+}`;
 
   return (
     <div className="bg-[#1d1f21] p-4 rounded-xl border border-[#2f3132] w-auto relative">
