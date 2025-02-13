@@ -12,23 +12,21 @@ const treeData: TreeNode[] = [
   {
     name: "Foor",
     children: [
-      { name: "X" },
+      { name: "xds" },
       {
-        name: "Y",
-        children: [{ name: "xer ewr" }, { name: "eey" }, { name: "rewz" }],
+        name: "yfsd",
       },
-      { name: "Z" },
+      { name: "zew" },
     ],
   },
   {
-    name: "bar",
+    name: "Bar",
     children: [
-      { name: "a" },
+      { name: "wef" },
       {
-        name: "b",
-        children: [{ name: "aff" }, { name: "bewr" }, { name: "crwe" }],
+        name: "sdf",
       },
-      { name: "c" },
+      { name: "dds" },
     ],
   },
 ];
@@ -51,10 +49,10 @@ const TreeView = ({
   return (
     <div className="w-full border-b border-white/5">
       <div
-        className={`flex items-center cursor-pointer p-1 rounded-md ${
+        className={`flex items-center cursor-pointer p-1 ${
           activeNode === node.name
-            ? "bg-red-600 text-red font-extrabold"
-            : "hover:bg-grey/50 duration-200 font-normal"
+            ? "text-white font-bold bg-white/5"
+            : "hover:bg-grey/20 duration-200"
         }`}
         onClick={() => onSelect(node.name)}
       >
@@ -69,12 +67,17 @@ const TreeView = ({
         ) : (
           <span className="w-4 h-4 mr-1" />
         )}
-        <span onClick={handleToggle} className="w-full text-base">
+        <span
+          onClick={handleToggle}
+          className={`w-full text-base ${
+            node.children ? "font-extrabold text-[17px]" : "font-normal"
+          }`}
+        >
           {node.name}
         </span>
       </div>
       {expanded && node.children && (
-        <div className="pl-4">
+        <div className="pl-4 text-base">
           {node.children.map((child, index) => (
             <TreeView
               key={`${node.name}-${index}`}
@@ -93,7 +96,7 @@ export default function FileTree() {
   const [activeNode, setActiveNode] = useState("");
 
   return (
-    <div className="w-full bg-[#1D1F21] rounded-md font-mono text-white/60 text-sm p-2">
+    <div className="w-full bg-[#1D1F21] rounded-sm font-mono text-white/60 text-sm p-2">
       {treeData.map((node, index) => (
         <TreeView
           key={index}
