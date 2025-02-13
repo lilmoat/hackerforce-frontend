@@ -4,7 +4,7 @@ import Challenges from "./Challenges";
 import CodeTerminal from "./CodeTerminal";
 import ModuleProgress from "@/app/course/[content]/ModuleProgress";
 import PracticeMachine from "@/app/course/[content]/PracticeMachine";
-import FileTree from "@/components/TreeView";
+import FileTree from "@/app/course/[content]/TreeView";
 import { ModalContext } from "@/contexts/ModalContext";
 import { TaskDetailsData } from "@/data/data";
 import { useContext } from "react";

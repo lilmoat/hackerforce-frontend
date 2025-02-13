@@ -18,7 +18,7 @@ const CodeTerminal = () => {
   const code = `B00L Falling short {
     [in] Handle                        %existingtoken
     [in] SWORD                         very_much_into
-    [in,optional] Iknow_jow_sduhasdd    Something_upset
+    [in] Iknow_jow_sduhasdd    Something_upset
     [in] Weaon_illasnd_showcn_level     _sdsakvio7tad
     [in] Hacking                        Flourishing_refuse
     [in] dwusdvha                       Sijasdfhv_sadioyg97t0
