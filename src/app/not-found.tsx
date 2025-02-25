@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
-import Link from "next/link";
 import BackgroundImage from "@/components/BackgroundImage";
+import Link from "next/link";
 
 export default async function NotFound() {
   return (

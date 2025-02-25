@@ -49,9 +49,9 @@ const TreeView = ({
   };
 
   return (
-    <div className="w-full border-b border-white/5">
+    <div className="w-full border-b border-white/5 font-inconsolata">
       <div
-        className={`flex items-center cursor-pointer p-1 ${
+        className={`flex items-center cursor-pointer p-1 font-inconsolata ${
           activeNode === node.name
             ? "text-white font-bold bg-white/5"
             : "hover:bg-grey/20 duration-200"
@@ -61,7 +61,7 @@ const TreeView = ({
         {node.children ? (
           <span onClick={handleToggle} className="mr-1">
             <ChevronDown
-              className={`w-4 h-4 ${
+              className={`w-4 h-4 font-inconsolata ${
                 expanded ? "rotate-0 duration-200" : "-rotate-90 duration-200"
               }`}
             />
@@ -81,7 +81,7 @@ const TreeView = ({
         </span>
       </div>
       {expanded && node.children && (
-        <div className="pl-4 text-base">
+        <div className="pl-4 text-base font-inconsolata">
           {node.children.map((child, index) => (
             <TreeView
               key={`${node.name}-${index}`}
